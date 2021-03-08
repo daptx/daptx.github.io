@@ -43,7 +43,6 @@ With [Hosptial.shp](asset/Hospitals.shp):
   * **extract from:** hospitals_filtered.shp; **intersects**; **compare to:** netown netowns
   * **to check:** feature count [623]
 
-
 With [netown.gpkg](assets/netown.gpkg):
 * **tool:** extract by expression --> *save as:* towns_NE_filtered.shp
   * **expression:** "popE" > 0 AND "popE" != 'NULL'
@@ -63,8 +62,7 @@ To produce the hospital service catchment areas, we used the [gravity model](ass
 * **Target Feature:** hospitals_final
 * **Target ID:** ZIP
 * **Target Weight:** beds
-* keep advanced parameters as default
-  * *NOTE: a larger k will impact your processing time; with the default (k = 20), it took ~10 minutes for my computer to run this tool)*
+* keep advanced parameters as default | *NOTE: a larger k will impact your processing time; with the default (k = 20), it took ~10 minutes for my computer to run this tool)*
 * **to check** feature count [454]; @EmmaClinton thanks for checking with me
 then exported the final result to the web using the [qgis2web plugin](https://www.qgistutorials.com/en/docs/web_mapping_with_qgis2web.html).
 
