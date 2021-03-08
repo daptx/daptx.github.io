@@ -31,3 +31,27 @@ The model was broken down into 3 main parts:
 
 **APPLYING THE MODEL**
 In order to apply the model to the larger data sets, we first had to preprocess [Homeland Security hospital data](https://hifld-geoplatform.opendata.arcgis.com/datasets/6ac5e325468c4cb9b905f1728d6fbf0f_0) and [New England town data](assets/netown.gpkg).
+
+  *PREPROCESSING STEPS*
+
+With [Hosptial.shp](asset/Hospitals.shp) —
+* **tool:** extract by expression --> *save as:* hospitals_filtered.shp
+  * **expression:** "BEDS" > 0 AND "TYPE" = 'GENERAL ACUTE CARE' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'CHILDREN' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'WOMEN' AND "STATUS" = 'OPEN'
+* **tool:** extract by location --> *save as:* hospitals_NE_filtered.shp
+  * **extract from:** hospitals_filtered.shp; **intersects**; **compare to:** netown netowns
+  * **to check:** feature count [623]
+
+
+With [netown.gpkg](assets/netown.gpkg)
+* **tool:** extract by expression --> *save as:* towns_NE_filtered.shp
+  * **expression:** "popE" > 0 AND "popE" != 'NULL'
+  * **to check** feature count [5718]
+
+With hospitals_NE_filtered.shp:
+* **tool:** mean coordinates --> *save as* mean_coordinates.shp
+* **tool:** aggregate
+  * **group by expression:** ZIP
+  * remove all rows except ID (Aggregate Function --> first_value), ZIP (Aggregate Function --> first_value), and BEDS (Aggregate Function --> sum)
+  * **to check** feature count [553]
+
+To produce the hospital service catchment areas, we used the [gravity model](assets/gravitymodel.model3) we created (you can also do one last check here: feature count [454]; @EmmaClinton thanks for checking with me), then exported the final result to [qgis2web plugin](https://www.qgistutorials.com/en/docs/web_mapping_with_qgis2web.html). 
