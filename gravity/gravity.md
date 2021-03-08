@@ -36,7 +36,7 @@ The gravity model was broken down into 3 main parts:
 In order to apply the model to the larger data sets, we first had to preprocess [Homeland Security hospital data](https://hifld-geoplatform.opendata.arcgis.com/datasets/6ac5e325468c4cb9b905f1728d6fbf0f_0) and [New England town data](assets/netown.gpkg).
 
 With [Hosptial.shp](assets/Hospitals.shp):
-* *NOTE* this layer was added via **Add ArcGIS Feature Service Layer** with this [link](https://services1.arcgis.com/Hp6G80Pky0om7QvQ/arcgis/rest/services/Hospitals_1/FeatureServer/)
+* *NOTE:* this layer was added via **Add ArcGIS Feature Service Layer** with this [link](https://services1.arcgis.com/Hp6G80Pky0om7QvQ/arcgis/rest/services/Hospitals_1/FeatureServer/)
 * **tool:** extract by expression --> *save as:* hospitals_filtered.shp
   * **expression:** "BEDS" > 0 AND "TYPE" = 'GENERAL ACUTE CARE' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'CHILDREN' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'WOMEN' AND "STATUS" = 'OPEN'
 * **tool:** extract by location --> *save as:* hospitals_NE_filtered.shp
@@ -70,7 +70,7 @@ You can view the final map [here](assets/index.html).
 
 **REFLECTIONS**
 
-After comparing the map I produced with the current healthcare service areas as established by the Dartmouth Atlas of Health Care, are some thoughts I had on the topic:
+After comparing the map I produced with the current healthcare service areas as established by the Dartmouth Atlas of Health Care, here are some thoughts I had on the topic:
 * While there are pockets of overlap between my catchments and DAHC's service areas, the geometries in general conflict with each other. Reasons for this may include and aren't limited to—the exponents I chose to use for my input weight, target weight, and distance parameter, the inclusion of only General Acute, Children's, and Women's hospitals/facilities (Critical Access appears to be an important category DAHC chose to keep, but I chose to exclude), varying k-values (they could have larger processors for larger k-values, while my baby mac can barely handle 20), etc.
 * When considering ideas of agency/access and mobilities, the map I produced has the ability to inform communities of *a.* which hospitals are most 'accessible' to them and *b.* whether that hospital has capacity to handle influxes of patients (esp. in the context of COVID).
 * For future applications, I'm curious as to how the gravity model of spatial interaction could be applied to relationship between disenfranchised neighborhoods across the EU and inter-European transit (particularly the train & metro-lines).
