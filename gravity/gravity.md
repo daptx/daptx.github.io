@@ -69,6 +69,7 @@ then exported the final result to the web using the [qgis2web plugin](https://ww
 You can view the final map [here](assets/index.html).
 
 **REFLECTIONS**
+
 After comparing the map I produced with the current healthcare service areas as established by the Dartmouth Atlas of Health Care, are some thoughts I had on the topic:
 * While there are pockets of overlap between my catchments and DAHC's service areas, the geometries in general conflict with each other. Reasons for this may include and aren't limited to—the exponents I chose to use for my input weight, target weight, and distance parameter, the inclusion of only General Acute, Children's, and Women's hospitals/facilities (Critical Access appears to be an important category DAHC chose to keep, but I chose to exclude), varying k-values (they could have larger processors for larger k-values, while my baby mac can barely handle 20), etc.
 * When considering ideas of agency/access and mobilities, the map I produced has the ability to inform communities of *a.* which hospitals are most 'accessible' to them and *b.* whether that hospital has capacity to handle influxes of patients (esp. in the context of COVID).
