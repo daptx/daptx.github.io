@@ -8,7 +8,7 @@ title: Gravity Model of Spatial Interaction
 * Workflows:
   * Gravity Model [Image](assets/gravitymodel.png)
   * Gravity Model [.model3 File](assets/gravitymodel.model3)
-  * Preprocessing Hospital & NE Towns Data (tbd)
+  * Preprocessing Hospital & NE Towns Data (scroll to: **APPLYING THE MODEL**)
 
 **OVERVIEW**
 
@@ -53,4 +53,4 @@ With hospitals_NE_filtered.shp:
   * remove all rows except ID (Aggregate Function --> first_value), ZIP (Aggregate Function --> first_value), and BEDS (Aggregate Function --> sum)
   * **to check** feature count [553]
 
-To produce the hospital service catchment areas, we used the [gravity model](assets/gravitymodel.model3) we created (you can also do one last check here: feature count [454]; @EmmaClinton thanks for checking with me), then exported the final result to [qgis2web plugin](https://www.qgistutorials.com/en/docs/web_mapping_with_qgis2web.html).
+To produce the hospital service catchment areas, we used the [gravity model](assets/gravitymodel.model3) we created (you can also do one last check here: feature count [454]; @EmmaClinton thanks for checking with me), then exported the final result to the web using the [qgis2web plugin](https://www.qgistutorials.com/en/docs/web_mapping_with_qgis2web.html).
