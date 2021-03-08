@@ -25,6 +25,7 @@ The model was broken down into 3 main parts:
 and max potential:
 > maximum("potential", group_by:= "InputID")
 
+By adding exponents to the input weight, target weight, and distance parameter, we were able to fully implement the full gravity model formula: (inputWeight)^λ * (targetWeight)^α / (distance)^β as described in Rodrigue’s [The Geography of Transport Systems](https://transportgeography.org/contents/methods/spatial-interactions-gravity-model/)
 * Aggregating the Data to make Catchment Areas
 
 
