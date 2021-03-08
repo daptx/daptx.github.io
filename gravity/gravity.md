@@ -3,10 +3,11 @@ layout: page
 title: Gravity Model of Spatial Interaction
 ---
 **OVERVIEW**
-This week, we were challenged to automate the gravity model, a tool used....
+
 
 **FINAL DELIVERABLES**
-* [Online Map](maps/index.html) of Hospital Catchment across New England
+* [Online Map](assets/index.html) of Hospital Catchment across New England
 * Workflows:
-![Gravity Model Image](images/gravitymodel.png)
-![Preprocessing Hospital Data]()
+  * Gravity Model [Image](images/gravitymodel.png)
+  * Gravity Model [.model3 file](assets/gravitymodel.model3)
+  * Preparing Hospital & NE Towns Data (tbd)
