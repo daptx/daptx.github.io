@@ -17,7 +17,7 @@
             margin: 0;
         }
         </style>
-        <title>Map of Hospital Catchments in New England by Drew An-Pham</title>
+        <title>Hospital Catchments in New England | by Drew An-Pham</title>
     </head>
     <body>
         <div id="map">
@@ -33,9 +33,9 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/hospital_boundaries_filtered_1.js"></script>
-        <script src="data/SICA_20_2.js"></script>
-        <script src="data/hospitals_final_3.js"></script>
+        <script src="data/DartmouthHSAs_1.js"></script>
+        <script src="data/HospitalCatchments_2.js"></script>
+        <script src="data/HospitalClusters_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -57,7 +57,7 @@
             zoomControl:true, maxZoom:28, minZoom:1
         })
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://daptx.github.io/" target="_blank">Drew An-Pham</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        map.attributionControl.setPrefix('<a href="https://daptx.github.io" target="_blank">Drew An-Pham</a> &middot; <a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var measureControl = new L.Control.Measure({
             position: 'topleft',
@@ -91,7 +91,7 @@
         });
         layer_OSMStandard_0;
         map.addLayer(layer_OSMStandard_0);
-        function pop_hospital_boundaries_filtered_1(feature, layer) {
+        function pop_DartmouthHSAs_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -136,9 +136,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_hospital_boundaries_filtered_1_0() {
+        function style_DartmouthHSAs_1_0() {
             return {
-                pane: 'pane_hospital_boundaries_filtered_1',
+                pane: 'pane_DartmouthHSAs_1',
                 opacity: 1,
                 color: 'rgba(91,91,91,1.0)',
                 dashArray: '',
@@ -151,21 +151,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_hospital_boundaries_filtered_1');
-        map.getPane('pane_hospital_boundaries_filtered_1').style.zIndex = 401;
-        map.getPane('pane_hospital_boundaries_filtered_1').style['mix-blend-mode'] = 'normal';
-        var layer_hospital_boundaries_filtered_1 = new L.geoJson(json_hospital_boundaries_filtered_1, {
+        map.createPane('pane_DartmouthHSAs_1');
+        map.getPane('pane_DartmouthHSAs_1').style.zIndex = 401;
+        map.getPane('pane_DartmouthHSAs_1').style['mix-blend-mode'] = 'normal';
+        var layer_DartmouthHSAs_1 = new L.geoJson(json_DartmouthHSAs_1, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_hospital_boundaries_filtered_1',
-            layerName: 'layer_hospital_boundaries_filtered_1',
-            pane: 'pane_hospital_boundaries_filtered_1',
-            onEachFeature: pop_hospital_boundaries_filtered_1,
-            style: style_hospital_boundaries_filtered_1_0,
+            dataVar: 'json_DartmouthHSAs_1',
+            layerName: 'layer_DartmouthHSAs_1',
+            pane: 'pane_DartmouthHSAs_1',
+            onEachFeature: pop_DartmouthHSAs_1,
+            style: style_DartmouthHSAs_1_0,
         });
-        bounds_group.addLayer(layer_hospital_boundaries_filtered_1);
-        map.addLayer(layer_hospital_boundaries_filtered_1);
-        function pop_SICA_20_2(feature, layer) {
+        bounds_group.addLayer(layer_DartmouthHSAs_1);
+        map.addLayer(layer_DartmouthHSAs_1);
+        function pop_HospitalCatchments_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -195,16 +195,16 @@
                         <td>' + (feature.properties['SumInputWe'] !== null ? autolinker.link(feature.properties['SumInputWe'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Beds Per 1000 People:</th>\
+                        <th scope="row">Beds Per 1000:</th>\
                         <td>' + (feature.properties['bedsPer100'] !== null ? autolinker.link(feature.properties['bedsPer100'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_SICA_20_2_0() {
+        function style_HospitalCatchments_2_0() {
             return {
-                pane: 'pane_SICA_20_2',
+                pane: 'pane_HospitalCatchments_2',
                 opacity: 1,
                 color: 'rgba(226,200,85,1.0)',
                 dashArray: '',
@@ -217,21 +217,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_SICA_20_2');
-        map.getPane('pane_SICA_20_2').style.zIndex = 402;
-        map.getPane('pane_SICA_20_2').style['mix-blend-mode'] = 'normal';
-        var layer_SICA_20_2 = new L.geoJson(json_SICA_20_2, {
+        map.createPane('pane_HospitalCatchments_2');
+        map.getPane('pane_HospitalCatchments_2').style.zIndex = 402;
+        map.getPane('pane_HospitalCatchments_2').style['mix-blend-mode'] = 'normal';
+        var layer_HospitalCatchments_2 = new L.geoJson(json_HospitalCatchments_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_SICA_20_2',
-            layerName: 'layer_SICA_20_2',
-            pane: 'pane_SICA_20_2',
-            onEachFeature: pop_SICA_20_2,
-            style: style_SICA_20_2_0,
+            dataVar: 'json_HospitalCatchments_2',
+            layerName: 'layer_HospitalCatchments_2',
+            pane: 'pane_HospitalCatchments_2',
+            onEachFeature: pop_HospitalCatchments_2,
+            style: style_HospitalCatchments_2_0,
         });
-        bounds_group.addLayer(layer_SICA_20_2);
-        map.addLayer(layer_SICA_20_2);
-        function pop_hospitals_final_3(feature, layer) {
+        bounds_group.addLayer(layer_HospitalCatchments_2);
+        map.addLayer(layer_HospitalCatchments_2);
+        function pop_HospitalClusters_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -249,27 +249,20 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['MEAN_X'] !== null ? autolinker.link(feature.properties['MEAN_X'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Cluster Zip Code:</th>\
+                        <td>' + (feature.properties['ZIP'] !== null ? autolinker.link(feature.properties['ZIP'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['MEAN_Y'] !== null ? autolinker.link(feature.properties['MEAN_Y'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ZIP'] !== null ? autolinker.link(feature.properties['ZIP'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['BEDS'] !== null ? autolinker.link(feature.properties['BEDS'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ZIP_2'] !== null ? autolinker.link(feature.properties['ZIP_2'].toLocaleString()) : '') + '</td>\
+                        <th scope="row"># of Beds in Cluster:</th>\
+                        <td>' + (feature.properties['BEDS'] !== null ? autolinker.link(feature.properties['BEDS'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_hospitals_final_3_0() {
+        function style_HospitalClusters_3_0() {
             return {
-                pane: 'pane_hospitals_final_3',
+                pane: 'pane_HospitalClusters_3',
                 shape: 'diamond',
                 radius: 2.8000000000000003,
                 opacity: 1,
@@ -281,29 +274,29 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(180,168,223,1.0)',
-                interactive: false,
+                interactive: true,
             }
         }
-        map.createPane('pane_hospitals_final_3');
-        map.getPane('pane_hospitals_final_3').style.zIndex = 403;
-        map.getPane('pane_hospitals_final_3').style['mix-blend-mode'] = 'normal';
-        var layer_hospitals_final_3 = new L.geoJson(json_hospitals_final_3, {
+        map.createPane('pane_HospitalClusters_3');
+        map.getPane('pane_HospitalClusters_3').style.zIndex = 403;
+        map.getPane('pane_HospitalClusters_3').style['mix-blend-mode'] = 'normal';
+        var layer_HospitalClusters_3 = new L.geoJson(json_HospitalClusters_3, {
             attribution: '',
-            interactive: false,
-            dataVar: 'json_hospitals_final_3',
-            layerName: 'layer_hospitals_final_3',
-            pane: 'pane_hospitals_final_3',
-            onEachFeature: pop_hospitals_final_3,
+            interactive: true,
+            dataVar: 'json_HospitalClusters_3',
+            layerName: 'layer_HospitalClusters_3',
+            pane: 'pane_HospitalClusters_3',
+            onEachFeature: pop_HospitalClusters_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_hospitals_final_3_0(feature));
+                return L.shapeMarker(latlng, style_HospitalClusters_3_0(feature));
             },
         });
-        bounds_group.addLayer(layer_hospitals_final_3);
-        map.addLayer(layer_hospitals_final_3);
+        bounds_group.addLayer(layer_HospitalClusters_3);
+        map.addLayer(layer_HospitalClusters_3);
             var abstract = new L.Control({'position':'bottomleft'});
             abstract.onAdd = function (map) {
                 this._div = L.DomUtil.create('div',
@@ -326,7 +319,7 @@
             };
             abstract.addTo(map);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/hospitals_final_3.png" /> hospitals_final': layer_hospitals_final_3,'<img src="legend/SICA_20_2.png" /> SICA_20': layer_SICA_20_2,'<img src="legend/hospital_boundaries_filtered_1.png" /> hospital_boundaries_filtered': layer_hospital_boundaries_filtered_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/HospitalClusters_3.png" /> Hospital Clusters': layer_HospitalClusters_3,'<img src="legend/HospitalCatchments_2.png" /> Hospital Catchments': layer_HospitalCatchments_2,'<img src="legend/DartmouthHSAs_1.png" /> Dartmouth HSAs': layer_DartmouthHSAs_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
         setBounds();
         </script>
     </body>
