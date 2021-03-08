@@ -15,18 +15,17 @@ The Gravity Model of Spatial Interaction created this week takes a set of input 
 
 **DECONSTRUCTING THE MODEL**
 ![gravitymodel workflow](assets/gravitymodel.png)
-While the [tutorial videos](https://midd.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22324cb720-6901-48e2-b57a-acdf014ab826%22) for the week provided a good base for setting up the model, it's worth verbalizing how integrated ![this workflow](/assets/120workflow.png) from GEOG 0120 into our final product.
+While the [tutorial videos](https://midd.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22324cb720-6901-48e2-b57a-acdf014ab826%22) for the week provided a good base for setting up the model, it's worth verbalizing how we integrated this workflow (see below) from GEOG 0120 into our final product. ![](/assets/120workflow.png)
 
 The model was broken down into 3 main parts:
 * Executing a Distance Matrix - This required an input and target layer (both with IDs and weights) and k (the # of nearest features each input was compared to, with a default value of 20). An additional step taken to remove error was converting both input and target features into centroids, as distance matrix can only utilize points.
-* Calculating Max Potential - This first required two joins, where the input weight (population in this case) and target weight (# of beds in this case) were added to the distance matrix. After, a series of field calculators were used to find the potential
+* Calculating Max Potential - This first required two joins, where the input weight (population in this case) and target weight (# of beds in this case) were added to the distance matrix. After, a series of field calculators were used to find the potential and and max potential:
 > @InputWeight + '^' + to_string(@lambda) + ' * ' + @TargetWeight + '^' + to_string(@alpha) + ' / ("Distance"/1000)' + '^' + to_string(@beta)
-
-and max potential:
 > maximum("potential", group_by:= "InputID")
 
-By adding exponents to the input weight, target weight, and distance parameter, we were able to fully implement the full gravity model formula: (inputWeight)^λ * (targetWeight)^α / (distance)^β as described in Rodrigue’s [The Geography of Transport Systems](https://transportgeography.org/contents/methods/spatial-interactions-gravity-model/)
-* Aggregating the Data to make Catchment Areas
+*NOTE: By adding exponents to the input weight, target weight, and distance parameter, we were able to fully implement the full gravity model formula: (inputWeight)^λ * (targetWeight)^α / (distance)^β as described in Rodrigue’s [The Geography of Transport Systems](https://transportgeography.org/contents/methods/spatial-interactions-gravity-model/)*
+
+* Aggregating the Data to make Catchment Areas- 
 
 
 *Data Sources:*
