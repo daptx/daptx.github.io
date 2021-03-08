@@ -79,4 +79,4 @@ After comparing the map I produced with the current healthcare service areas as 
 * Hospital Data from Homeland Security [Hospital.shp](assets/Hospitals.shp)
 * Dartmouth Atlas of Health Care service areas [HsaBdry_AK_HI_unmodified.MIF](assets/hsabound.MIF)
 
-work time: ~20 hours ✨😌🌱 (the geography life didn't choose me, i chose it)
+work time: ~20 hours ✨🌱 (the geography life didn't choose me, i chose it)
