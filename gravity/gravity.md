@@ -3,4 +3,4 @@ layout: page
 title: Gravity Model of Spatial Interaction
 ---
 
-[Final Map](assets/)
+link to [map](asset/)
