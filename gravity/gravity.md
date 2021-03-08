@@ -57,8 +57,8 @@ With hospitals_NE_filtered.shp:
 
 To produce the hospital service catchment areas, we used the [gravity model](assets/gravitymodel.model3) we created:
 * **Input Feature:** towns_NE_filtered
-  * **Input ID:** NAME
-  * **Input Weight:** popE
+* **Input ID:** NAME
+* **Input Weight:** popE
 * **Target Feature:** hospitals_final
 * **Target ID:** ZIP
 * **Target Weight:** beds
