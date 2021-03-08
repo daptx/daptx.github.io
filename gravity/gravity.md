@@ -16,6 +16,7 @@ The Gravity Model of Spatial Interaction created this week takes a set of input 
 
 **DECONSTRUCTING THE MODEL**
 ![gravitymodel workflow](assets/gravitymodel.png)
+*right click: open image in new tab for a clearer graphic*
 While the [tutorial videos](https://midd.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22324cb720-6901-48e2-b57a-acdf014ab826%22) for the week provided a good base for setting up the model, it's worth verbalizing how we integrated this workflow (see below) from GEOG 0120 into our final product. ![](/assets/120workflow.png)
 
 The model was broken down into 3 main parts:
@@ -54,3 +55,7 @@ With hospitals_NE_filtered.shp:
   * **to check** feature count [553]
 
 To produce the hospital service catchment areas, we used the [gravity model](assets/gravitymodel.model3) we created (you can also do one last check here: feature count [454]; @EmmaClinton thanks for checking with me), then exported the final result to the web using the [qgis2web plugin](https://www.qgistutorials.com/en/docs/web_mapping_with_qgis2web.html).
+
+You can view the final map [here](assets/index.html).
+
+**REFLECTIONS AND THOUGHTS**
