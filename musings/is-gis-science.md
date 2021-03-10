@@ -1,6 +1,6 @@
 ---
 layout: page
-title: GIS: Tool, Toolmaking, or Science?
+title: What is Open Source GIScience?
 ---
 
 When we are "doing GIS," what meanings are attached to this phrase of action? This postulation ventures into the debate of how GIS (Geographic Information Systems) should be categorized/viewed today. From the perspective of Wright et al, the 3 primary positions discussants have taken on the matter are of a. GIS as a tool, b. GIS as toolmaking, & c. GIS as a science.
