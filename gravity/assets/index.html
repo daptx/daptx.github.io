@@ -297,6 +297,16 @@
         });
         bounds_group.addLayer(layer_HospitalClusters_3);
         map.addLayer(layer_HospitalClusters_3);
+            var title = new L.Control();
+            title.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            title.update = function () {
+                this._div.innerHTML = '<h2>New England Hospital Catchments</h2>';
+            };
+            title.addTo(map);
             var abstract = new L.Control({'position':'bottomleft'});
             abstract.onAdd = function (map) {
                 this._div = L.DomUtil.create('div',
