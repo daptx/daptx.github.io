@@ -3,7 +3,7 @@ layout: page
 title: GIS - Tool, Toolmaking, or Science?
 ---
 
-When we are "doing GIS," what meanings are attached to this phrase of action? This postulation ventures into the debate of how GIS (Geographic Information Systems) should be categorized/viewed today. From the perspective of Wright et al, the 3 primary positions discussants have taken on the matter are of a. GIS as a tool, b. GIS as toolmaking, & c. GIS as a science.
+When we are "doing GIS," what does this entail? Such postulation ventures into the debate of how GIS (Geographic Information Systems) should be categorized/viewed today. From the perspective of Wright et al, the 3 primary positions discussants have taken on the matter are of a. GIS as a tool, b. GIS as toolmaking, & c. GIS as a science.
 
 Proponents of GIS as a tool view this 'system' as a means to advance a particular purpose. Similar to other applications like Stata or Tableau, GIS utilizes a series of associated techniques to answer spatial inquiries and further the knowledge base of its integral disciplines (Geography, Urban Studies, so on so forth). Both inherently neutral and application driven, GIS as a tool spotlights direct problem solving, but not so much innovating—which requires a more inward point of view (i.e. GIS development).
 
