@@ -10,6 +10,7 @@ layout: default
 
 - [Gravity Model of Spatial Interaction](gravity/gravity.md)
 - [Rosgen Classification System Replication](https://github.com/daptx/RE-rosgen/blob/main/docs/report/HEGSRR-Replication-Report.md)
+[Rosgen Classification System Replication](rosgen/HEGSRR-Replication-Report.md)
 
 ## Musings
 

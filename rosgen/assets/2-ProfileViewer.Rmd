@@ -1,0 +1,111 @@
+---
+title: "ProfileViewing"
+output:
+  html_document:
+    df_print: paged
+---
+
+This RStudio notebook accompanies the Transects and Profiles handout and the Classification handout. In this notebook, you will import the data you generated using the "v.out.ascii" tool in GRASS to visualize and analyze it here. Then you will calculate average slope for each of your digitized and extracted centerlines. Finally, you will calculate and measure the width of the flood-prone area to use in the entrenchment ratio calculation.
+
+Feel free to email with any questions!
+Zach Hilgendorf
+zhilgen1@asu.edu
+PhD Student, Geography
+School of Geographical Sciences and Urban Planning
+Arizona State University
+
+
+```{r}
+# The purpose of this chunk is to load the necessary packages.
+require(ggplot2) #This package is for data visualization.
+require(dplyr) #This package allows users to run sequential commands to manipulate and process your data.
+```
+
+```{r}
+# The purpose of this chunk is to load the necessary data, and is designed to input text files created by the r.profile tool in GRASS
+CrossProf <- read.csv("../../data/derived/public/crossprof.txt", header=FALSE, sep = " ", col.names=c("Junk","Distance","Elevation"))[c(2,3)]
+LongProf <- read.csv("../../data/derived/public/longprof.txt", header=FALSE, sep = " ", col.names=c("Junk","Distance","Elevation"))[c(2,3)]
+```
+
+```{r}
+# The purpose of this chunk is to visualize our datasets using the ggplot2 package.This chunk is set up so that your variables do not need to be specified and the chunk can just be run.
+
+ggplot(LongProf) + # This sets the variable (data frame) we will be plotting.
+       aes(x = Distance, y = Elevation, color = Elevation) + # This provides the axes designations and how to color the data.
+       geom_line() + # This tells ggplot2 to make a line graph. geom_line could be changed to geom_point without issue.
+       labs(x = "Distance along the transect (m)", y = "Elevation (masl)", title = "Longitudinal Profile of Extracted Reach")
+# This sets the axes labels and title of the plot.
+
+ggplot(CrossProf) +
+       aes(x = Distance, y = Elevation, color = Elevation) +
+       geom_line() +
+       scale_color_gradient(low = "green", high = "brown") + # This establishes a color gradient between green and brown to color the data.
+       labs(x = "Distance along the transect (m)", y = "Elevation (masl)", title = "Cross-Sectional Profile of Valley Near CHaMP Point")
+```
+
+```{r}
+#run this codeblock if the Cross-sectional profile looked backwards, then rerun the graphing codeblock above
+maxd <- max(CrossProf$Distance, na.rm=TRUE) #finds maximum distance
+CrossProf$Distance <- maxd-CrossProf$Distance  #inverts distance axis by subtracting distances from max
+
+```
+
+```{r}
+#run this codeblock if the Longitudinal profile looked backwards, then rerun the graphing codeblock above
+maxd <- max(LongProf$Distance, na.rm=TRUE) #finds maximum distance
+LongProf$Distance <- maxd-LongProf$Distance  #inverts distance axis by subtracting distances from max
+```
+
+```{r}
+# The purpose of this chunk is to compute the slope of the longitudinal profile (between points) and the average slope 
+LongProf <- LongProf %>% # The "%>%" is called "piping" and it essentially allows us to take the output of a function and sequentially feed it to the next argument. This is very useful for subsetting and tacking on new columns with output data!
+  #group_by(Attempt) %>% # Here we are subsetting the data based on the attempt number (1-3). 
+  mutate(Slope = (abs(((Elevation - lag(Elevation))/(Distance - lag(Distance))*100)))) # Create a column for slope (Change in Vertical Position/Change in Horizontal Position) with absolute values that is relative to the Attempt
+         
+ggplot(LongProf) +
+       aes(x = Distance, y = Slope, color = Slope) +
+       geom_line() +
+       scale_color_gradient(low = "gray", high = "red") +
+       labs(x = "Distance along the transect (m)", y = "Slope (%)", title = "Slope of the Longitudinal Profile of the Extracted Reach")
+
+ggplot(LongProf) +
+       aes(x = Distance, y = Elevation, color = Slope) +
+       geom_line(size = 2) + # The "size" argument allows us to increase or decrease our point size.
+       scale_color_gradient(low = "gray", high = "red") +
+       theme_light() +
+       labs(x = "Distance along the transect (m)", y = "Elevation (masl)", title = "Longitudinal Profile of Extracted Reach")
+```
+
+```{r}
+#The purpose of this chunk is to process our data for entry into the Rosgen Stream Classification scheme. This chunk can be run now, or it can be run during the Classification handout. The chunk reports the mean slope and gives you the necessary tools to determine the flood-prone area of the stream to calculate the entrenchment ratio.
+LongProf %>%
+  #group_by(Attempt) %>% 
+  summarize(Slope = mean(Slope, na.rm = TRUE)) #This calculates the mean slope, based on the Attempt.
+
+# Now we want to figure out the width of the flood-prone area.
+DpthBf_Max <- 1.0001 # Insert the maximum bankfull depth from your point/reach of interest here, replacing the 8 left of the hash #
+
+CrossProf[which.min(CrossProf$Elevation),] # This finds the minimum elevation, which should correspond to the lowest elevation in the stream channel, and reports the entire row. That part is essential! Double check the reported value with one of the plots you have made before to verify.
+StreamElev <- min(CrossProf$Elevation) # This stores the minimum elevation that you found in the previous step.
+MaxBFx2 <- 2 * (DpthBf_Max) # twice the maximum bankfull depth.
+MaxBFx2Elev <- StreamElev + MaxBFx2 # This adds the elevation of the bottom of the stream to twice the bankfull depth, allowing you to get the elevation (above mean sea level) of that variable.
+
+ggplot(CrossProf) +
+       aes(x = Distance, y = Elevation, color = Elevation) +
+       geom_line() +
+       geom_hline(yintercept = MaxBFx2Elev) + # This adds a horizontal line at a prescribed location. In this case, we are drawing a line at twice the maximum bankfull depth.
+       scale_color_gradient(low = "green", high = "brown") +
+       labs(x = "Distance along the transect (m)", y = "Elevation (masl)", title = "Cross-Sectional Profile of Valley Near CHaMP Point")
+
+ggplot(CrossProf) +
+       aes(x = Distance, y = Elevation, color = Elevation) +
+       geom_point() + # Point chosen here to allow easier determining of the width (points are horizontally spaced by 1 meter)
+       geom_hline(yintercept = MaxBFx2Elev) +
+       xlim(175,375) + # Sets the x-axis limits. Adjust this value as you zoom in to the correct area.
+       ylim(1030,1060) + # Sets the y-axis limits. Adjust this value as you zoom in to the correct area.
+       scale_color_gradient(low = "green", high = "brown") +
+       labs(x = "Distance along the transect (m)", y = "Elevation (masl)", title = "Determining the Flood-Prone Width")
+
+#Use the last plot, points, and horizontal line to get an approximate distance of the flood-prone area. Keep for your notes and to include in your classification and report.
+```
+
