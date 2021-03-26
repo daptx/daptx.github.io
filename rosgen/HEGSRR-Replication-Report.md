@@ -30,14 +30,12 @@ Our study aims to replicate the results of Kasprak et al. (2016)—a replication
 
 ### Sampling Plan & Data Description
 
-For this study, we were each assigned a random site from the original study to analyze. My designated stream reach was loc_id = 3.
+For this study, we were each assigned a random site from the original study to analyze. My designated stream reach was loc_id = 3. Both our study and Kasprak et al. (2016) use the CHaMP points for specific site classification, with Kasprak using points from 2012-2013 and ours ranging from 2011-2017. At my site (loc_id = 3) there were 2 sampled points from 2012-2013, and random selection led to using the 2012 point for this study.
 
 *figure a. John Day Watershed Extent & CHaMP Sites Selected by Kasprak et al (2016)*
 ![](assets/sample.png)
 
 ## Materials & Procedure
-
-This report is to assess if the watershed-scale classifications by Kasprak et al. (2016) can be entirely replicated with open-source GIS and statistical software. Both our study and Kasprak et al. (2016) use the CHaMP points for specific site classification, with Kasprak using points from 2012-2013 and ours ranging from 2011-2017. At my site (loc_id = 3) there were 2 sampled points from 2012-2013, and random selection led to using the 2012 point for this study.
 
 For this replication study, we utilized both GRASS and RStudio, following a workflow prepared and edited by Zach Hilgendorf—Geography Ph.D. Student @ ASU and Joesph Holler—Geography Professor @ Middlebury College.
 
@@ -46,7 +44,8 @@ The detailed procedures and protocols for our GRASS analysis can be found [here]
 Note: In order to complete this analysis on a MacOS device, please install [The Unarchiver](https://theunarchiver.com/) to access the [John Day Watersheds data](assets/JohnDayWShed) and [XCode](https://developer.apple.com/download/more/?=for%20Xcode) to download needed tools in GRASS.
 
 Models used in GRASS produced by Joe Holler:
-[Center Line Calculations](assets/center_line_length.gxm) and [Visualization of Study Area](assets/visualize.gxm)
+- [Center Line Calculations](assets/center_line_length.gxm)
+- [Visualization of Study Area](assets/visualize.gxm)
 
 *figure b. the classification scheme we followed (fulfilling Levels I & II):*
 ![](assets/rosgen-class.png)
