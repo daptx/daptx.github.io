@@ -1,6 +1,6 @@
 ---
 layout: page
-title: RE- Replication of Rosgen Stream Classification
+title: RE - Replication of Rosgen Stream Classification
 ---
 
 
@@ -18,7 +18,7 @@ Your Name, Zach Hilgendorf, Joseph Holler, and Peter Kedron.
 Replication Materials Available at: [Re-Rosgen](https://github.com/daptx/RE-rosgen)
 
 Created: `17 March 2021`
-Last Revised: `23 March 2021`
+Last Revised: `24 March 2021`
 
 ## Abstract & Motivation
 
@@ -48,7 +48,7 @@ Note: In order to complete this analysis on a MacOS device, please install [The 
 Models used in GRASS produced by Joe Holler:
 [Center Line Calculations](assets/center_line_length.gxm) and [Visualization of Study Area](assets/visualize.gxm)
 
-*figure b the classification scheme we followed (fulfilling Levels I & II):*
+*figure b. the classification scheme we followed (fulfilling Levels I & II):*
 ![](assets/rosgen-class.png)
 
 ## Replication Results
@@ -116,7 +116,7 @@ All in all, despite the absence of my site in Kasprak et al.'s (2016) results ta
 
 ## Conclusion & Implications
 
-It’s uncertain whether the results of this study successfully or unsuccessfully reproduced Kasprak et al.’s (2016) use of the Rosgen classification system, as our given CHaMP Site ID was not spotted in Table 5 of the original study’s results. In the broader context of reproducibility, however, a reattempt at replicating Kasprak et al. (2016) would require the same data and software from the original study (as well as a site they actually produced for). If anything, what our analysis highlighted was the need to acknowledge/address uncertainty within GIS analyses and spotlighted areas for improvement that could lead to stronger, more reliable results that could both explain discrepancies between and be compared to the original study (THINK: workflow revisions, fixing source code/method errors, etc). 
+It’s uncertain whether the results of this study successfully or unsuccessfully reproduced Kasprak et al.’s (2016) use of the Rosgen classification system, as our given CHaMP Site ID was not spotted in Table 5 of the original study’s results. In the broader context of reproducibility, however, a reattempt at replicating Kasprak et al. (2016) would require the same data and software from the original study (as well as a site they actually produced for). If anything, what our analysis highlighted was the need to acknowledge/address uncertainty within GIS analyses and spotlighted areas for improvement that could lead to stronger, more reliable results that could both explain discrepancies between and be compared to the original study (THINK: workflow revisions, fixing source code/method errors, etc).
 
 ## References
 
