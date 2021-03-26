@@ -81,7 +81,7 @@ Valley Width | 96 | Flood Prone-Width Graph in RStudio
 Valley Depth | 2.0002 | calculation of MaxBFx2
 Stream/River Length | 385.2219 | banksLine attribute table in GRASS
 Valley Length | 413.6928 | valleysLine attribute table in GRASS
-Median Channel Material Particle Diameter | 42 | SubD50 in CHaMP_Data_MFJD 
+Median Channel Material Particle Diameter | 42 | SubD50 in CHaMP_Data_MFJD
 
 
 Table 2. Rosgen Level I Classification
