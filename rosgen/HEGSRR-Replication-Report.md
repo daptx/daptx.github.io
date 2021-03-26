@@ -72,20 +72,20 @@ Models used in GRASS produced by Joe Holler:
 **Tables:**
 
 Table 1. Site Measurements
-|Variable | Value | Source|
-| :-: | :-: | :-: |
-| Bankfull Width | 19.1587 | BfWdth_Avg in CHaMP_Data_MFJD |
-| Bankfull Depth Average | 0.4242 | DpthBf_Avg in CHaMP_Data_MFJD |
-| Bankfull Depth Maximum | 1.0001 | DpthBf_Max in CHaMP_Data_MFJD |
-| Valley Width | 96 | Flood Prone-Width Graph in RStudio |
-| Valley Depth | 2.0002 | calculation of MaxBFx2 |
-| Stream/River Length | 385.2219 | banksLine attribute table in GRASS |
-| Valley Length | 413.6928 | valleysLine attribute table in GRASS |
-| Median Channel Material Particle Diameter | 42 | SubD50 in CHaMP_Data_MFJD |
+Variable | Value | Source
+:-: | :-: | :-:
+Bankfull Width | 19.1587 | BfWdth_Avg in CHaMP_Data_MFJD
+Bankfull Depth Average | 0.4242 | DpthBf_Avg in CHaMP_Data_MFJD
+Bankfull Depth Maximum | 1.0001 | DpthBf_Max in CHaMP_Data_MFJD
+Valley Width | 96 | Flood Prone-Width Graph in RStudio
+Valley Depth | 2.0002 | calculation of MaxBFx2
+Stream/River Length | 385.2219 | banksLine attribute table in GRASS
+Valley Length | 413.6928 | valleysLine attribute table in GRASS
+Median Channel Material Particle Diameter | 42 | SubD50 in CHaMP_Data_MFJD 
 
 
 Table 2. Rosgen Level I Classification
-|Criteria | Value | Derivation|
+| Criteria | Value | Derivation |
 | :-: | :-: | :-: |
 | Entrenchment Ratio | 5.0108 | valley width / bankfull width from Table 1 |
 | Width / Depth Ratio | 45.1643 | bankfull width / bankfull average depth from Table 1 |
@@ -95,7 +95,7 @@ Table 2. Rosgen Level I Classification
 NOTE: Although sinuosity > 1.2, width/depth & entrenchment ratios lined up with the C-type stream classification. The valley length > bankfull length caused the lower than anticipated sinuosity value, which is an abnormality addressed in **Unplanned Deviations from the Protocol**.  
 
 Table 3. Rosgen Level II Classification
-|Criteria | Value | Derivation|
+| Criteria | Value | Derivation |
 | :-: | :-: | :-: |
 | Slope | .00257 | ΔElevation/ΔDistance in the Longitudinal Profile |
 | Channel Material | Gravel | The Key to the Rosgen Classification of Natural Rivers (Rosgen, 1994) |
