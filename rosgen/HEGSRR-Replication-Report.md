@@ -83,6 +83,7 @@ Table 1. Site Measurements
 | Valley Length | 413.6928 | valleysLine attribute table in GRASS |
 | Median Channel Material Particle Diameter | 42 | SubD50 in CHaMP_Data_MFJD |
 
+
 Table 2. Rosgen Level I Classification
 | Criteria | Value | Derivation |
 | :-: | :-: | :-: |
