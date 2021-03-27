@@ -79,5 +79,3 @@ After comparing the map I produced with the current healthcare service areas as 
 * Population by town in New England and Middle Atlantic states using TidyCensus in R based on the American Community Survey 2018 5-year Average: [netown.gpkg](assets/netown.gpkg)
 * Hospital Data from Homeland Security [Hospital.shp](assets/Hospitals.shp)
 * Dartmouth Atlas of Health Care service areas [HsaBdry_AK_HI_unmodified.MIF](assets/hsabound.MIF)
-
-work time: ~20 hours ✨🌱 (the geography life didn't choose me, i chose it)
