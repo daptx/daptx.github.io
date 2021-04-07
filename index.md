@@ -10,6 +10,7 @@ layout: default
 
 - [Gravity Model of Spatial Interaction](gravity/gravity.md)
 - [Rosgen Classification System Replication](rosgen/HEGSRR-Replication-Report.md)
+- [Urban Resilience Analysis: Greenspace Access in Dar es Salaam](postGIS/urban-resilience.md)
 
 ## Musings
 
