@@ -10,6 +10,7 @@ title: Urban Resilience Analysis - Green Accessibility in Dar es Salaam
 In this analysis, we used SQL queries in PostGIS to answer this simple spatial question pertaining to urban resilience & environmental justice in Dar es Salaam, Tanzania. This analysis was done in collaboration with [Emma Clinton](https://emmaclinton.github.io/), GIS aficionado and Biology student at Middlebury College.
 
 ## Accessing Data
+
                      |
  :-----------------: | :----------------:
  ![](assets/rh.jpeg) | ![](assets/ra.png)
