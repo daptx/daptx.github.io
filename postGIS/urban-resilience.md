@@ -11,7 +11,6 @@ In this analysis, we used SQL queries in PostGIS to answer this simple spatial q
 
 ## Accessing Data
 
-                    |
 :------------------:|:--------------------:
 ![](assets/ra.png)  |  ![](assets/rh.jpeg)
 
