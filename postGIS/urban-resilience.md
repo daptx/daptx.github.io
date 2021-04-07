@@ -25,7 +25,7 @@ The greenspace and residential data used in this analysis were derived from [Ope
 objectives:
 - create a layer of points that are residential buildings in Dar es Salaam
 
-```
+```sql
 CREATE TABLE buildings_point AS
 SELECT osm_id, building, amenity, st_transform(way,32737)::geometry(point,32737) as geom, osm_user, osm_uid, osm_version, osm_timestamp
 FROM public.planet_osm_point
