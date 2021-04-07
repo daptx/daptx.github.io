@@ -24,6 +24,42 @@ The greenspace and residential data used in this analysis were derived from [Ope
 
 objectives:
 - create a layer of points that are residential buildings in Dar es Salaam
+
+CREATE TABLE buildings_point AS
+SELECT osm_id, building, amenity, st_transform(way,32737)::geometry(point,32737) as geom, osm_user, osm_uid, osm_version, osm_timestamp
+FROM public.planet_osm_point
+WHERE amenity IS NULL
+AND building IS NOT NULL;
+
+ALTER TABLE buildings_point
+ADD COLUMN res real;
+
+UPDATE buildings_point
+SET res = 1
+WHERE building = 'yes' OR building = 'residential';
+
+DELETE FROM buildings_point
+WHERE res IS NULL;
+
+ALTER TABLE buildings_point
+DROP COLUMN amenity;
+
+CREATE TABLE buildings_poly AS
+SELECT osm_id, building, amenity, st_transform(way,32737)::geometry(polygon,32737) as geom, osm_user, osm_uid, osm_version, osm_timestamp
+FROM public.planet_osm_polygon
+WHERE amenity IS NULL
+AND building IS NOT NULL;
+
+ALTER TABLE buildings_poly
+ADD COLUMN res real;
+
+UPDATE buildings_poly
+SET res = 1
+WHERE building = 'yes' OR building = 'residential';
+
+DELETE FROM buildings_poly
+WHERE res IS NULL;
+
 - determine how many residences are contained within each ward
 - pick out greenspaces and buffer them by our 0.25km distance of accessibility
 - determine how many residences in each ward fall within the greenspace buffers.
