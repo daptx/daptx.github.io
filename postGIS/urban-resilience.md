@@ -3,6 +3,7 @@ layout: page
 title: Urban Resilience Analysis: Green Accessibility in Dar es Salaam
 ---
 
+
 ## Guiding Question
 *What percentage of residences in each of Dar es Salam's administrative wards are with 0.25 kilometers (a 3-minute walk) of a public greenspace?*
 
