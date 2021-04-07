@@ -11,7 +11,7 @@ In this analysis, we used SQL queries in PostGIS to answer this simple spatial q
 
 ## Accessing Data
 
-![](assets/ra.png)![](assets/rh.jpeg)
+![](assets/ra.png) ![](assets/rh.jpeg)
 
 The greenspace and residential data used in this analysis were sourced from OpenStreetMap, abbreviated as OSM.
 
