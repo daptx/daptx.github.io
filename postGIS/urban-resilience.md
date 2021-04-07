@@ -21,6 +21,3 @@ The greenspace and residential data used in this analysis were derived from [Ope
 ## Methods
 
 *All sql queries used for this analysis can be found [here](assets/x) for replication*
-
-
-OpenStreetMap is a collaborative project to create a free editable map of the world. The geodata underlying the map is considered the primary output of the project.
