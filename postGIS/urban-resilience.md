@@ -41,7 +41,8 @@ By default, PostGIS 'does not understand' the type of geometry its getting, so w
 it with ::geometry(geometrytype,SRID) with the parameters being the geometry type & SRID */
 
 CREATE TABLE buildings_point AS
-SELECT osm_id, building, amenity, st_transform(way,32737)::geometry(point,32737) as geom, osm_user, osm_uid, osm_version, osm_timestamp
+SELECT osm_id, building, amenity, st_transform(way,32737)::geometry(point,32737) as geom,    
+  osm_user, osm_uid, osm_version, osm_timestamp
 FROM public.planet_osm_point
 WHERE amenity IS NULL
 AND building IS NOT NULL;
@@ -64,7 +65,8 @@ We then repeat this process for the polygon features to ensure our analysis is i
 
 ```sql
 CREATE TABLE buildings_poly AS
-SELECT osm_id, building, amenity, st_transform(way,32737)::geometry(polygon,32737) as geom, osm_user, osm_uid, osm_version, osm_timestamp
+SELECT osm_id, building, amenity, st_transform(way,32737)::geometry(polygon,32737) as geom,
+  osm_user, osm_uid, osm_version, osm_timestamp
 FROM public.planet_osm_polygon
 WHERE amenity IS NULL
 AND building IS NOT NULL;
@@ -78,4 +80,36 @@ WHERE building = 'yes' OR building = 'residential';
 
 DELETE FROM buildings_poly
 WHERE res IS NULL;
+```
+
+When using SQL, keeping geometries smaller whenever possible is better, as it will in query processing for larger data files. Hence, we now want to convert our residential polygons into points via the centroids tool to ease our analysis, then merge these features with the points layer to create a composite point layer for residences.
+
+```sql
+/* Lets convert the polygons to centroids to simplify the geometries. */
+
+CREATE TABLE buildings_centroids AS
+SELECT osm_id, building, osm_user, osm_uid, osm_version, osm_timestamp, st_centroid(geom)::geometry(point,32737) as geom
+FROM buildings_poly;
+
+/* Now, union the points together to create a single point layer/table of residences*/
+
+CREATE TABLE unionres AS
+SELECT osm_id, building, st_transform(geom,32737)::geometry(point,32737) as geom, osm_user, osm_uid, osm_version, osm_timestamp
+FROM buildings_point
+UNION
+SELECT osm_id, building, st_transform(geom,32737)::geometry(point,32737) as geom, osm_user, osm_uid, osm_version, osm_timestamp
+FROM buildings_centroids;
+```
+Our analysis will be visualized using the ward_census layer, so we need to join the information about the wards to the residences point layer. We'll use the spatial relationship between residential points and wards to assign a “ward_name” value to residential points.
+
+```sql
+/* Join the wards data to the unionres table. */
+
+ALTER TABLE unionres
+ADD COLUMN ward_name text;
+
+UPDATE unionres
+SET ward_name = ward_census.ward_name
+FROM ward_census
+WHERE st_intersects(unionres.geom, st_transform(ward_census.utmgeom,32737));
 ```
