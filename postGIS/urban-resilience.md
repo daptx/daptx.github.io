@@ -91,7 +91,7 @@ CREATE TABLE buildings_centroids AS
 SELECT osm_id, building, osm_user, osm_uid, osm_version, osm_timestamp, st_centroid(geom)::geometry(point,32737) as geom
 FROM buildings_poly;
 
-/* Now, union the points together to create a single point layer/table of residences*/
+/* Now, union the points together to create a single point layer/table of residences */
 
 CREATE TABLE unionres AS
 SELECT osm_id, building, st_transform(geom,32737)::geometry(point,32737) as geom, osm_user, osm_uid, osm_version, osm_timestamp
@@ -113,3 +113,112 @@ SET ward_name = ward_census.ward_name
 FROM ward_census
 WHERE st_intersects(unionres.geom, st_transform(ward_census.utmgeom,32737));
 ```
+
+Now, lets count the number the number of residences per ward, as we will use this value in our final percentage calculation of residences with access to green space within each ward.
+
+```sql
+/* Count the number of residences per ward */
+
+ALTER TABLE ward_census
+ADD COLUMN res_count int;
+
+/* Alter table "ward census" by adding counts of the residences contained within each ward:*/
+
+UPDATE ward_census
+SET res_count = (SELECT count(*) FROM unionres WHERE unionres.ward_name = ward_census.ward_name);
+```
+
+Shifting from the wards, we will now define and select our green spaces, filtering by public accessibility and by what we define as a green space, using the key="value" format.
+
+```sql
+/* Filter by public accessibility */
+
+CREATE TABLE greenspace AS
+SELECT osm_id, access, leisure, landuse, "natural", st_transform(way,32737)::geometry(polygon,32737) as geom, osm_user, osm_uid, osm_version, osm_timestamp
+FROM public.planet_osm_polygon
+WHERE access = 'yes' OR access = 'permissive' OR access IS NULL;
+
+/* Filter by type of green space, based on OSM key values */
+
+ALTER TABLE greenspace
+ADD COLUMN green real;
+
+UPDATE greenspace
+SET green = 1 WHERE leisure = 'common' OR leisure = 'dog_park'
+OR leisure = 'garden' OR landuse = 'greenfield' OR landuse = 'grass'
+OR leisure = 'nature_reserve' OR 	leisure = 'park' OR leisure = 'pitch'
+OR landuse = 'recreation_ground' OR landuse = 'village_green' OR landuse = 'forest'
+OR "natural" = 'wood' OR "natural" = 'grassland' OR "natural" = 'shrub' OR landuse = 'allotments';
+
+DELETE FROM greenspace
+WHERE green IS NULL;
+```
+
+Now that we have our defined green spaces, lets create our buffers and pick out the residential points that fall within them.
+
+```sql
+/* Buffer the green spaces by an accessible distance (in our case, 0.25 km) */
+
+CREATE TABLE greenbuffer AS
+SELECT osm_id, st_buffer(geom, 250)::geometry(polygon,32737) as geom from greenspace;
+
+/* Intersect the points with the green space buffer to differentiate points that are
+within a buffer from those that are not */
+
+ALTER TABLE unionres
+ADD COLUMN green int;
+
+UPDATE unionres
+SET green = 1
+FROM greenbuffer
+WHERE st_intersects(unionres.geom, st_transform(greenbuffer.geom,32737));
+```
+
+We then repeat the process of counting points within polygons that we used above to determine the number of points in each buffer.
+
+```sql
+/* Count the number of residences with green space accessibility per ward */
+
+ALTER TABLE ward_census
+ADD COLUMN green_count int;
+
+/* Alter table "ward census" by adding counts of the residences contained within each ward */
+
+UPDATE ward_census
+SET green_count = (SELECT count(*) FROM unionres WHERE unionres.ward_name = ward_census.ward_name AND unionres.green = 1);
+```
+
+We've now accomplished all of our objectives! Finally, we can calculate the percent of residences within 0.25 km of green spaces per ward.
+
+```sql
+/* Calculate the percentage of the residences in each ward that are within 0.25 km
+of a publicly accessible green space */
+
+ALTER TABLE ward_census
+ADD COLUMN greenpct real;
+
+UPDATE ward_census
+SET greenpct = CAST(@green_count AS FLOAT) / CAST(@res_count AS FLOAT) * 100;
+```
+
+## Results
+
+A published Leaflet web map of our results can be found [here](https://emmaclinton.github.io/DSM_sql/assets/index.html#10/-6.8739/39.2547).
+
+
+
+**DATA SOURCES:**
+
+Greenspaces and residences: OpenStreetMap contributors (2021). Retrieved from https://planet.openstreetmap.org.
+
+Wards: RamaniHuria.
+
+**REFERENCES:**
+
+Bhanjee, S. and Zhang, C. (2018). Mapping latest patterns of urban sprawl in Dar es Salaam, Tanzania. Papers in Applied Geography, 4(2):1-13. http://dx.doi.org/10.1080/23754931.2018.1471413.
+
+Karutz R., Berghöfer A., Moore L.R., and van Wyk, E. (2019). A Thematic Atlas of Nature’s Benefits to Dar es Salaam. Leipzig and Cape Town: Helmholtz Centre for Environmental Research and ICLEI Africa Secretariat. 78 pages. http://dcc.go.tz/storage/app/uploads/public/5db/aef/cf8/5dbaefcf875ec366483118.pdf.
+
+Kombe, J.W.M. (1994). The demise of public urban land management and the emergence of informal land markets in Tanzania: A case of Dar-es-Salaam city. Habitat International, 18(1):23-43. https://www.sciencedirect.com/science/article/pii/019739759490037X?via%3Dihub.
+
+Msuya, I., Moshi, I., and Levira, F. (2020). Dar es Salaam: the unplanned urban sprawl threatening neighborhood sustainability. Centre for Sustainable, Healthy and Learning Cities and Neighborhoods. http://www.centreforsustainablecities.ac.uk/research/dar-es-salaam-the-unplanned-urban-sprawl-threatening-neighbourhood-sustainability/.
