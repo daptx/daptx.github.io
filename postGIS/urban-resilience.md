@@ -83,7 +83,7 @@ DELETE FROM buildings_poly
 WHERE res IS NULL;
 ```
 
-When using SQL, keeping geometries smaller whenever possible is better, as it will aid in query processing for larger data files. Hence, we now want to convert our residential polygons into points via the centroids tool to ease our analysis, then merge these features with the points layer to create a composite point layer for residences.
+When using SQL, keeping geometries smaller whenever possible is better, as it will aid in query processing for larger data files. Hence, we now want to convert our residential polygons into points via the centroids tool, then merge these features with the points layer to create a composite point layer for residences.
 
 ```sql
 /* Lets convert the polygons to centroids to simplify the geometries. */
