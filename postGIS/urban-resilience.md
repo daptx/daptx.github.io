@@ -205,6 +205,9 @@ SET greenpct = CAST(@green_count AS FLOAT) / CAST(@res_count AS FLOAT) * 100;
 
 A published Leaflet web map of our results can be found [here](https://emmaclinton.github.io/DSM_sql/assets/index.html#10/-6.8739/39.2547).
 
+![](assets/greenspace.png)
+**figure a.** A static map of percent of residences by ward within a 0.25km of green space in Dar es Salaam.
+
 
 
 **DATA SOURCES:**
