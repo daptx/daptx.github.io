@@ -27,6 +27,7 @@ Our objectives for this analysis are as follows:
 - b. to determine how many residences are contained within each ward
 - c. to filter and pick out green spaces & apply a 0.25 km buffer for accessibility
 - d. to calculate how many residences in each ward fall within the green space buffers
+
 In junction, these steps will enable us to run our final calculation, looking at the percentage of residences within an accessible distance of a green space per ward. We acknowledge a network analysis would increase the accuracy of our findings, however, given the learning curve of SQL, we decided to use a buffer for simplicity's sake.
 
 For this analysis, we used the Database Manager within QGIS to access data from Dar es Salaam via the PostGIS database.
@@ -82,7 +83,7 @@ DELETE FROM buildings_poly
 WHERE res IS NULL;
 ```
 
-When using SQL, keeping geometries smaller whenever possible is better, as it will in query processing for larger data files. Hence, we now want to convert our residential polygons into points via the centroids tool to ease our analysis, then merge these features with the points layer to create a composite point layer for residences.
+When using SQL, keeping geometries smaller whenever possible is better, as it will aid in query processing for larger data files. Hence, we now want to convert our residential polygons into points via the centroids tool to ease our analysis, then merge these features with the points layer to create a composite point layer for residences.
 
 ```sql
 /* Lets convert the polygons to centroids to simplify the geometries. */
@@ -212,7 +213,7 @@ Contextualizing the urban sprawl and development patterns in Dar es Salaam, the 
 ![](assets/development.png)
 *figure a.* A map of planned/unplanned development in Dar es Salaam (sourced from [Bhanjee & Zhang (2018)](https://www.researchgate.net/publication/325445730_Mapping_Latest_Patterns_of_Urban_Sprawl_in_Dar_es_Salaam_Tanzania))
 
-Thus, from a planning perspective, it is unlikely that public green space access was factored in to these peripheral developments, explaining the decrease in percentage of green space access as distance from the city center increases. Given the government is allocated more resources and time to engage in and communicate with the residents of these peripheral wards, there could be strong potential for restructuring/rectifying the lack of green space access in wards further from the coast and urban center. From the perspectives of the Helmotz Centre for Environmental Research & the ICLEII Local Governments of Sustainability, a key policy recommendation to help address problems related to DSM's growth would be to ***"[protect] and [enhance] urban green spaces,
+Thus, from a planning perspective, it is unlikely that public green space access was factored in to these peripheral developments, explaining the decrease in percentage of green space access as distance from the city center increases. Given the government allocated more resources and time to engage in and communicate with the residents of these peripheral wards, there could be strong potential for restructuring/rectifying the lack of green space access in wards further from the coast and urban center. From the perspectives of the Helmotz Centre for Environmental Research & the ICLEII Local Governments of Sustainability, a key policy recommendation to help address problems related to DSM's growth would be to ***"[protect] and [enhance] urban green spaces,
 provid[ing] huge benefits... [such as] improv[ing]
 community health, reduc[ing] the city’s vulnerability
 to climate change, and likely sav[ing] future costs
