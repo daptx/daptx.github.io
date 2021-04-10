@@ -205,25 +205,35 @@ SET greenpct = CAST(@green_count AS FLOAT) / CAST(@res_count AS FLOAT) * 100;
 
 A published Leaflet web map of our results can be found [here](https://emmaclinton.github.io/DSM_sql/assets/index.html#10/-6.8739/39.2547).
 
-Our analysis and final cartographic layouts (both web and static) reveal the majority of wards with high access to green space were well-developed and organized areas of the Dar es Salaam near the coast (*fig. a*).
+Our analysis and final cartographic layouts (both web and static) reveal the majority of wards with high access to green space in Dar es Salaam are near the coast in well-developed, organized urban centers of the city (*fig. b*). Comparing our findings to the current literature, a [2020 SLHC study](http://www.centreforsustainablecities.ac.uk/research/dar-es-salaam-the-unplanned-urban-sprawl-threatening-neighbourhood-sustainability/) (Centre for Sustainable, Healthy and Learning Cities and Neighborhoods) cited that due to increasing population density, the government's investments have not been able to keep up with the ongoing urban expansion and development in Dar es Salaam. Hence, from the perspective of Dar es Salaam's residents, this outpacing represents a lack of ability from the government to promote neighborhood sustainability (Msuya et al., 2020).
+
+Contextualizing the urban sprawl and development patterns in Dar es Salaam, the rise of the informal settlements across the city highlights the de-concentration from the commercial business district (CBD) and depicts the outward growth via migration and populations shifts towards Dar es Salaam's peripheral wards, revealing these informal land patterns as a source of fast, unplanned development [(Bhanjee and Zhang, 2018)](https://www.researchgate.net/publication/325445730_Mapping_Latest_Patterns_of_Urban_Sprawl_in_Dar_es_Salaam_Tanzania).
+
+![](assets/development)
+*figure a.* A map of planned/unplanned development in Dar es Salaam (sourced from [Bhanjee & Zhang (2018)](https://www.researchgate.net/publication/325445730_Mapping_Latest_Patterns_of_Urban_Sprawl_in_Dar_es_Salaam_Tanzania))
+
+Thus, from a planning perspective, it is unlikely that public green space access was factored in to these peripheral developments, explaining the decrease in percentage of green space access as distance from the city center increases. Given the government is allocated more resources and time to engage in and communicate with the residents of these peripheral wards, there could be the potential to restructure/rectify the lack of green space access in the ares more distant from the coast and urban center. From the perspectives of the Helmotz Centre for Environmental Research & the ICLEII Local Governments of Sustainability, a key policy recommendation to help address problems related to DSM's growth would be to ***"[protect] and [enhance] urban green spaces,
+provid[ing] huge benefits... [such as] improv[ing]
+community health, reduc[ing] the city’s vulnerability
+to climate change, and likely sav[ing] future costs
+for water supply, for sustainable livelihoods,
+and for a truly enjoyable city."*** [(Karutz et al., 2019)](http://dcc.go.tz/storage/app/uploads/public/5db/aef/cf8/5dbaefcf875ec366483118.pdf).
+
+All in all, in order to improve urban resilience and environmental justice in Dar es Salaam, there should be a greater emphasis on green space development in neighborhood/wards currently lacking such infrastructure. We strongly believe access green space serves as a metric/indicator of both human and environmental well-being in the built environment, so government initiatives to implement more accessible green spaces, in the long term, would serve to benefit Dar es Salaam's residential communities and overall quality of life.
 
 ![](assets/greenspace.png)
-*figure a.* A static map of percent of residences by ward within 0.25km of green space in Dar es Salaam.
-
-
+*figure b.* A static map of percent of residences by ward within 0.25km of green space in Dar es Salaam.
 
 **DATA SOURCES:**
 
 Greenspaces and residences: OpenStreetMap contributors (2021). Retrieved from https://planet.openstreetmap.org.
 
-Wards: RamaniHuria.
+Wards: [Resilience Academy](https://geonode.resilienceacademy.ac.tz/) (a [Ramani Huria](https://ramanihuria.org/en/) project).
 
 **REFERENCES:**
 
 Bhanjee, S. and Zhang, C. (2018). Mapping latest patterns of urban sprawl in Dar es Salaam, Tanzania. Papers in Applied Geography, 4(2):1-13. http://dx.doi.org/10.1080/23754931.2018.1471413.
 
 Karutz R., Berghöfer A., Moore L.R., and van Wyk, E. (2019). A Thematic Atlas of Nature’s Benefits to Dar es Salaam. Leipzig and Cape Town: Helmholtz Centre for Environmental Research and ICLEI Africa Secretariat. 78 pages. http://dcc.go.tz/storage/app/uploads/public/5db/aef/cf8/5dbaefcf875ec366483118.pdf.
-
-Kombe, J.W.M. (1994). The demise of public urban land management and the emergence of informal land markets in Tanzania: A case of Dar-es-Salaam city. Habitat International, 18(1):23-43. https://www.sciencedirect.com/science/article/pii/019739759490037X?via%3Dihub.
 
 Msuya, I., Moshi, I., and Levira, F. (2020). Dar es Salaam: the unplanned urban sprawl threatening neighborhood sustainability. Centre for Sustainable, Healthy and Learning Cities and Neighborhoods. http://www.centreforsustainablecities.ac.uk/research/dar-es-salaam-the-unplanned-urban-sprawl-threatening-neighbourhood-sustainability/.
