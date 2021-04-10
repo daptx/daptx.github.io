@@ -205,8 +205,10 @@ SET greenpct = CAST(@green_count AS FLOAT) / CAST(@res_count AS FLOAT) * 100;
 
 A published Leaflet web map of our results can be found [here](https://emmaclinton.github.io/DSM_sql/assets/index.html#10/-6.8739/39.2547).
 
+Our analysis and final cartographic layouts (both web and static) reveal the majority of wards with high access to green space were well-developed and organized areas of the Dar es Salaam near the coast (*fig. a*).
+
 ![](assets/greenspace.png)
-**figure a.** A static map of percent of residences by ward within a 0.25km of green space in Dar es Salaam.
+*figure a.* A static map of percent of residences by ward within 0.25km of green space in Dar es Salaam.
 
 
 
