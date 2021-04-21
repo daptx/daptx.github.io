@@ -19,7 +19,7 @@ The Gravity Model of Spatial Interaction created this week takes a set of input 
 ![gravitymodel workflow](assets/gravitymodel.png)
 *right click: open image in new tab for a clearer graphic*
 
-While the [tutorial videos](https://midd.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22324cb720-6901-48e2-b57a-acdf014ab826%22) for the week provided a good base for setting up the model, it's worth verbalizing how we integrated this workflow (see below) from GEOG 0120 into our final product. ![](/assets/120workflow.png)
+While the [tutorial videos](https://midd.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22324cb720-6901-48e2-b57a-acdf014ab826%22) for the week provided a good base for setting up the model, it's worth verbalizing how we integrated this GEOG 0120-type workflow into our final product.
 
 The gravity model was broken down into 3 main parts:
 * Executing a Distance Matrix - This required an input and target feature (both with IDs and weights) and k (the # of nearest features each input was compared to, with a default value of 20). An additional step taken to remove error was converting both input and target features into centroids, as the distance matrix can only utilize points.
