@@ -150,10 +150,10 @@ We then georeferenced maps from the original study using QGIS in order to compar
 
 ## Replication Results
 
-![](assets/fig4rep)
-![](assets/fig4comp)
-![](assets/fig5rep)
-![](assets/fig5comp)
+![](assets/fig4rep.png)
+![](assets/fig4comp.png)
+![](assets/fig5rep.png)
+![](assets/fig5comp.png)
 
 For each output from the original study (mainly figure 4 and figure 5), present separately the results of the replication attempt.
 
