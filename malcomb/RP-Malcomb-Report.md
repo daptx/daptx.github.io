@@ -104,6 +104,7 @@ The LHZ data variables are outlined in **Table 2**. The four categories used to 
 ### *Physical Exposure: Floods + Droughts*
 
 **Floods:** This dataset stems from work collected by multiple agencies and funneled into the PREVIEW Global Risk Data Platform, “an effort to share spatial information on global risk from natural hazards.” The dataset was designed by UNEP/GRID-Europe for the Global Assessment Report on Risk Reduction (GAR), using global data. A flood estimation value is assigned via an index of 1 (low) to 5 (extreme).
+
 **Drought:** This dataset uses the Standardized Precipitation Index to measure annual drought exposure across the globe. The Standardized Precipitation Index draws on data from a “global monthly gridded precipitation dataset” from the University of East Anglia’s Climatic Research Unit, and was modeled in GIS using methodology from Brad Lyon at Columbia University. The dataset draws on 2010 population information from the LandScanTM Global Population Database at the Oak Ridge National Laboratory.  Drought exposure is reported as the expected average annual (2010) population exposed. The data were compiled by UNEP/GRID-Europe for the Global Assessment Report on Risk Reduction (GAR). The data use the WGS 1984 datum, span the years 1980-2001, and are reported in raster format with spatial resolution 1/24 degree x 1/24 degree.
 
 **Variable Transformations**
@@ -119,7 +120,6 @@ The LHZ data variables are outlined in **Table 2**. The four categories used to 
 The original study was conducted using ArcGIS and STATA, but does not state which versions of these software were used.
 The replication study will use R.
 
-
 ## Materials and Procedure
 
 *Process Adaptive Capacity*
@@ -128,52 +128,50 @@ The replication study will use R.
 2. Bring in TA (Traditional Authority boundaries) and LHZ (livelihood zones) data
 3. Get rid of unsuitable households (eliminate NULL and/or missing values)
 4. Join TA and LHZ ID data to the DHS clusters
-5. Pre-process the livestock data Filter for NA livestock data Update livestock data (summing different kinds)
+5. Pre-process the livestock data, Filter for NA livestock data, Update livestock data (summing different kinds)
 6. FIELD CALCULATOR: Normalize each indicator variable and rescale from 1-5 (real numbers) based on percent rank
 7. FIELD CALCULATOR / ADD FIELD: Apply weights to normalized indicator variables to get scores for each category (assets, access)
 8. SUMMARIZE/AGGREGATE: find the stats of the capacity of each TA (min, max, mean, sd)
-9. Join ta_capacity to TA based on ta_id (Multiply by 20--meaningless??) I have a question about this (so do I) ln.216
-10. Prepare breaks for mapping Class intervals based on capacity_2010 field Take the values and round them to 2 decimal places Put data in 4 classes based on break values
+9. Join ta_capacity to TA based on ta_id
+10. Prepare breaks for mapping, class intervals based on capacity_2010 field, take the values and round them to 2 decimal places, and put data in 4 classes based on break values
 11. Save the adaptive capacity scores
 
 *Process Livelihood Sensitivity*
 
-1. Load in LHZ geometries into R
+1. Load in LHZ csv into R
 2. Join LHZ sensitivity data into R code
-3. Read in processed LHZ dataset
-4. Join the data to the LHZ geometries
-5. Put LHZ data into quintiles
-6. Calculate capacity score based on values in Malcomb et al. (2014)
+3. Create livelihood sensitivity score data based on breakdown provided in report (Table 2)
 
 *Process Physical Exposure*
 
 1. Load in UNEP rasterSet CRS for drought
 2. Set CRS for flood
 3. Clean and reproject rasters
-4. Create a bounding box at extent of Malawi Where does this info come from
-5. For Drought: use bilinear to avg continuous population exposure values
-6. For Flood: use nearest neighbor to preserve integer values
-7. CLIP the traditional authorities with the LHZs to cut out the lake
-8. RASTERIZE the ta_capacity data with pixel data corresponding to capacity_2010 field
-9. RASTERIZE the livelihood sensitivity score with pixel data corresponding to capacity_2010 field
+4. Create a bounding box at extent of Malawi, Add geometry info and precision (st_as_sfc)
+5. RASTERIZE the adaptive capacity data with pixel data corresponding to capacity_2010 field
+6. RASTERIZE the livelihood sensitivity score with pixel data corresponding to capacity_2010 field
+7. SUM RASTERS: Combine adaptive capacity and livelihood sensitivity rasters
+8. For Drought: use bilinear to average continuous population exposure values
+9. For Flood: use nearest neighbor to preserve integer values
+10. RASTER CALCULATOR: a) Create a mask; b) Reclassify the flood layer (quintiles, currently binary); c) Reclassify the drought values (quantile [from 0 - 1 in intervals of 0.2 =5]); d) Add component rasters for final weighted score of drought + flood; e) Combine with adaptive capacity and livelihood zone data
+11. CLIP the traditional authorities with the LHZs to cut out the lake
+12. AGGREGATE: Create final vulnerability layer using environmental vulnerability score and ta_capacity
 
-*Raster Calculations*
+We then georeferenced maps from the original study using QGIS in order to compare the results generated by our R script to those found in Malcomb et al. (2014). We ran a Spearman's Rho correlation test between the two maps of Figures 4 & 5 from the original study to determine the differences in results.
 
-1. Create a mask
-2. Reclassify the flood layer (quintiles, currently binary)
-3. Reclassify the drought values (quantile [from 0 - 1 in intervals of 0.2 =5])
-4. AGGREGATE: Create final vulnerability layer using environmental vulnerability score and ta_capacity.
+## Reproduction Results
 
-We then georeferenced maps from the original study using QGIS in order to compare the results generated by our R script to those found in Malcomb et al. (2014). We ran a Spearman's Rho correlation test between the two maps of Figs. 4 and 5 to determine the differences in results.
+Our reproduction appears to support Malcomb et al's (2014) findings for adaptive capacity at the Traditional Authorities level (Figure 4 in the original study). A difference maps (fig. 2) highlights the general agreement between our adaptive capacity map (fig. 1) and the georeferenced/digitized map of adaptive capacity in 2010 from Malcomb et al. (2014), where most traditional authorities matched with or were within one class break of the original value. A confusion matrix comparing the two maps (table 3) yielded a Spearman’s rho value of 0.786, indicating a relatively strong correlation between the original study and our reproduction.
 
-## Replication Results
+Inversely, our results failed to effectively reproduce Malcomb et al's (2014) assessment of climate vulnerability in Malawi. Our reproduction (fig 3.) appears to have yielded general disagreement with georeferenced/digitized map of climate vulnerability from Malcomb et al. (2014), as seen in the produced difference map (fig. 4). A confusion matrix comparing the two maps yielded a Spearman’s rho value of 0.202, indicating a low degree of correlation between the original study and our reproduction. This disagreement is further visualized in the scatterplot of vulnerability scores from our reproduction vs the original study (fig 5.), where a linear arrangement of the points would indicate a strong correlation. However, in this case, our reproduction appears to have consistently yielded lower vulnerability scores, causing a skew in the distribution of points.
 
 ![](assets/fig4rep.png)
-*(Fig. 1) Access and assets (adaptive capacity) scores from our results.*
-![](assets/fig4comp.png)
-*(Fig. 2) Difference in access and assets (adaptive capacity) scores (difference = reproduction score - original study score).*
+*figure 1. Reproduction results of adaptive capacity (access + assets) scores by traditional authority (TA).*
 
-**Table 3:** Spearman’s rho correlation test results. (rho = 0.7860921). The results of the original study are shown on the x axis (columns), while the results of the reproduction are shown on the y axis (rows).
+![](assets/fig4comp.png)
+*figure 2. Map of the difference between the adaptive capacity (access + assets) scores of our reproduction vs. the original study (difference = reproduction score - original score).*
+
+**Table 3:** Matrix comparing Malcomb et al.'s (2014) results to the reproduction via a pearman’s rho correlation test (rho = 0.7860921). The results of the original study are shown on the x axis (columns), while the results of the reproduction are shown on the y axis (rows).
 
 |   | 1  | 2  | 3  | 4 |
 | 1 | 35 | 5  | 0  | 0 |
@@ -182,19 +180,17 @@ We then georeferenced maps from the original study using QGIS in order to compar
 | 4 | 0  | 7  | 28 | 4 |
 
 ![](assets/fig5rep.png)
-*(Fig. 3) Final vulnerability score from our results.*
+*figure 3. Reproduction results for vulnerability score in Malawi*
+
 ![](assets/fig5comp.png)
-*(Fig. 4) Final vulnerability score comparison between our results and those of the original study (difference = reproduction score - original score).*
+*figure 4. Map of the difference between the final vulnerability scores of our reproduction vs the original study c.*
 
 ![](assets/scatterplot.png)
-*(Fig. 3) Final vulnerability score comparison between our results and those of the original study (difference = reproduction score - original score) in the form of a scatterplot (rho = 0.2018834).*
-
-For each output from the original study (mainly figure 4 and figure 5), present separately the results of the replication attempt.
-
-2.	State whether the original study was or was not supported by the replication
-3.	State whether any hypothesis linked to a planned deviation from the original study was supported. Provide key statistics and related reasoning.
+*figure 5. Scatterplot comparing final vulnerability scores from the results of our replication to those of the original study, where difference = reproduction score - original score (rho = 0.2018834).*
 
 ## Unplanned Deviations from the Protocol
+
+Prior to investigating the data, our initial interpretation and recreation the original study's workflow outlined various areas of uncertainty. 
 
 Summarize changes and uncertainties between
 - your interpretation and plan for the workflow based on reading the paper
@@ -215,7 +211,7 @@ Do the research findings suggest a need for any future research?
 
 ## Acknowledgements
 
-To my co-collaborators, thank y'all for being such a supportive and motivating group through each stage of this reproduction, from our initial pre-analysis of Malcomb et al.'s paper to bringing together our R code in the final hours. In particular, special thanks to Jacob Freedman for his R-coding expertise when it came to processing/calculating the livelihood sensitivity scores. As well, shout out to Emma Clinton for helping me troubleshoot the R-code for the comparison figures (*figures 2 & 4*) and to Vincent Falardeau for supplementing the R-code that produced *figure 2*.
+To my co-collaborators, thank y'all for being such a supportive and motivating group through each stage of this reproduction, from our initial pre-analysis of Malcomb et al.'s (2014) paper to bringing together our R code in the final hours. In particular, special thanks to Jacob Freedman for his R-coding expertise when it came to processing/calculating the livelihood sensitivity scores. As well, shout out to Emma Clinton for helping me troubleshoot the R-code for the comparison figures (*figures 2 & 4*) and to Vincent Falardeau for supplementing the R-code that produced *figure 2*.
 
 ## References
 
