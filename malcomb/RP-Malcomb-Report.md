@@ -170,7 +170,9 @@ We then georeferenced maps from the original study using QGIS in order to compar
 ## Replication Results
 
 ![](assets/fig4rep.png)
+*(Fig. 1) Access and assets (adaptive capacity) scores from our results.*
 ![](assets/fig4comp.png)
+*(Fig. 2) Difference in access and assets (adaptive capacity) scores (difference = reproduction score - original study score).*
 
 **Table 3:** Spearman’s rho correlation test results. (rho = 0.7860921). The results of the original study are shown on the x axis (columns), while the results of the reproduction are shown on the y axis (rows).
 
@@ -183,9 +185,12 @@ We then georeferenced maps from the original study using QGIS in order to compar
 | 4 | 0  | 7  | 28 | 4 |
 
 ![](assets/fig5rep.png)
+*(Fig. 3) Final vulnerability score from our results.*
 ![](assets/fig5comp.png)
+*(Fig. 4) Final vulnerability score comparison between our results and those of the original study (difference = reproduction score - original score).*
 
 ![](assets/scatterplot.png)
+*(Fig. 3) Final vulnerability score comparison between our results and those of the original study (difference = reproduction score - original score) in the form of a scatterplot (rho = 0.2018834).*
 
 For each output from the original study (mainly figure 4 and figure 5), present separately the results of the replication attempt.
 
