@@ -202,10 +202,8 @@ As well, Malcomb et al's (2014) methodology states to have normalized indicators
 
 With the livelihood sensitivity scores, another main source of uncertainty came about when figuring out how to quantify the 4 indicators of livelihood sensitivity, especially "disaster coping strategy. The original report was unclear in which variables were used to calculate the livelihood zone scores, along with if these data were from only the “poor” category or also included those in the “middle-class” and “rich” calculations of livelihood sensitivity. **Table 2** in the **Data Description and Variables** section spotlights how our group approached these sources of uncertainty.
 
-Lastly, within the R-code
-
 *figure 6.* Table 2 from Malcomb et al.(2014) – Calculating Household Resilience Score
-![](assets/weightsOS)
+![](assets/weightsOS.png)
 
 
 ## Discussion
