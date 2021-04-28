@@ -10,9 +10,9 @@ title: RP- Vulnerability modeling for sub-Saharan Africa
 Original study *by* Malcomb, D. W., E. A. Weaver, and A. R. Krakowka. 2014. Vulnerability modeling for sub-Saharan Africa: An operationalized approach in Malawi. *Applied Geography* 48:17–30. DOI:[10.1016/j.apgeog.2014.01.004](https://doi.org/10.1016/j.apgeog.2014.01.004)
 
 Replication Authors:
-Your Name, Joseph Holler, Kufre Udoh, Open Source GIScience students of fall 2019 and Spring 2021
+Drew An-Pham, Joseph Holler, Kufre Udoh (Open Source GIScience students of Fall 2019), and fellow Open Source GIScience peers/co-collaborators of Spring 2021: Maja Cannavo, Emma Clinton, Jacob Freedman, Nick Nonnenmacher, and Alitzel Villanueva.
 
-Replication Materials Available at: [Forked RP-Malcomb Repository](https://github.com/daptx/RP-Malcomb)
+Replication Materials Available at: [RP-Malcomb Repository](https://github.com/daptx/RP-Malcomb)
 
 Created: `14 April 2021`
 Revised: `27 April 2021`
@@ -213,6 +213,10 @@ Provide a summary and interpretation of the key findings of the replication *vis
 
 Restate the key findings and discuss their broader societal implications or contributions to theory.
 Do the research findings suggest a need for any future research?
+
+##Acknowledgements
+
+To my co-collaborators, thank y'all for being such a supportive and motivating group through each stage of this reproduction, from our initial pre-analysis of Malcomb et al.'s paper to bringing together our R code in the final hours. In particular, special thanks to Jacob Freedman for his R-coding expertise when it came to processing/calculating the livelihood sensitivity scores. As well, shout out to Emma Clinton for helping me troubleshoot the R-code for the comparison figures (*figures 2 & 4*) and to Vincent Falardeau for supplementing the R-code that produced *figure 2*. 
 
 ## References
 
