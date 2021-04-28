@@ -205,8 +205,9 @@ With the livelihood sensitivity scores, another main source of uncertainty came 
 *figure 6.* Table 2 from Malcomb et al.(2014) – Calculating Household Resilience Score
 ![](assets/weightsOS.png)
 
-
 ## Discussion
+
+
 
 Provide a summary and interpretation of the key findings of the replication *vis-a-vis* the original study results. If the attempt was a failure, discuss possible causes of the failure. In this replication, any failure is probably due to practical causes, which may include:
 - lack of data
