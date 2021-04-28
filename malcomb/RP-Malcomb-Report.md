@@ -213,7 +213,7 @@ Provide a summary and interpretation of the key findings of the replication *vis
 Restate the key findings and discuss their broader societal implications or contributions to theory.
 Do the research findings suggest a need for any future research?
 
-##Acknowledgements
+## Acknowledgements
 
 To my co-collaborators, thank y'all for being such a supportive and motivating group through each stage of this reproduction, from our initial pre-analysis of Malcomb et al.'s paper to bringing together our R code in the final hours. In particular, special thanks to Jacob Freedman for his R-coding expertise when it came to processing/calculating the livelihood sensitivity scores. As well, shout out to Emma Clinton for helping me troubleshoot the R-code for the comparison figures (*figures 2 & 4*) and to Vincent Falardeau for supplementing the R-code that produced *figure 2*.
 
