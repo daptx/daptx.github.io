@@ -27,17 +27,22 @@ The study region is the country of Malawi. The spatial support of input data inc
 
 The original study was published without data or code, but has detailed narrative description of the methodology. The methods used are feasible for undergraduate students to implement following completion of one introductory GIS course. The study states that its data is available for replication in 23 African countries.
 
+## Data Description and Variables
 
-### Data Description and Variables
+This section was written collaboratively with fellow peers in GEOG 0323: Maja Cannavo, Emma Clinton, Jacob Freedman, Nick Nonnenmacher, and Alitzel Villanueva.
 
-###*Access & Assets Data*
+###Access & Assets Data
 
 Demographic and Health Survey data are a product of the United States Agency for International Development (USAID). Variables contained in this dataset are used to represent adaptive capacity (access + assets) in the Malcomb et al.’s (2014) study. These data come from survey questionnaires with large sample sizes.
-The DHS data used in our study were collected in 2010. In Malawi, the provenance of the DHA data dates back as far as 1992, but has not been collected consistently every year. Each point in the household dataset represents a cluster of households with each cluster corresponding to some form of census enumeration units, such as villages in rural areas or city blocks in urban areas [DHS GPS Manual](/data/metadata/DHS_GPS_Manual_English_A4_24May2013_DHSM9.pdf). This means that each household in each cluster has the same GPS data. This data is collected by trained [USAID](https://www.usaid.gov/) staff using GPS receivers.
-Missing data is a common occurrence in this dataset as a result of negligence or incorrect naming. However, according to the [DHS GPS Manual](/data/metadata/DHS_GPS_Manual_English_A4_24May2013_DHSM9.pdf), these issues are easily rectified and typically sites for which data does not exist are recollected. Sometimes, however, missing information is coded in as such or assigned a proxy location.
+The DHS data used in our study were collected in 2010. In Malawi, the provenance of the DHA data dates back as far as 1992, but has not been collected consistently every year.
+
+Each point in the household dataset represents a cluster of households with each cluster corresponding to some form of census enumeration units, such as villages in rural areas or city blocks in urban areas [DHS GPS Manual](assets/DHSmanual.pdf). This means that each household in each cluster has the same GPS data. This data is collected by trained [USAID](https://www.usaid.gov/) staff using GPS receivers.
+
+Missing data is a common occurrence in this dataset as a result of negligence or incorrect naming. However, according to the [DHS GPS Manual](assets/DHSmanual.pdf), these issues are easily rectified and typically sites for which data does not exist are recollected. Sometimes, however, missing information is coded in as such or assigned a proxy location.
+
 The DHS website acknowledges the high potential for inconsistent or incomplete data in such broad and expansive survey sets. Missing survey data (responses) are never estimated or made up; they are instead coded as a special response indicating the absence of data. As well, there are clear policies in place to ensure the data’s accuracy. More information about data validity can be found on the [DHS’s Data Quality and Use site](https://www.dhsprogram.com/data/Data-Quality-and-Use.cfm). In this analysis, we use the variables listed in **Table 1** to determine the average adaptive capacity of each TA area. Data transformations are outlined below.
 
-**Table 1:** DHS Variables used in Analysis
+**Table 1:** Variables from DHS Data
 
 | Variable Code | Definition |
 | ------------- | ------------- |
@@ -73,9 +78,14 @@ The DHS website acknowledges the high potential for inconsistent or incomplete d
 10. Take the values and round them to 2 decimal places
 11. Put data in 4 classes based on break values
 
-###*Livelihood Zones Data*
+###Livelihood Zones Data
 
-The Livelihood zone data is created by aggregating general regions where similar crops are grown and similar ecological patterns exist. This data exists originally at the household level and was aggregated into Livelihood Zones. To construct the aggregation used for “Livelihood Sensitivity” in this analysis, we use these household points from the FEWSnet data that had previously been aggregated into livelihood zones. The four Livelihood Sensitivity categories are 1) Percent of food from own farm (6%); 2) Percent of income from wage labor (6%); 3) Percent of income from cash crops (4%); and 4) Disaster coping strategy (4%). In the original R script, household data from the DHS survey was used as a proxy for the specific data points in the livelihood sensitivity analysis (transformation: Join with DHS clusters to apply LHZ FNID variables). With this additional FEWSnet data at the household level, we can construct these four livelihood sensitivity categories using existing variables (Table 1).
+The Livelihood zone data is created by aggregating general regions where similar crops are grown and similar ecological patterns exist. This data exists originally at the household level and was aggregated into Livelihood Zones. To construct the aggregation used for “Livelihood Sensitivity” in this analysis, we use these household points from the FEWSnet data that had previously been aggregated into livelihood zones.
+
+The four Livelihood Sensitivity categories are 1) Percent of food from own farm (6%); 2) Percent of income from wage labor (6%); 3) Percent of income from cash crops (4%); and 4) Disaster coping strategy (4%). In the original R script, household data from the DHS survey was used as a proxy for the specific data points in the livelihood sensitivity analysis (transformation: Join with DHS clusters to apply LHZ FNID variables). With this additional FEWSnet data at the household level, we can construct these four livelihood sensitivity categories using existing variables (Table 1).
+
+The LHZ data variables are outlined in **Table 2**. The four categories used to determine livelihood sensitivity were ranked from 1-5 based on percent rank values and then weighted using values taken from Malcomb et al. (2014).
+
 
 **Table 2:** Constructing Livelihood Sensitivity Categories
 
@@ -92,15 +102,24 @@ The Livelihood zone data is created by aggregating general regions where similar
 2. Clip TA boundaries to Malawi (st_buffer of LHZ to .01 m)
 3. Create ecological areas: LHZ boundaries intersected with TA boundaries to clip out park/conservation boundaries and rename those park areas with the park information from TA data), combined with lake data to remove environmental areas from the analysis
 
-###*Physical Exposure: Floods + Droughts*
+###Physical Exposure: Floods + Droughts
 
 **Floods:**This dataset stems from work collected by multiple agencies and funneled into the PREVIEW Global Risk Data Platform, “an effort to share spatial information on global risk from natural hazards.” The dataset was designed by UNEP/GRID-Europe for the Global Assessment Report on Risk Reduction (GAR), using global data. A flood estimation value is assigned via an index of 1 (low) to 5 (extreme).
 **Drought:** This dataset uses the Standardized Precipitation Index to measure annual drought exposure across the globe. The Standardized Precipitation Index draws on data from a “global monthly gridded precipitation dataset” from the University of East Anglia’s Climatic Research Unit, and was modeled in GIS using methodology from Brad Lyon at Columbia University. The dataset draws on 2010 population information from the LandScanTM Global Population Database at the Oak Ridge National Laboratory.  Drought exposure is reported as the expected average annual (2010) population exposed. The data were compiled by UNEP/GRID-Europe for the Global Assessment Report on Risk Reduction (GAR). The data use the WGS 1984 datum, span the years 1980-2001, and are reported in raster format with spatial resolution 1/24 degree x 1/24 degree.
+
+****Variable Transformations**
+
+1. Load in UNEP raster
+2. Set CRS for drought to EPSG:4326
+3. Set CRS for flood to EPSG:4326 1.Reproject, clip, and resample based on bounding box (dimensions: xmin = 35.9166666666658188, xmax = 32.6666666666658330, ymin = -9.3333333333336554, ymax = -17.0833333333336270) and resolution of blank raster we created: resolution is 1/24 degree x 1/24 degree
+4. Use bilinear resampling for drought to average continuous population exposure values
+5. Use nearest-neighbor resampling for flood risk to preserve integer values
 
 ### Analytical Specification
 
 The original study was conducted using ArcGIS and STATA, but does not state which versions of these software were used.
 The replication study will use R.
+
 
 ## Materials and Procedure
 
@@ -150,21 +169,23 @@ We then georeferenced maps from the original study using QGIS in order to compar
 
 ## Replication Results
 
-![](assets/fig4rep.png)
-![](assets/fig4comp.png)
-![](assets/fig5rep.png)
-![](assets/fig5comp.png)
+![](assets/fig4rep.png) | ! [](assets/fig4comp.png)
+
+**Table 3:** Spearman’s rho correlation test results. (rho = 0.7860921). The results of the original study are shown on the x axis (columns), while the results of the reproduction are shown on the y axis (rows).
+|   | 1  | 2  | 3  | 4 |
+|---|----|----|----|---|
+| 1 | 35 | 5  | 0  | 0 |
+| 2 | 27 | 26 | 0  | 0 |
+| 3 | 5  | 44 | 19 | 0 |
+| 4 | 0  | 7  | 28 | 4 |
+
+![](assets/fig5rep.png) | ![](assets/fig5comp.png)
+![](assets/scatterplot.png)
 
 For each output from the original study (mainly figure 4 and figure 5), present separately the results of the replication attempt.
 
 2.	State whether the original study was or was not supported by the replication
 3.	State whether any hypothesis linked to a planned deviation from the original study was supported. Provide key statistics and related reasoning.
-
-Figures to Include:
-- map of resilience by traditional authority in 2010, analagous to figure 4 of the original study
-- map of vulnerability in Malawi, analagous to figure 5 of the original study
-- map of difference between your figure 4 and the original figure 4
-- map of difference between your figure 5 and the original figure 5
 
 ## Unplanned Deviations from the Protocol
 
