@@ -33,7 +33,7 @@ This section was written collaboratively with fellow peers in GEOG 0323: Maja Ca
 
 ### *Access & Assets Data*
 
-Demographic and Health Survey data are a product of the United States Agency for International Development (USAID). Variables contained in this dataset are used to represent adaptive capacity (access + assets) in the Malcomb et al.’s (2014) study. These data come from survey questionnaires with large sample sizes. The DHS data used in our study were collected in 2010. In Malawi, the provenance of the DHA data dates back as far as 1992, but has not been collected consistently every year.
+Demographic and Health Survey data are a product of the United States Agency for International Development (USAID). Variables contained in this dataset are used to represent adaptive capacity (access + assets) in the Malcomb et al’s (2014) study. These data come from survey questionnaires with large sample sizes. The DHS data used in our study were collected in 2010. In Malawi, the provenance of the DHA data dates back as far as 1992, but has not been collected consistently every year.
 
 Each point in the household dataset represents a cluster of households with each cluster corresponding to some form of census enumeration units, such as villages in rural areas or city blocks in urban areas [DHS GPS Manual](assets/DHSmanual.pdf). This means that each household in each cluster has the same GPS data. This data is collected by trained [USAID](https://www.usaid.gov/) staff using GPS receivers.
 
@@ -140,7 +140,7 @@ The replication study will use R.
 
 1. Load in LHZ csv into R
 2. Join LHZ sensitivity data into R code
-3. Create livelihood sensitivity score data based on breakdown provided in report (Table 2)
+3. Create livelihood sensitivity score data based on breakdown provided in the report (Table 2)
 
 *Process Physical Exposure*
 
@@ -161,17 +161,23 @@ We then georeferenced maps from the original study using QGIS in order to compar
 
 ## Reproduction Results
 
-Our reproduction appears to support Malcomb et al's (2014) findings for adaptive capacity at the Traditional Authorities level (Figure 4 in the original study). A difference maps (fig. 2) highlights the general agreement between our adaptive capacity map (fig. 1) and the georeferenced/digitized map of adaptive capacity in 2010 from Malcomb et al. (2014), where most traditional authorities matched with or were within one class break of the original value. A confusion matrix comparing the two maps (table 3) yielded a Spearman’s rho value of 0.786, indicating a relatively strong correlation between the original study and our reproduction.
+The reproduction appears to support Malcomb et al's (2014) findings for adaptive capacity at the Traditional Authorities level (Figure 4 in the original study). A difference maps (fig. 2) highlights the general agreement between our adaptive capacity map (fig. 1) and the georeferenced/digitized map of adaptive capacity in 2010 from Malcomb et al. (2014), where most traditional authorities matched with or were within one class break of the original value. A confusion matrix comparing the two maps (table 3) yielded a Spearman’s rho value of 0.786, indicating a relatively strong correlation between the original study and the reproduction.
 
-Inversely, our results failed to effectively reproduce Malcomb et al's (2014) assessment of climate vulnerability in Malawi. Our reproduction (fig 3.) appears to have yielded general disagreement with georeferenced/digitized map of climate vulnerability from Malcomb et al. (2014), as seen in the produced difference map (fig. 4). A confusion matrix comparing the two maps yielded a Spearman’s rho value of 0.202, indicating a low degree of correlation between the original study and our reproduction. This disagreement is further visualized in the scatterplot of vulnerability scores from our reproduction vs the original study (fig 5.), where a linear arrangement of the points would indicate a strong correlation. However, in this case, our reproduction appears to have consistently yielded lower vulnerability scores, causing a skew in the distribution of points.
+Inversely, our results failed to effectively reproduce Malcomb et al's (2014) assessment of climate vulnerability in Malawi. The reproduction (fig 3.) appears to have yielded general disagreement with georeferenced/digitized map of climate vulnerability from Malcomb et al. (2014), as seen in the produced difference map (fig. 4). A confusion matrix comparing the two maps yielded a Spearman’s rho value of 0.202, indicating a low degree of correlation between the original study and the reproduction. This disagreement is further visualized in the scatterplot of vulnerability scores from the reproduction vs the original study (fig 5.), where a linear arrangement of the points would indicate a strong correlation. However, in this case, the reproduction appears to have consistently yielded lower vulnerability scores, causing a skew in the distribution of points.
 
 ![](assets/fig4rep.png)
 *figure 1. Reproduction results of adaptive capacity (access + assets) scores by traditional authority (TA).*
 
-![](assets/fig4comp.png)
-*figure 2. Map of the difference between the adaptive capacity (access + assets) scores of our reproduction vs. the original study (difference = reproduction score - original score).*
+Note: In the original study, the adaptive capacity scores ranged from 11-25, whereas those in the reproduction go from 0.7-1.07. The original R-code created by Kufre Udoh and Joseph Holler multiplied 2010 capacity values by 20 to give a closer value to those in the original study. I chose to remove this line of code from the reproduction, as I believe that our code should attempt to independently reproduce the results, not match our approximate findings to the original through an arbitrary transformation of the capacity score. This revision was made in R by adding a # to keep the *20 from running, while still preparing the data for visualization breaks as created in the original study.
 
-**Table 3:** Matrix comparing Malcomb et al.'s (2014) results to the reproduction via a pearman’s rho correlation test (rho = 0.7860921). The results of the original study are shown on the x axis (columns), while the results of the reproduction are shown on the y axis (rows).
+```r
+# ta = mutate(ta, capacity_2010 = capacity_2010 * 20)
+```
+
+![](assets/fig4comp.png)
+*figure 2. Map of the difference between the adaptive capacity (access + assets) scores of the reproduction vs. the original study (difference = reproduction score - original score).*
+
+**Table 3:** Matrix comparing Malcomb et al's (2014) results to the reproduction via a pearman’s rho correlation test (rho = 0.7860921). The results of the original study are shown on the x axis (columns), while the results of the reproduction are shown on the y axis (rows).
 
 |   | 1  | 2  | 3  | 4 |
 | 1 | 35 | 5  | 0  | 0 |
@@ -183,18 +189,24 @@ Inversely, our results failed to effectively reproduce Malcomb et al's (2014) as
 *figure 3. Reproduction results for vulnerability score in Malawi*
 
 ![](assets/fig5comp.png)
-*figure 4. Map of the difference between the final vulnerability scores of our reproduction vs the original study c.*
+*figure 4. Map of the difference between the final vulnerability scores of the reproduction vs the original study.*
 
 ![](assets/scatterplot.png)
-*figure 5. Scatterplot comparing final vulnerability scores from the results of our replication to those of the original study, where difference = reproduction score - original score (rho = 0.2018834).*
+*figure 5. Scatterplot comparing final vulnerability scores from the results of the reproduction to those of the original study, where difference = reproduction score - original score (rho = 0.2018834).*
 
 ## Unplanned Deviations from the Protocol
 
-Prior to investigating the data, our initial interpretation and recreation the original study's workflow outlined various areas of uncertainty. 
+Prior to investigating the data, our initial interpretation and recreation the original study's workflow outlined various areas of uncertainty. Malcomb et al's (2014) methodology created confusion as to how the DHS data was brought (at the household, village, or district level). As well, the description of DHS indicators as 'disaggregated' brought up further uncertainty as to the scales were suppose to transform the data. This ambiguity led to the bulk of uncertainty in the reproduction analysis.
 
-Summarize changes and uncertainties between
-- your interpretation and plan for the workflow based on reading the paper
-- your final workflow after accessing the data and code and completing the code
+As well, Malcomb et al's (2014) methodology states to have normalized indicators by using "zero [to represent] the worst condition for a household and five [for] the best," but then proceeded to refer to households using quintiles (the former statement alludes to sextiles, however). To work around this source of uncertainty, our group decided to use quintiles and assigned values of 1-5 when normalizing our data. Within this normalization, however, there was uncertainty as to how binary variables (i.e. sex) were normalized on a 1-5 scale. For these, we assigned a value of 1 to the presumed lower-risk option (i.e. male) and a value of 2 to the higher-risk (i.e. female).
+
+With the livelihood sensitivity scores, another main source of uncertainty came about when figuring out how to quantify the 4 indicators of livelihood sensitivity, especially "disaster coping strategy. The original report was unclear in which variables were used to calculate the livelihood zone scores, along with if these data were from only the “poor” category or also included those in the “middle-class” and “rich” calculations of livelihood sensitivity. **Table 2** in the **Data Description and Variables** section spotlights how our group approached these sources of uncertainty.
+
+Lastly, within the R-code
+
+*figure 6.* Table 2 from Malcomb et al.(2014) – Calculating Household Resilience Score
+![](assets/weightsOS)
+
 
 ## Discussion
 
@@ -211,7 +223,7 @@ Do the research findings suggest a need for any future research?
 
 ## Acknowledgements
 
-To my co-collaborators, thank y'all for being such a supportive and motivating group through each stage of this reproduction, from our initial pre-analysis of Malcomb et al.'s (2014) paper to bringing together our R code in the final hours. In particular, special thanks to Jacob Freedman for his R-coding expertise when it came to processing/calculating the livelihood sensitivity scores. As well, shout out to Emma Clinton for helping me troubleshoot the R-code for the comparison figures (*figures 2 & 4*) and to Vincent Falardeau for supplementing the R-code that produced *figure 2*.
+To my co-collaborators, thank y'all for being such a supportive and motivating group through each stage of this reproduction, from our initial pre-analysis of Malcomb et al's (2014) paper to bringing together our R code in the final hours. In particular, special thanks to Jacob Freedman for his R-coding expertise when it came to processing/calculating the livelihood sensitivity scores. As well, shout out to Emma Clinton for helping me troubleshoot the R-code for the comparison figures (*figures 2 & 4*) and to Vincent Falardeau for supplementing the R-code that produced *figure 2*.
 
 ## References
 
