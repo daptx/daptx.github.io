@@ -173,6 +173,7 @@ We then georeferenced maps from the original study using QGIS in order to compar
 | ![](assets/fig4rep.png) | ![](assets/fig4comp.png) |
 
 **Table 3:** Spearman’s rho correlation test results. (rho = 0.7860921). The results of the original study are shown on the x axis (columns), while the results of the reproduction are shown on the y axis (rows).
+
 |   | 1  | 2  | 3  | 4 |
 |---|----|----|----|---|
 | 1 | 35 | 5  | 0  | 0 |
