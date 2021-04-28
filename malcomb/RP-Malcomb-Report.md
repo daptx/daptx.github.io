@@ -31,7 +31,7 @@ The original study was published without data or code, but has detailed narrativ
 
 This section was written collaboratively with fellow peers in GEOG 0323: Maja Cannavo, Emma Clinton, Jacob Freedman, Nick Nonnenmacher, and Alitzel Villanueva.
 
-###Access & Assets Data
+### *Access & Assets Data*
 
 Demographic and Health Survey data are a product of the United States Agency for International Development (USAID). Variables contained in this dataset are used to represent adaptive capacity (access + assets) in the Malcomb et al.’s (2014) study. These data come from survey questionnaires with large sample sizes.
 The DHS data used in our study were collected in 2010. In Malawi, the provenance of the DHA data dates back as far as 1992, but has not been collected consistently every year.
@@ -78,7 +78,7 @@ The DHS website acknowledges the high potential for inconsistent or incomplete d
 10. Take the values and round them to 2 decimal places
 11. Put data in 4 classes based on break values
 
-###Livelihood Zones Data
+### *Livelihood Zones Data*
 
 The Livelihood zone data is created by aggregating general regions where similar crops are grown and similar ecological patterns exist. This data exists originally at the household level and was aggregated into Livelihood Zones. To construct the aggregation used for “Livelihood Sensitivity” in this analysis, we use these household points from the FEWSnet data that had previously been aggregated into livelihood zones.
 
