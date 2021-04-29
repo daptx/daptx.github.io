@@ -18,5 +18,6 @@ layout: default
 - [What is Open Source GIScience?](musings/open-source.md)
 - [Is GIS as a Reproducable Science?](musings/is-gis-science.md)
 - [Error and Uncertainty in GIS](musings/error-and-uncertainty.md)
+- [Twitter Data in Spatial Analyses](musings/spatial-twitter.md)
 
 Want to see more Geography content? Check out my [Twitter](https://twitter.com/daptx)
