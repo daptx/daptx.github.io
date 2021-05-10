@@ -12,6 +12,7 @@ layout: default
 - [Rosgen Classification System Replication](rosgen/HEGSRR-Replication-Report.md)
 - [Urban Resilience Analysis: Greenspace Access in Dar es Salaam](postGIS/urban-resilience.md)
 - [Reproduction of Vulnerability Modeling in Malawi](malcomb/RP-Malcomb-Report.md)
+- [Replication of Twitter Data Analyses (Spatial, Temporal, & Content)](dorian/Re-Dorian-Report.md)
 
 ## Musings
 
