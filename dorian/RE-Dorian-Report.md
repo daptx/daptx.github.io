@@ -54,10 +54,10 @@ Outline the data to be used in your replication study, including:
 
 ## Replication Results
 
-![](assets/temporal)
-![](assets/frequency)
-![](assets/content)
-![](assets/hotspots)
+![](assets/temporal.png)
+![](assets/frequency.png)
+![](assets/content.png)
+![](assets/hotspots.png)
 
 - temporal analysis graph
 - content analysis graph
