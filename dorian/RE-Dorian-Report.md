@@ -57,6 +57,7 @@ Outline the data to be used in your replication study, including:
 ![](assets/temporal.png)
 ![](assets/frequency.png)
 ![](assets/content.png)
+![](assets/twitteractivity.png)
 ![](assets/hotspots.png)
 
 - temporal analysis graph
