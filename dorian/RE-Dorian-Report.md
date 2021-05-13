@@ -33,6 +33,7 @@ In this replication study, I will analyze the spatial distribution of COVID-19 v
 
 ## Original Study Information
 
+The original study by Wang et al (2016 used
 **summarize Wang et al (2016) similar to the Holler (2021) summary below**
 
 Holler (2021) losely replicated the methods of Wang et al (2016) for the case of Hurricane Dorian's landfall on the U.S. mainland during the 2019 Atlantic Hurricane season. Data was based on Twitter Search API queries for ....
@@ -81,7 +82,7 @@ Do the research findings suggest a need for any future research?
 
 ## References
 
-Koblentz-Stenzler, L., & Pack, A. (2021). (Rep.). International Institute for Counter-Terrorism (ICT). Retrieved May 13, 2021, from http://www.jstor.org/stable/resrep30926
+https://www.npr.org/2021/05/12/996079225/vaccination-rates-lag-in-3-gulf-states-alabama-mississippi-louisiana
 
 Include any referenced studies or materials in the [AAG Style of author-date referencing](https://www.tandf.co.uk//journals/authors/style/reference/tf_USChicagoB.pdf).
 
