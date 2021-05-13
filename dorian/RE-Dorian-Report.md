@@ -20,17 +20,15 @@ Revised: `12 May 2021`
 
 ## Abstract
 
-Why study the spatial distribution of Twitter data
+In a digital economy where data is the new currency of knowledge, crowd-sourced/volunteered geographic information (VGI) such as Twitter data has become a powerful utility for approaching spatial inquiries. As such, studying the spatial distribution of Twitter data has presented the opportunity to investigate dissemination, temporal, and content patterns for current and past events (i.e. natural disasters, the 2020 election results, the colonial pipeline breach, etc), furthering to the pool for geospatial research.
 
-In a digital economy where data is the new currency of knowledge, crowd-sourced/volunteered geographic information (VGI) such as Twitter data has become a powerful utility for approaching spatial inquiries. As such, studying the spatial distribution of Twitter data has presented present the opportunity to investigate both temporal and content trends for current and past events (i.e. natural disasters, the 2020 election results, the colonial pipeline cybersecurity breach, etc), furthering to the pool for geospatial research.
+In Wang et al's (2016) analysis of Twitter data for wildfires in California, they found that social media data was a valuable asset for enhancing situational awareness and aiding disaster management during wildfire hazards. In this specific case study, Twitter served as an avenue for relaying evacuation warnings, communicating geographic updates about the wildfires, and sharing wildfire-related information with the general public. On a broader note, despite the limitations and ethical uncertainties of using Twitter data in research (Crawford & Finn, 2014), Wang et al's (2016) findings show the potential Twitter data has to ground and characterize natural hazards across spatial, temporal, and content domains.
 
-Wang et al (2016) analyzed Twitter data for wildfires in California, finding that the social media data
+More recently, Holler (2021) is studying Twitter data for Hurricane Dorian on the Atlantic coast, finding that in spite of tending news and social media content regarding a false narrative of risk, original Tweets still clustered significantly along the real hurricane track, and only along the hurricane track.
 
-Holler (2021) is studying Twitter data for Hurricane Dorian on the Atlantic coast, finding that in spite of tending news and social media content regarding a false narrative of risk, original Tweets still clustered significantly along the real hurricane track, and only along the hurricane track.
+Reproducing and replicating spatial research of crowd-sourced/volunteered geographic information (VGI) continues to be relevant because social media (i.e. Twitter) and other mediums for collecting VGI (OpenStreetMap) have begun to move towards the forefront of communicating and contextualizing 'critical and defining' events, capitalizing on the informative power of the public. With the changing dynamics of our digital landscape, the stock of VGI is continually in flux/not static—meaning that while the reproduction of spatial research isn't always guaranteed, replication of research using VGI such as Wang et al (2016) via Twitter API can help expand geospatial knowledge across different time frames and contexts.
 
-Reproducing and replicating spatial research of .....  continues to be relevant because ....
-
-In his replication study, I will ...
+In this replication study, I will analyze the spatial distribution of COVID-19 vaccination tweets in the South (defined by a 40,000 respondent survey done by [Vox](https://www.vox.com/2016/9/30/12992066/south-analysis)) from May 2nd, 2021 to May 10th, 2021. Given the United State's worst vaccination rates are clustered in the South (primarily Alabama, Mississippi, & Louisiana lagging behind) according to NPR's May 12th *Morning Edition*, I am curious as to whether these states will have a 'cold spots' of Twitter activity, or if any anti-vaccination sentiments will be detected in this region based on content analysis.
 
 
 ## Original Study Information
@@ -82,6 +80,8 @@ Restate the key findings and discuss their broader societal implications or cont
 Do the research findings suggest a need for any future research?
 
 ## References
+
+Koblentz-Stenzler, L., & Pack, A. (2021). (Rep.). International Institute for Counter-Terrorism (ICT). Retrieved May 13, 2021, from http://www.jstor.org/stable/resrep30926
 
 Include any referenced studies or materials in the [AAG Style of author-date referencing](https://www.tandf.co.uk//journals/authors/style/reference/tf_USChicagoB.pdf).
 
