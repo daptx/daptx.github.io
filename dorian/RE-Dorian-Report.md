@@ -20,16 +20,17 @@ Revised: `12 May 2021`
 
 ## Abstract
 
-Why study the spatial distribution of Twitter data?
+Why study the spatial distribution of Twitter data
 
-Wang et al (2016) analyzed Twitter data for wildfires in California, finding that the social media data ...
+In a digital economy where data is the new currency of knowledge, crowd-sourced/volunteered geographic information (VGI) such as Twitter data has become a powerful utility for approaching spatial inquiries. As such, studying the spatial distribution of Twitter data has presented present the opportunity to investigate both temporal and content trends for current and past events (i.e. natural disasters, the 2020 election results, the colonial pipeline cybersecurity breach, etc), furthering to the pool for geospatial research.
+
+Wang et al (2016) analyzed Twitter data for wildfires in California, finding that the social media data
 
 Holler (2021) is studying Twitter data for Hurricane Dorian on the Atlantic coast, finding that in spite of tending news and social media content regarding a false narrative of risk, original Tweets still clustered significantly along the real hurricane track, and only along the hurricane track.
 
 Reproducing and replicating spatial research of .....  continues to be relevant because ....
 
 In his replication study, I will ...
-
 
 
 ## Original Study Information
@@ -58,7 +59,7 @@ Outline the data to be used in your replication study, including:
 ![](assets/frequency.png)
 ![](assets/content.png)
 ![](assets/activity.png)
-![](assets/hotspots.png)
+![](assets/hotspot.png)
 
 - temporal analysis graph
 - content analysis graph
