@@ -14,4 +14,4 @@ In Zook et al (2017), the argument for expanding the capabilities and applicatio
 *Sources*
 - Crampton, J. (2018). GIS and Critical Ethics. The Geographic Information Science & Technology Body of Knowledge (2nd Quarter 2018 Edition), John P. Wilson (ed.). DOI:10.22224/gistbok/2018.2.8
 - DiBiase, D. (2017). Professional and Practical Ethics of GIS&T. The Geographic Information Science & Technology Body of Knowledge (2nd Quarter 2017 Edition), John P. Wilson (ed.). doi: 10.22224/gistbok/2017.2.2(link is external).
--  Zook M, Barocas S, boyd d, Crawford K, Keller E, Gangadharan SP, et al. (2017) Ten simple rules for responsible big data research. PLoS Comput Biol 13(3): e1005399. https://doi.org/10.1371/journal.pcbi.1005399
+- Zook M, Barocas S, boyd d, Crawford K, Keller E, Gangadharan SP, et al. (2017) Ten simple rules for responsible big data research. PLoS Comput Biol 13(3): e1005399. https://doi.org/10.1371/journal.pcbi.1005399
