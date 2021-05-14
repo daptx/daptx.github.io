@@ -21,5 +21,6 @@ layout: default
 - [Error and Uncertainty in GIS](musings/error-and-uncertainty.md)
 - [Twitter Data in Spatial Analyses](musings/spatial-twitter.md)
 - [Ethics & Limits of Volunteered Geographic Information](musings/vgi-ethics-limits.md)
+- [Spatial Big Data: Debating Ethics & Reproducibility](/musings/spatial-big-data.md)
 
 Want to see more Geography content? Check out my [Twitter](https://twitter.com/daptx)

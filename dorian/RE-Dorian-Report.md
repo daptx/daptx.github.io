@@ -26,13 +26,14 @@ In Wang et al's (2016) analysis of Twitter data for wildfires in California, the
 
 More recently, Holler (2021) is studying Twitter data for Hurricane Dorian on the Atlantic coast, finding that in spite of tending news and social media content regarding a false narrative of risk, original Tweets still clustered significantly along the real hurricane track, and only along the hurricane track.
 
-Reproducing and replicating spatial research of crowd-sourced/volunteered geographic information (VGI) continues to be relevant because social media (i.e. Twitter) and other mediums for collecting VGI (OpenStreetMap) have begun to move towards the forefront of communicating and contextualizing 'critical and defining' events, capitalizing on the informative power of the public. With the changing dynamics of our digital landscape, the stock of VGI is continually in flux/not static—meaning that while the reproduction of spatial research isn't always guaranteed, replication of research using VGI such as Wang et al (2016) via Twitter API can help expand geospatial knowledge across different time frames and contexts.
+Reproducing and replicating spatial research of crowd-sourced/volunteered geographic information (VGI) continues to be relevant because social media (i.e. Twitter) and other mediums for collecting VGI (i.e. OpenStreetMap) have begun to move towards the forefront of communicating and contextualizing 'critical and defining' events, capitalizing on the informative power of the public. With the changing dynamics of our digital landscape, the stock of VGI is continually in flux/not static—meaning that while the reproduction of spatial research isn't always guaranteed, the replication of research using VGI such as Wang et al (2016) via Twitter search API can help expand geospatial knowledge across different time frames and contexts.
 
 In this replication study, I will analyze the spatial distribution of COVID-19 vaccination tweets in the South (defined by a 40,000 respondent survey done by [Vox](https://www.vox.com/2016/9/30/12992066/south-analysis)) from May 2nd, 2021 to May 10th, 2021. Given the United State's worst vaccination rates are clustered in the South (primarily Alabama, Mississippi, & Louisiana lagging behind) according to NPR's recent episode of *Morning Edition*, I am curious as to whether these states will have a 'cold spots' of Twitter activity, or if any anti-vaccination sentiments will be detected in this region based on content analysis.
 
 ## Original Study Information
 
-The original study by Wang et al (2016 used
+Wang et al's (2016) original study sourced data from Twitter search API in order to 
+
 **summarize Wang et al (2016) similar to the Holler (2021) summary below**
 
 Holler (2021) losely replicated the methods of Wang et al (2016) for the case of Hurricane Dorian's landfall on the U.S. mainland during the 2019 Atlantic Hurricane season. Data was based on Twitter Search API queries for ....
