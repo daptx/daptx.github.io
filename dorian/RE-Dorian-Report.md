@@ -43,26 +43,25 @@ The replication study by Holler (2021) used R, including the `rtweet`, `rehydrat
 
 ## Materials and Procedure
 
-The data collection and analysis for this replication used the same methodology as Holler's (2021) case study, adjusting for parameters pertaining to my focus topic—visualizing the spatial distribution of COVID-19 vaccination Tweets in the South. In order to access the data from Twitter's search API, a [Twitter Developer account](https://developer.twitter.com/en/apply-for-access) is required, which is free. There are premium upgrades that allow one to queue and access more tweets across a larger time scale, however, for the sake of accessibility, a standard developer account was used.
+The data collection and analysis for this replication used the same methodology as Holler's (2021) case study, adjusting for parameters pertaining to my focus topic—visualizing the spatial distribution of COVID-19 vaccination Tweets in the South. In order to access the data from Twitter's search API, a [Twitter Developer account](https://developer.twitter.com/en/apply-for-access) is required, which is free. There are premium upgrades that allow one to queue and access more Tweets across a larger time scale, however, for the sake of accessibility, a standard developer account was used.
 
-My Twitter API search was conducted on May 10, 2021, indicative of a time where COVID-19 vaccine availability and vaccination appointments had started to become more readily available, yet the *New York Times'* [Vaccination Map](https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html) showed a lack of vaccinations throughout southern states compared to the Northeast. I searched for Tweets containing the keywords "vaccine," "appointment," or "vaccination" that were within 1,000 miles of Houston, Texas (29.76,-95.37). As well, baseline data on Twitter activity was procured to calculate a Normalized Tweet Difference Index (NTDI) and act as a comparison point for vaccination Tweets. The R-Studio script used to preprocess data can be found [here](https://github.com/daptx/RE-Dorian/blob/main/procedure/code/01-search_texas_daptx.r), and the collection of tweet ID numbers can be found here: [vaccination tweets](https://github.com/daptx/RE-Dorian/blob/main/data/derived/public/texasids.txt), [baseline tweets](https://github.com/daptx/RE-Dorian/blob/main/data/derived/public/baseline.txt).
+My Twitter API search was conducted on May 10, 2021, indicative of a time where COVID-19 vaccine availability and vaccination appointments had started to become more readily available, yet the *New York Times'* [Vaccination Map](https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-doses.html) showed a lack of vaccinations throughout southern states compared to the Northeast. I searched for Tweets containing the keywords "vaccine," "appointment," or "vaccination" that were within 1,000 miles of Houston, Texas (29.76,-95.37). As well, baseline data on Twitter activity was procured to calculate a Normalized Tweet Difference Index (NTDI) and act as a comparison point for vaccination Tweets. The R-Studio script used to preprocess data can be found [here](https://github.com/daptx/RE-Dorian/blob/main/procedure/code/01-search_texas_daptx.r), and the collection of Tweet ID numbers can be found here: [vaccination Tweets](https://github.com/daptx/RE-Dorian/blob/main/data/derived/public/texasids.txt), [baseline Tweets](https://github.com/daptx/RE-Dorian/blob/main/data/derived/public/baseline.txt).
 
-After preprocessing, analyses across different dimensions (temporal, network, text/contextual, and spatial) were ran using a [modified R-Studio script](https://github.com/daptx/RE-Dorian/blob/main/procedure/code/02-analyze-texas.daptx.r) based on Holler's (2021) R code in his Dorian analysis. This produced **figures 1 through 4**.
-
-Once the various analyses were ran...
+After preprocessing, analyses across different dimensions (temporal, network, text/contextual, and spatial) were ran using a [modified R-Studio script](https://github.com/daptx/RE-Dorian/blob/main/procedure/code/02-analyze-texas.daptx.r) based on Holler's (2021) R code in his Dorian analysis. This script produced *figures 1, 2, 3, & 4*. Lastly, a [final R-Studio script](https://github.com/daptx/RE-Dorian/blob/main/procedure/code/04-spatial-clustering.r) was ran to map hotspots of Twitter activity. A spatial join was used to join both vaccination and baseline Tweets to counties, then Getis and Ord's (1995) G-statistic was applied to compare the NDTI—defined by Holler (2021) as NDTI = (south - baseline) / (south + baseline) & coded by [Casey Lilley](https://caseylilley.github.io/finalproj.html) (2019)—to COVID-19 vaccination Tweets across the South using a nearest-neighbor analysis. The final results of this script can be seen in *figure 5*, highlighting counties that had statistically significant hot and cold spots of vaccination Twitter activity.
 
 ## Replication Results
 
 ![](assets/temporal.png)
+*figure 1. Number of vaccination related tweets with geo-data by day during the study period*
 ![](assets/frequency.png)
+*figure 2. Most common words found in COVID-19 vaccination tweets by frequency of occurrence*
+NOTE: "COVID" & "19" weren't made stop words, since I wanted to see if this phrase was found with vaccination, vaccine, and appointment in Tweets
 ![](assets/content.png)
-![](assets/activity.png)
-![](assets/hotspot.png)
-
-- temporal analysis graph
-- content analysis graph
-- map of twitter activity [need to figure out how to bound to geographic restraints]
-- hot spot analysis
+*figure 3. Word cloud network, revealing word pairs commonly found within vaccination related Tweets*
+![](assets/tweet-activity.png)
+*figure 4. Location of vaccination Twitter activity in the South*
+![](assets/hotspots.png)
+*figure 5. Location of hot & cold spots of vaccination Twitter activity in the South by county*
 
 ## Unplanned Deviations from the Protocol
 
