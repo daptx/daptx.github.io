@@ -82,7 +82,13 @@ The locations of vaccination Twitter activity in the South follow the patterns o
 
 ## Conclusion
 
+Restate the key findings and discuss their broader societal implications or contributions to theory. Do the research findings suggest a need for any future research?
 
+In this replication of Wang et al (2016) & Holler (2021), vaccination related Tweets up to May 10th...
+- trends in vaccination related Tweets
+- spatial awareness of where people are having such dialogue
+- tangential content
+- significance of spatial, temporal, & content...?
 
 ## References
 
