@@ -53,21 +53,24 @@ After preprocessing, analyses across different dimensions (temporal, network, te
 
 ![](assets/temporal.png)
 *figure 1. Number of vaccination related tweets with geo-data by day during the study period*
+
 ![](assets/frequency.png)
 *figure 2. Most common words found in COVID-19 vaccination tweets by frequency of occurrence*
-NOTE: "COVID" & "19" weren't made stop words, since I wanted to see if this phrase was found with vaccination, vaccine, and appointment in Tweets
+
+NOTE: "COVID" & "19" weren't made stop words, since I wanted to see if this phrase was found with vaccination, vaccine, and appointment in Tweets*
+
 ![](assets/content.png)
 *figure 3. Word cloud network, revealing word pairs commonly found within vaccination related Tweets*
+
 ![](assets/tweet-activity.png)
 *figure 4. Location of vaccination Twitter activity in the South*
+
 ![](assets/hotspots.png)
 *figure 5. Location of hot & cold spots of vaccination Twitter activity in the South by county*
 
 ## Unplanned Deviations from the Protocol
 
-Summarize changes and uncertainties between
-- your expectation of a reproduction workflow based on the reading and Dorian analysis
-- your final workflow after completing the lab
+In order to visualize vaccination related Twitter activity in the South, R code was implemented to bound/inner-join vaccination Tweet points to the counties of southern states only, rather than the entire US. This deviation also removed Tweets on the outer edge of the 1000mi search radius that could distort the scale of my analysis. Otherwise, no significant deviations were made from the protocol established by Holler (2021).
 
 ## Discussion
 
