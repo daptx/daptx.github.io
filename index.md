@@ -4,7 +4,7 @@ layout: default
 ---
 
 
-## Howdy! Welcome to my Open Source GIS Portfolio. Here, you'll find my struggles & triumphs in the world of GIS.
+## Welcome to my Open Source GIS Portfolio. Here, you'll find my struggles & triumphs in the world of GIS.
 
 ## GIScience Analyses
 
@@ -23,4 +23,8 @@ layout: default
 - [Ethics & Limits of Volunteered Geographic Information](musings/vgi-ethics-limits.md)
 - [Spatial Big Data: Debating Ethics & Reproducibility](/musings/spatial-big-data.md)
 
-Want to see more Geography content? Check out my [Twitter](https://twitter.com/daptx)
+## About Me
+
+I'm a current sophomore at Middlebury College studying Environmental Studies & Geography, with a keen interest in GIS, cartography, & editorial graphics. On campus, I row for [Middlebury Mens Crew Team](https://middcrew.org/), am the Editor in Chief of [Middlebury Geographic](https://issuu.com/middgeog/)—our college's outdoor publication, and give tours for the Admissions Office. Other interests of mine include sustainable fashion, cooking Asian street food, and watching A24 films.
+
+To learn more about my work, education, and future endeavors, check out my [LinkedIn](https://www.linkedin.com/in/drew-an-pham/)! To see more geography/design content, check out my [graphics portfolio] (link coming soon...)
