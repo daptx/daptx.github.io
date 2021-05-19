@@ -25,6 +25,6 @@ layout: default
 
 ## About Me
 
-I'm a current sophomore at Middlebury College studying Environmental Studies & Geography, with a keen interest in GIS, cartography, & editorial graphics. On campus, I row for [Middlebury Mens Crew Team](https://middcrew.org/), am the Editor in Chief of [Middlebury Geographic](https://issuu.com/middgeog/)—our college's outdoor publication, and give tours for the Admissions Office. Other interests of mine include sustainable fashion, cooking Asian street food, and watching A24 films.
+I'm a current sophomore at Middlebury College studying Environmental Studies & Geography, with a keen interest in GIS, cartography, & editorial graphics. On campus, I row for the [Middlebury Men's Crew Team](https://middcrew.org/), am the Editor in Chief of [Middlebury Geographic](https://issuu.com/middgeog/)—our college's outdoor publication, and give tours for the Admissions Office. Other interests of mine include sustainable fashion, cooking Asian street food, and watching A24 films.
 
 To learn more about my work, education, and future endeavors, check out my [LinkedIn](https://www.linkedin.com/in/drew-an-pham/)! To see more geography/design content, check out my [graphics portfolio] (link coming soon...)
