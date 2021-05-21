@@ -13,6 +13,7 @@ layout: default
 - [Urban Resilience Analysis: Greenspace Access in Dar es Salaam](postGIS/urban-resilience.md)
 - [Reproduction of Vulnerability Modeling in Malawi](malcomb/RP-Malcomb-Report.md)
 - [Replication of Twitter Data Analyses (Spatial, Temporal, & Content)](dorian/RE-Dorian-Report.md)
+- [Reproduction of COVID-19 Healthcare Spatial Accessibility in Illinois](kang/RP-Kang-Report.md)
 
 ## Musings
 

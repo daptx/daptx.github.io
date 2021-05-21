@@ -25,4 +25,6 @@ Revised: `x May 2021`
 
 ## Conclusion
 
+## Acknowledgments
+
 ## Notes on Style
