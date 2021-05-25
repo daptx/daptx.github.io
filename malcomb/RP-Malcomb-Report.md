@@ -35,7 +35,9 @@ This section was written collaboratively with fellow peers in GEOG 0323: Maja Ca
 
 Demographic and Health Survey data are a product of the United States Agency for International Development (USAID). Variables contained in this dataset are used to represent adaptive capacity (access + assets) in the Malcomb et al’s (2014) study. These data come from survey questionnaires with large sample sizes. The DHS data used in our study were collected in 2010. In Malawi, the provenance of the DHA data dates back as far as 1992, but has not been collected consistently every year.
 
-Each point in the household dataset represents a cluster of households with each cluster corresponding to some form of census enumeration units, such as villages in rural areas or city blocks in urban areas [DHS GPS Manual](assets/DHSmanual.pdf). This means that each household in each cluster has the same GPS data. This data is collected by trained [USAID](https://www.usaid.gov/) staff using GPS receivers.
+Each point in the household dataset represents a cluster of households with each cluster corresponding to some form of census enumeration units, such as villages in rural areas or city blocks in urban areas [DHS GPS Manual](assets/DHSmanual.pdf). This means that each household in each cluster has the same GPS data. While this data carries a high degree of precision, it may not best accurately represent target populations spatially, as each point represents a cluster of households, rather than individual homes. This data is collected by trained [USAID](https://www.usaid.gov/) staff using GPS receivers.
+
+This means that each household in each cluster has the same GPS data, and that while the data collected carries a high degree of precision, it may not be accurately spatially representing target populations.
 
 Missing data is a common occurrence in this dataset as a result of negligence or incorrect naming. However, according to the [DHS GPS Manual](assets/DHSmanual.pdf), these issues are easily rectified and typically sites for which data does not exist are recollected. Sometimes, however, missing information is coded in as such or assigned a proxy location.
 
