@@ -28,7 +28,7 @@ The gravity model was broken down into 3 main parts:
 ```
 General Potential Formula = (inputWeight)^λ * (targetWeight)^α / (distance)^β
 
-In this analysis, λ = 1, α = 1, and β = 2 were my assigned values to these parameters. 
+In this analysis, λ = 1, α = 1, and β = 2 were my assigned values to these parameters.
 
 Field Calulator Used:
 @InputWeight + '^' + to_string(@lambda) + ' * ' + @TargetWeight + '^' + to_string(@alpha) + ' / ("Distance"/1000)' + '^' + to_string(@beta)
@@ -49,7 +49,9 @@ With [Hosptial.shp](assets/Hospitals.shp):
 * **tool:** extract by expression --> *save as:* hospitals_filtered.shp
   * **expression:**
   ```
-  "BEDS" > 0 AND "TYPE" = 'GENERAL ACUTE CARE' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'CHILDREN' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'WOMEN' AND "STATUS" = 'OPEN'
+  "BEDS" > 0 AND "TYPE" = 'GENERAL ACUTE CARE' AND "STATUS" = 'OPEN' OR "BEDS"
+  > 0 AND "TYPE" = 'CHILDREN' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND
+  "TYPE" = 'WOMEN' AND "STATUS" = 'OPEN'
   ```
 * **tool:** extract by location --> *save as:* hospitals_NE_filtered.shp
   * **extract from:** hospitals_filtered.shp; **intersects**; **compare to:** netown netowns
