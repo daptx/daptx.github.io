@@ -52,6 +52,7 @@ Models used in GRASS produced by Joe Holler:
 ## Replication Results
 
 **Figures:**
+
 All figures (*a to h*) & map images for this replication can be found [here](https://github.com/daptx/daptx.github.io/tree/main/rosgen/assets).
 
 *figure c. map of shaded elevation @ study site 3*
