@@ -195,6 +195,7 @@ Note: In the original study, the adaptive capacity scores ranged from 11-25, whe
 
 ![](assets/scatterplot.png)
 *figure 5. Scatterplot comparing final vulnerability scores from the results of the reproduction to those of the original study, where difference = reproduction score - original score (rho = 0.2018834).*
+
 Note: There appears to be an odd discretization of our values in this scatterplot. This can likely attributed to an earlier categorization of points by reproduction scores in the R-code that was overlooked or a lack of decimal precision that could've produced values more alike/similar to each other. Although not clear, the significance of this graphic can still be found in how well it visually depicts our calculated rho of 0.2018834.
 
 ## Unplanned Deviations from the Protocol
