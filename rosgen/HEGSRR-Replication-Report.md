@@ -66,7 +66,7 @@ Models used in GRASS produced by Joe Holler:
 *figure h. cross-sectional profile derived from RStudio*
 ![](assets/cross-section.png)
 *figure i. zoomed cross-sectional profile for valley area derived from RStudio*
-
+![](assets/cross-section-zoomed.png)
 
 **Tables:**
 
