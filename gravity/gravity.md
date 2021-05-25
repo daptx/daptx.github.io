@@ -25,10 +25,13 @@ The gravity model was broken down into 3 main parts:
 * Executing a Distance Matrix - This required an input and target feature (both with IDs and weights) and k (the # of nearest features each input was compared to, with a default value of 20). An additional step taken to remove error was converting both input and target features into centroids, as the distance matrix can only utilize points.
 * Calculating Max Potential - This first required two joins, where the input weight (population in this case) and target weight (# of beds in this case) were added to the distance matrix. After, a series of field calculators were used to find the potential and and max potential:
 ```
+General Potential Formula = (inputWeight)^λ * (targetWeight)^α / (distance)^β
+
+Field Calulator Used:
 @InputWeight + '^' + to_string(@lambda) + ' * ' + @TargetWeight + '^' + to_string(@alpha) + ' / ("Distance"/1000)' + '^' + to_string(@beta)
+
 maximum("potential", group_by:= "InputID")
 ```
-
   * *NOTE: By adding exponents to the input weight (λ), target weight (α), and distance parameter (β), we're able to modify the 'significance' of these factors as expressed in Rodrigue’s [The Geography of Transport Systems](https://transportgeography.org/contents/methods/spatial-interactions-gravity-model/)*
 * Aggregating the Data to make Catchment Areas - Once all the field calculations were implemented into the distance matrix (via extract by expression), the distance matrix was joined with the the Input Feature, then aggregated by the Target ID. As an extra step, I performed one more field calculator to estimate the # of beds for every 1000 people in each catchment area—the final export.
   * When using extract by expression on the distance matrix, "max potential >0" was used to eliminate any points with Input Weights of 0. Similarly, "SumInputWeight" > 0" was used after the final field calculator to eliminate any edge case with a distance of 0. Both of these edits tackle the gravity model challenges on the [Gravity Model in QGIS](https://gis4dev.github.io/lessons/02a_gravitymodel.html) course page.
@@ -40,7 +43,9 @@ In order to apply the model to the larger data sets, we first had to preprocess 
 With [Hosptial.shp](assets/Hospitals.shp):
 * *NOTE:* this layer was added via **Add ArcGIS Feature Service Layer** with this [link](https://services1.arcgis.com/Hp6G80Pky0om7QvQ/arcgis/rest/services/Hospitals_1/FeatureServer/)
 * **tool:** extract by expression --> *save as:* hospitals_filtered.shp
+```
   * **expression:** "BEDS" > 0 AND "TYPE" = 'GENERAL ACUTE CARE' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'CHILDREN' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'WOMEN' AND "STATUS" = 'OPEN'
+```
 * **tool:** extract by location --> *save as:* hospitals_NE_filtered.shp
   * **extract from:** hospitals_filtered.shp; **intersects**; **compare to:** netown netowns
   * **to check:** feature count [623]
