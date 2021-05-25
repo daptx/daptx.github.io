@@ -29,9 +29,8 @@ The gravity model was broken down into 3 main parts:
 
   In this analysis, λ = 1, α = 1, and β = 2 were assigned to these parameters.
 
-  Field Calculator Used:
+  Field Calculator Expressions:
   @InputWeight + '^' + to_string(@lambda) + ' * ' + @TargetWeight + '^' + to_string(@alpha) + ' / ("Distance"/1000)' + '^' + to_string(@beta)
-
   maximum("potential", group_by:= "InputID")
   ```
   * *NOTE: By adding exponents to the input weight (λ), target weight (α), and distance parameter (β), we're able to modify the 'significance' of these factors as expressed in Rodrigue’s [The Geography of Transport Systems](https://transportgeography.org/contents/methods/spatial-interactions-gravity-model/)*
