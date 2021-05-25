@@ -19,13 +19,15 @@ The Gravity Model of Spatial Interaction created this week takes a set of input 
 ![gravitymodel workflow](assets/gravitymodel.png)
 *right click: open image in new tab for a clearer graphic*
 
-While the [tutorial videos](https://midd.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22324cb720-6901-48e2-b57a-acdf014ab826%22) for the week provided a good base for setting up the model, it's worth verbalizing how we integrated this GEOG 0120-type workflow into our final product.
+While the [tutorial videos](https://midd.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%22324cb720-6901-48e2-b57a-acdf014ab826%22) for the week provided a good base for setting up the model, it's worth verbalizing how we integrated this model's workflow from [GEOG 0120](https://catalog.middlebury.edu/courses/view/course/course%2FGEOG0120) into our final product.
 
 The gravity model was broken down into 3 main parts:
 * Executing a Distance Matrix - This required an input and target feature (both with IDs and weights) and k (the # of nearest features each input was compared to, with a default value of 20). An additional step taken to remove error was converting both input and target features into centroids, as the distance matrix can only utilize points.
 * Calculating Max Potential - This first required two joins, where the input weight (population in this case) and target weight (# of beds in this case) were added to the distance matrix. After, a series of field calculators were used to find the potential and and max potential:
-> @InputWeight + '^' + to_string(@lambda) + ' * ' + @TargetWeight + '^' + to_string(@alpha) + ' / ("Distance"/1000)' + '^' + to_string(@beta)
-> maximum("potential", group_by:= "InputID")
+```
+@InputWeight + '^' + to_string(@lambda) + ' * ' + @TargetWeight + '^' + to_string(@alpha) + ' / ("Distance"/1000)' + '^' + to_string(@beta)
+maximum("potential", group_by:= "InputID")
+```
 
   * *NOTE: By adding exponents to the input weight (λ), target weight (α), and distance parameter (β), we're able to modify the 'significance' of these factors as expressed in Rodrigue’s [The Geography of Transport Systems](https://transportgeography.org/contents/methods/spatial-interactions-gravity-model/)*
 * Aggregating the Data to make Catchment Areas - Once all the field calculations were implemented into the distance matrix (via extract by expression), the distance matrix was joined with the the Input Feature, then aggregated by the Target ID. As an extra step, I performed one more field calculator to estimate the # of beds for every 1000 people in each catchment area—the final export.
