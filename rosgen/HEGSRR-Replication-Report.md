@@ -52,6 +52,7 @@ Models used in GRASS produced by Joe Holler:
 ## Replication Results
 
 **Figures:**
+All figures (*a to h*) & map images for this replication can be found [here](https://github.com/daptx/daptx.github.io/tree/main/rosgen/assets).
 
 *figure c. map of shaded elevation @ study site 3*
 ![](assets/shaded-elevation.png)
@@ -64,8 +65,6 @@ Models used in GRASS produced by Joe Holler:
 *figure g. longitudinal profile derived from RStudio*
 ![](assets/long-profile.png)
 *figure h. cross-sectional profile derived from RStudio*
-![](assets/cross-section.png)
-*figure i. zoomed cross-sectional profile for valley area derived from RStudio*
 ![](assets/cross-section-zoomed.png)
 
 **Tables:**
