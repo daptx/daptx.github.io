@@ -20,7 +20,7 @@ The green space and residential data used in this analysis were derived from [Op
 
 ## Methods
 
-*All sql queries used for this analysis can be found [here](assets/x) for replication*
+*All sql queries used for this analysis can be found [here](assets/greenspace.sql) for replication*
 
 Our objectives for this analysis are as follows:
 - a. to create a vector layer of points representing residential buildings in Dar es Salaam
@@ -204,7 +204,7 @@ SET greenpct = CAST(@green_count AS FLOAT) / CAST(@res_count AS FLOAT) * 100;
 
 ## Results
 
-A published Leaflet web map of our results can be found [here](https://emmaclinton.github.io/DSM_sql/assets/index.html#10/-6.8739/39.2547).
+A published Leaflet web map of our results can be found [here](file:///Users/drewderyk/Desktop/GitHub/daptx.github.io/postGIS/assets/index.html#10/-6.8739/39.2547).
 
 Our analysis and final cartographic layouts (both web and static) reveal the majority of wards with high access to green space in Dar es Salaam are near the coast in well-developed, organized urban centers of the city (*fig. b*). Comparing our findings to the current literature, a [2020 SLHC study](http://www.centreforsustainablecities.ac.uk/research/dar-es-salaam-the-unplanned-urban-sprawl-threatening-neighbourhood-sustainability/) (Centre for Sustainable, Healthy and Learning Cities and Neighborhoods) cited that due to increasing population density, the government's investments have not been able to keep up with the ongoing urban expansion and development in Dar es Salaam. Hence, from the perspective of Dar es Salaam's residents, this outpacing represents a lack of ability from the government to promote neighborhood sustainability [(Msuya et al., 2020)](http://www.centreforsustainablecities.ac.uk/wp-content/uploads/2020/10/SHLC_Research_Summary_11_DAR_ES_SALAAM.pdf).
 
@@ -227,7 +227,7 @@ All in all, in order to improve urban resilience and environmental justice in Da
 
 **DATA SOURCES:**
 
-Greenspaces and residences: OpenStreetMap contributors (2021). Retrieved from https://planet.openstreetmap.org.
+Green spaces and residences: OpenStreetMap contributors (2021). Retrieved from https://planet.openstreetmap.org.
 
 Wards: [Resilience Academy](https://geonode.resilienceacademy.ac.tz/) (a [Ramani Huria](https://ramanihuria.org/en/) project).
 
