@@ -212,6 +212,8 @@ Contextualizing the urban sprawl and development patterns in Dar es Salaam, the 
 
 https://www.researchgate.net/figure/Map-of-planned-residential-areas-and-informal-settlements-in-1982-and-2002_fig5_325445730/actions#embed
 
+<a href="https://www.researchgate.net/figure/Map-of-planned-residential-areas-and-informal-settlements-in-1982-and-2002_fig5_325445730"><img src="https://www.researchgate.net/profile/Charlie-Zhang-5/publication/325445730/figure/fig5/AS:743206538973186@1554205655149/Map-of-planned-residential-areas-and-informal-settlements-in-1982-and-2002.png" alt="Map of planned residential areas and informal settlements in 1982 and 2002."/></a>
+
 *figure a.* A map of planned/unplanned development in Dar es Salaam (sourced from [Bhanjee & Zhang (2018)](https://www.researchgate.net/publication/325445730_Mapping_Latest_Patterns_of_Urban_Sprawl_in_Dar_es_Salaam_Tanzania))
 
 Thus, from a planning perspective, it is unlikely that public green space access was factored in to these peripheral developments, explaining the decrease in percentage of green space access as distance from the city center increases. Given the government allocated more resources and time to engage in and communicate with the residents of these peripheral wards, there could be strong potential for restructuring/rectifying the lack of green space access in wards further from the coast and urban center. From the point of view of the Helmotz Centre for Environmental Research & the ICLEII Local Governments of Sustainability, a key policy recommendation to help address problems related to DSM's growth would be to ***"[protect] and [enhance] urban green spaces,
