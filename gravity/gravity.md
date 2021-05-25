@@ -43,9 +43,10 @@ In order to apply the model to the larger data sets, we first had to preprocess 
 With [Hosptial.shp](assets/Hospitals.shp):
 * *NOTE:* this layer was added via **Add ArcGIS Feature Service Layer** with this [link](https://services1.arcgis.com/Hp6G80Pky0om7QvQ/arcgis/rest/services/Hospitals_1/FeatureServer/)
 * **tool:** extract by expression --> *save as:* hospitals_filtered.shp
-```
-  * **expression:** "BEDS" > 0 AND "TYPE" = 'GENERAL ACUTE CARE' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'CHILDREN' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'WOMEN' AND "STATUS" = 'OPEN'
-```
+  * **expression:**
+  ```
+  "BEDS" > 0 AND "TYPE" = 'GENERAL ACUTE CARE' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'CHILDREN' AND "STATUS" = 'OPEN' OR "BEDS" > 0 AND "TYPE" = 'WOMEN' AND "STATUS" = 'OPEN'
+  ```
 * **tool:** extract by location --> *save as:* hospitals_NE_filtered.shp
   * **extract from:** hospitals_filtered.shp; **intersects**; **compare to:** netown netowns
   * **to check:** feature count [623]
