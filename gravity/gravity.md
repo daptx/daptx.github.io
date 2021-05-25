@@ -64,8 +64,8 @@ With [netown.gpkg](assets/netown.gpkg):
   * **to check** feature count [5718]
 
 With hospitals_NE_filtered.shp:
-* **tool:** mean coordinates --> *save as* mean_coordinates.shp
-* **tool:** aggregate --> *save as* hospitals_final.shp
+* **tool:** mean coordinates --> *save as* mean_coordinates.shp; this tool produces a point with the mean (x, y) coordinates of all filtered hospitals
+* **tool:** aggregate --> *save as* hospitals_final.shp; this tool amasses hospitals by common zip code (taking the sum of the number of beds) so that clusters of hospitals in close proximity will be considered together in the model
   * **group by expression:** ZIP
   * remove all rows except ID (Aggregate Function --> first_value), ZIP (Aggregate Function --> first_value), and BEDS (Aggregate Function --> sum)
   * **to check** feature count [553]
