@@ -120,10 +120,6 @@ All in all, despite the absence of my site in Kasprak et al.'s (2016) results ta
 
 It’s uncertain whether the results of this study successfully or unsuccessfully reproduced Kasprak et al.’s (2016) use of the Rosgen classification system, as our given CHaMP Site ID was not spotted in Table 5 of the original study’s results. In the broader context of reproducibility, however, a reattempt at replicating Kasprak et al. (2016) would require the same data and software from the original study (as well as a site they actually produced results for). If anything, what our analysis highlighted was the need to acknowledge/address uncertainty within GIS analyses and spotlighted areas for improvement that could lead to stronger, more reliable results that could both explain discrepancies between and be compared to the original study (THINK: workflow revisions, fixing source code/method errors, etc).
 
-## References
-
-Include any referenced studies or materials in the [AAG Style of author-date referencing](https://www.tandf.co.uk//journals/authors/style/reference/tf_USChicagoB.pdf).
-
 ####  Report Template References & License
 
 This template was developed by Peter Kedron and Joseph Holler with funding support from HEGS-2049837. This template is an adaptation of the ReScience Article Template Developed by N.P Rougier, released under a GPL version 3 license and available here: https://github.com/ReScience/template. Copyright © Nicolas Rougier and coauthors. It also draws inspiration from the pre-registration protocol of the Open Science Framework and the replication studies of Camerer et al. (2016, 2018). See https://osf.io/pfdyw/ and https://osf.io/bzm54/
