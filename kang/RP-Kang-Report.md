@@ -98,7 +98,6 @@ Discuss what you learned from the reproduction attempt, especially any knowledge
 
 - improved accessibility in NW b/c of network expansision
 -
-- 
 
 ## Conclusion
 with emphasis on the significance of the reproduction study you just completed. Was the study reproducible, and has the reproduction study increased, decreased, or otherwise refined your belief in the validity of the original study? Conclude with any insights, priorities, or questions for future research.
