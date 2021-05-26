@@ -22,7 +22,7 @@ In creating a methodology that was computationally efficient, geospatially scala
 
 Reproducing Kang et al's (2020) work is critical for verifying the results of their analyses, alongside giving students and other academics a stronger eye for critical investigations of research papers' methodologies. Additionally, by running and making comments/modifications to the original code, suggestions can be made to improve the original methods used. Together, both of these motives can help further the trustability and merit of Kang et al's (2020) paper in informing policymakers and public health practitioners about the allocation of healthcare resources or the distribution of healthcare infrastructure.
 
-## Materials and Methods
+## Materials and Original Methods
 
 The Python script (with inline comments & improvements) used for this reproduction can be found [here](https://github.com/daptx/RP-Kang/blob/main/COVID-19Acc.ipynb)
 
@@ -33,13 +33,15 @@ The data sources used for this reproduction matched those of Kang et al (2020):
 
 Briefly outlining the methods used in the original study's [Jupyter Notebook](https://github.com/GIS4DEV/RP-Kang/blob/main/COVID-19Acc.ipynb) (learn more about this open source initiative [here](https://jupyter.org/about) as modified by Joseph Holler, libraries and input files were first loaded, then road networks were processed to remove isolated nodes—self contained parts of the road network or dead ends. After, hospitals were snapped on to the nearest network nodes for the network analysis later. The code then created population centroids, derived catchment areas around hospitals, and calculated the influence of each hospital on their respective catchment area(s). Accessibility for each hospital was then measured and weighted by distance, proceeded by an overlap function that took sum of accessibility for each hexagon of the grid in the given grid shape file. The results (given as Geodataframes) were then normalized and visualized, producing a map of hospital accessibility across Chicago.
 
+## Deviations & Improvements from Original Methods
+
 The largest problem identified in the original code was that the road network used was restricted to the bounds of Chicago. Therefore, regardless of their distance from Chicago the hospitals outside the city were not captured/accounted for in the road network. As a result, since the HIFLD hospital points included hospitals outside the city limit, these points were still snapped to their nearest nodes in the road network, creating a boundary effect inaccurately portraying accessibility along Chicago's periphery (i.e. northwest Chicago was false area of low accessibility). To fix this, a 15-mile buffer (~24 km) was applied to create a larger more inclusive road network, properly accounting for hospital points in the latter analysis.
 ```python
 # Load and Plot Street Network
 G = ox.graph_from_place('Chicago', network_type='drive', buffer_dist = 24140.2)
 ```
 
-Once the buffer was added, errors in the OSM data syntax made it impossible to run the original code. For example, one-way streets with speed limits "25, east" could not be read by the code, which expected entries like "25 mph." To resolve this, try except code blocks were used to assign these hardcoded data errors Kang et al's default speed of 35 mph. Special thanks to [Maja Cannavo](https://majacannavo.github.io/geog323/geog323main) for troubleshooting and resolving this problem.
+Once the buffer was added, errors in the OSM data syntax made it impossible to run the original code. For example, one-way streets with speed limits "25, east" could not be read by the code, which expected entries like "25 mph." To resolve this, try except code blocks were used to assign these hardcoded data errors Kang et al's (2020) default speed of 35 mph. Special thanks to [Maja Cannavo](https://majacannavo.github.io/geog323/geog323main) for troubleshooting and resolving this problem.
 ```python
 # network_setting function
 if (speed_type==str):
@@ -61,7 +63,7 @@ else:
 ```
 
 Three other revisions made to the code to improve it's functionality were...
-- adding time benchmarks to key sections of the code
+- *adding time benchmarks to key sections of the code*; These processing time outputs serves as a great metric for the quantifying the efficiency of Kang et al's (2020) code, connecting back to their intent of attaining rapid measurements spatial accessibility to COVID-19 healthcare resources
 ```python
 %%time
 '''
@@ -70,9 +72,9 @@ CPU times: user 1min 29s, sys: 2.03 s, total: 1min 31s
 Wall time: 1min 31s
 '''
 ```
-- altering the color palette of final map
+- *altering the color palette of final map*; In cartography, the use of a red color scheme or red symbology often denotes exclusion or danger in a geopolitical context (van Houtum & Lacy, 2020). Since our final deliverable is looking at hospital accessibility, changing the color palette to a Purple, Blue, Green gradients strays away from this misinterpretation and adds aesthetic value.
 ```python
-# out_put map function in file_import
+# out_put map function
  ax=output_grid.plot(column=resource, cmap='PuBuGn',figsize=(18,12), legend=True, zorder=1)
 ```
 - changing the original distance weights utilized
