@@ -35,15 +35,17 @@ Briefly outlining the methods used in the original study's [Jupyter Notebook](ht
 
 The largest problem identified in the original code was that the road network used was restricted to the bounds of Chicago. Therefore, regardless of their distance from Chicago the hospitals outside the city were not captured/accounted for in the road network. As a result, since the HIFLD hospital points included hospitals outside the city limit, these points were still snapped to their nearest nodes in the road network, creating a boundary effect inaccurately portraying accessibility along Chicago's periphery (i.e. northwest Chicago was false area of low accessibility). To fix this, a 15-mile buffer (~24 km) was applied to create a larger more inclusive road network, properly accounting for hospital points in the latter analysis.
 ```python
+# Load and Plot Street Network
 G = ox.graph_from_place('Chicago', network_type='drive', buffer_dist = 24140.2)
 ```
 
 Once the buffer was added, errors in the OSM data syntax made it impossible to run the original code. For example, one-way streets with speed limits "25, east" could not be read by the code, which expected entries like "25 mph." To resolve this, try except code blocks were used to assign these hardcoded data errors Kang et al's default speed of 35 mph. Special thanks to [Maja Cannavo](https://majacannavo.github.io/geog323/geog323main) for troubleshooting and resolving this problem.
 ```python
+# network_setting function
 if (speed_type==str):
 # add in try/except blocks to catch maxspeed formats that don't fit Kang et al's cases
   try:
-    if len(data['maxspeed'].split(','))==2: #removes comma seperation, turns into #s
+    if len(data['maxspeed'].split(','))==2: #removes comma separation, turns into #s
       data['maxspeed']=float(data['maxspeed'].split(',')[0])                  
     elif data['maxspeed']=='signals':
       data['maxspeed']=35.0 # drive speed setting as 35 miles
@@ -62,7 +64,11 @@ Three other revisions made to the code to improve it's functionality were...
 - adding time benchmarks to key sections of the code
 ```python
 %%time
-# key sections of the code
+'''
+Example time output after function runs:
+CPU times: user 1min 29s, sys: 2.03 s, total: 1min 31s
+Wall time: 1min 31s
+'''
 ```
 - altering the color palette of final map
 ```python
