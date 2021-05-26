@@ -58,10 +58,20 @@ else:
     data['maxspeed']=35.0
 ```
 
-Three other revisions made to the code to improve it's functionality were adding
-
-
-
+Three other revisions made to the code to improve it's functionality were...
+- adding time benchmarks to key sections of the code
+```python
+%%time
+# key sections of the code
+```
+- altering the color palette of final map
+```python
+# out_put map function in file_import
+ ax=output_grid.plot(column=resource, cmap='PuBuGn',figsize=(18,12), legend=True, zorder=1)
+```
+- changing the original distance weights utilized
+```Python
+```
 
 ## Results & Discussion
 include images of findings (maps, graphs) and link to your final repository for the reproduction. Discuss what you learned from the reproduction attempt, especially any knowledge, insight, or uncertainty that was encoded in the repository or discovered in the reproduction but not explained in the published paper.
