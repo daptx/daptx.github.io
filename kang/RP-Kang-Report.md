@@ -86,14 +86,25 @@ weights=[1.0, 0.42, 0.09] # weights where weights[0] is applied to distances[0]
 ## Results & Discussion
 include images of findings (maps, graphs) and link to your final repository for the reproduction. Discuss what you learned from the reproduction attempt, especially any knowledge, insight, or uncertainty that was encoded in the repository or discovered in the reproduction but not explained in the published paper.
 
+The final repository used for this reproduction can be found [here](https://github.com/daptx/RP-Kang)
+
 ![](assets/original.png)
+*figure 1. Output map from original unedited code provided.*
 ![](assets/kang-weight.png)
+*figure 2. Output map using the 15-mile road network buffer and changing the color palette; the original weights from Kang et al (2020) were still used—1.00 at 10 minutes, 0.68 at 20 minutes, and 0.22 at 30 minutes.*
 ![](assets/lq-weight.png)
+*figure 3. Output map using the 15-mile road network buffer, an alternate color palette from fig. 1, and different weight set from Luo & Qi (2009)—1.00 at 10 minutes, 0.42 at 20 minutes, and 0.09 at 30 minutes.*
 
 ## Conclusion
 with emphasis on the significance of the reproduction study you just completed. Was the study reproducible, and has the reproduction study increased, decreased, or otherwise refined your belief in the validity of the original study? Conclude with any insights, priorities, or questions for future research.
 
 ## Acknowledgments
+
+## References
+Kang, J. Y., A. Michels, F. Lyu, Shaohua Wang, N. Agbodo, V. L. Freeman, and Shaowen Wang. 2020. Rapidly measuring spatial accessibility of COVID-19 healthcare resources: a case study of Illinois, USA. International Journal of Health Geographics 19 (1):1–17. DOI:10.1186/s12942-020-00229-x.
+
+Luo, W., & Qi, Y. (2009). An enhanced two-step floating catchment area (E2SFCA) method for measuring spatial accessibility to primary care physicians. Health & place, 15(4), 1100-1107.
+
 
 ## Notes on Style
  Remember that the primary motivation for reproduction and replication studies is not punitive. Frame your discussions in this report and previous reports in the constructive motivation for improving scientific knowledge through peer review. Project like CyberGISX generally, and the Kang et al 2020 publication specifically, are very new in geography, and our engagement with them should be both encouraging and constructive while emphasizing the value of open science.
