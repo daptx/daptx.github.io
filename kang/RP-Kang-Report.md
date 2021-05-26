@@ -88,7 +88,7 @@ include images of findings (maps, graphs) and link to your final repository for 
 
 ![](assets/original.png)
 ![](assets/kang-weight.png)
-![](assets/luo-weight.png)
+![](assets/lq-weight.png)
 
 ## Conclusion
 with emphasis on the significance of the reproduction study you just completed. Was the study reproducible, and has the reproduction study increased, decreased, or otherwise refined your belief in the validity of the original study? Conclude with any insights, priorities, or questions for future research.
