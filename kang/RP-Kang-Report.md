@@ -51,20 +51,20 @@ if (speed_type==str):
       data['maxspeed']=float(data['maxspeed'].split()[0])
   except:
       data['maxspeed']= 35.0 # if error caught, code will go to this block and fill 35
-  else:
-    try:
-      data['maxspeed']=float(data['maxspeed'][0].split()[0])
-    except:
-      data['maxspeed']=35.0
+else:
+  try:
+    data['maxspeed']=float(data['maxspeed'][0].split()[0])
+  except:
+    data['maxspeed']=35.0
 ```
 
+Three other revisions made to the code to improve it's functionality were adding
 
 
 
-## Result
+
+## Results & Discussion
 include images of findings (maps, graphs) and link to your final repository for the reproduction. Discuss what you learned from the reproduction attempt, especially any knowledge, insight, or uncertainty that was encoded in the repository or discovered in the reproduction but not explained in the published paper.
-
-## Discussion
 
 ## Conclusion
 with emphasis on the significance of the reproduction study you just completed. Was the study reproducible, and has the reproduction study increased, decreased, or otherwise refined your belief in the validity of the original study? Conclude with any insights, priorities, or questions for future research.
