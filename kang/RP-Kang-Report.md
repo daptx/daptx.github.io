@@ -22,7 +22,7 @@ In creating a methodology that was computationally efficient, geospatially scala
 
 Reproducing Kang et al's (2020) work is critical for verifying the results of their analyses, alongside giving students and other academics a stronger eye for critical investigations of research papers' methodologies. Additionally, by running and making comments/modifications to the original code, suggestions can be made to improve the original methods used. Together, both of these motives can help further the trustability and merit of Kang et al's (2020) paper in informing policymakers and public health practitioners about the allocation of healthcare resources or the distribution of healthcare infrastructure.
 
-## Materials and Original Methods
+## Materials and Methods
 
 The Python script (with inline comments & improvements) used for this reproduction can be found [here](https://github.com/daptx/RP-Kang/blob/main/COVID-19Acc.ipynb)
 
@@ -33,7 +33,7 @@ The data sources used for this reproduction matched those of Kang et al (2020):
 
 Briefly outlining the methods used in the original study's [Jupyter Notebook](https://github.com/GIS4DEV/RP-Kang/blob/main/COVID-19Acc.ipynb) (learn more about this open source initiative [here](https://jupyter.org/about) as modified by Joseph Holler, libraries and input files were first loaded, then road networks were processed to remove isolated nodes—self contained parts of the road network or dead ends. After, hospitals were snapped on to the nearest network nodes for the network analysis later. The code then created population centroids, derived catchment areas around hospitals, and calculated the influence of each hospital on their respective catchment area(s). Accessibility for each hospital was then measured and weighted by distance, proceeded by an overlap function that took sum of accessibility for each hexagon of the grid in the given grid shape file. The results (given as Geodataframes) were then normalized and visualized, producing a map of hospital accessibility across Chicago.
 
-## Deviations & Improvements from Original Methods
+### Deviations from & Improvements to the Original Code
 
 The largest problem identified in the original code was that the road network used was restricted to the bounds of Chicago. Therefore, regardless of their distance from Chicago the hospitals outside the city were not captured/accounted for in the road network. As a result, since the HIFLD hospital points included hospitals outside the city limit, these points were still snapped to their nearest nodes in the road network, creating a boundary effect inaccurately portraying accessibility along Chicago's periphery (i.e. northwest Chicago was false area of low accessibility). To fix this, a 15-mile buffer (~24 km) was applied to create a larger more inclusive road network, properly accounting for hospital points in the latter analysis.
 ```python
