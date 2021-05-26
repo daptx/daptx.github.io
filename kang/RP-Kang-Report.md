@@ -78,7 +78,7 @@ Wall time: 1min 31s
  ax=output_grid.plot(column=resource, cmap='PuBuGn',figsize=(18,12), legend=True, zorder=1)
 ```
 - **changing the original distance weights utilized**; Kang et al (2020) applied a set of weights (1.00, 0.68, & 0.22) to respective travel time zones (0-10, 10-20, & 20-30 min) to account for distance decay in their analysis. These weights were derived from Luo & Qi's (2009) paper, which the same E2SFCA method to assess spatial accessibility to primary care physicians in Northern Illinois. In their results, Luo & Qi (2009) reference a second weight set that represents a shaper distance decay: =1.00, 0.42, & 0.09. I applied these weights to further investigate the impact of distance weights on accessibility outcomes.
-```Python
+```python
 # Run the Model Section
 weights=[1.0, 0.42, 0.09] # weights where weights[0] is applied to distances[0]
 ```
