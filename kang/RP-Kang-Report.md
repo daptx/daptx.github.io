@@ -63,7 +63,7 @@ else:
 ```
 
 Three other revisions made to the code to improve it's functionality were...
-- *adding time benchmarks to key sections of the code*; These processing time outputs serves as a great metric for the quantifying the efficiency of Kang et al's (2020) code, connecting back to their intent of attaining rapid measurements spatial accessibility to COVID-19 healthcare resources
+- **adding time benchmarks to key sections of the code**; These processing time outputs serves as a great metric for the quantifying the efficiency of Kang et al's (2020) code, connecting back to their intent of attaining rapid measurements spatial accessibility to COVID-19 healthcare resources
 ```python
 %%time
 '''
@@ -72,12 +72,12 @@ CPU times: user 1min 29s, sys: 2.03 s, total: 1min 31s
 Wall time: 1min 31s
 '''
 ```
-- *altering the color palette of final map*; In cartography, the use of a red color scheme or red symbology often denotes exclusion or danger in a geopolitical context (van Houtum & Lacy, 2020). Since our final deliverable is looking at hospital accessibility, changing the color palette to a Purple, Blue, Green gradients strays away from this misinterpretation and adds aesthetic value.
+- **altering the color palette of final map**; In cartography, the use of a red color scheme or red symbology often denotes exclusion or danger in a geopolitical context (van Houtum & Lacy, 2020). Since our final deliverable is looking at hospital accessibility, changing the color palette to a Purple, Blue, Green gradients strays away from this misinterpretation and adds aesthetic value.
 ```python
 # out_put map function
  ax=output_grid.plot(column=resource, cmap='PuBuGn',figsize=(18,12), legend=True, zorder=1)
 ```
-- changing the original distance weights utilized
+- **changing the original distance weights utilized**
 ```Python
 ```
 
