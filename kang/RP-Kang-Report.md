@@ -16,7 +16,7 @@ Revised: `26 May 2021`
 
 ## Introduction
 
-The original study by [Kang et al. (2020)](https://ij-healthgeographics.biomedcentral.com/articles/10.1186/s12942-020-00229-x) aimed to rapidly measure the spatial accessibility of COVID‐19 healthcare resources (ICU beds & ventilators) in Illinois for both vulnerable populations—defined as people over 50-years old—and actual COVID-19 patients. To execute their analysis, an enhanced two-step floating catchment area (E2FCA) method outlined by Luo and Qi (2009) was used; this looked at the outcome of interactions between demands (i.e. # of potential patients) and supply (i.e. # of beds of physicians). Their findings revealed an uneven distribution of healthcare resources across Illinois, with central and northern Chicago having greater access to these resources than southern Chicago.
+The original study by [Kang et al. (2020)](https://ij-healthgeographics.biomedcentral.com/articles/10.1186/s12942-020-00229-x) aimed to rapidly measure the spatial accessibility of COVID‐19 healthcare resources (ICU beds & ventilators) in Illinois for both vulnerable populations—defined as people over 50-years old—and actual COVID-19 patients. To execute their analysis, an enhanced two-step floating catchment area (E2FCA) method outlined by [Luo and Qi (2009)](https://www.sciencedirect.com/science/article/pii/S1353829209000574?via%3Dihub) was used; this looked at the outcome of interactions between demands (i.e. # of potential patients) and supply (i.e. # of beds of physicians). Their findings revealed an uneven distribution of healthcare resources across Illinois, with central and northern Chicago having greater access to these resources than southern Chicago.
 
 In creating a methodology that was computationally efficient, geospatially scalable, and open source, their procedures were documented via a CyberGIS Jupyter Notebook, enabling anyone with access to reproduce of their study. As well, Kang et al (2020) have also maintained an open platform called [WhereCOVID-19](https://wherecovid19.cigi.illinois.edu/spatialAccess.html#7/40.000/-89.000/Dark_Mode-il_acc_i/370) to provide up-to-date information on healthcare availability.
 
@@ -31,7 +31,7 @@ The data sources used for this reproduction matched those of Kang et al (2020):
 - Population data (census tracts) came from the [American Service Community](https://www.census.gov/programs-surveys/acs)
 - Hospital data was collected from [US Homeland Infrastructure Foundation Level Data (HIFLD)](https://hifld-geoplatform.opendata.arcgis.com/datasets/hospitals/explore?location=7.501852%2C-15.457900%2C1.91)
 
-Briefly outlining the methods used in the original study's [Jupyter Notebook](https://github.com/GIS4DEV/RP-Kang/blob/main/COVID-19Acc.ipynb) (learn more about this open source initiative [here](https://jupyter.org/about) as modified by Joseph Holler, libraries and input files were first loaded, then road networks were processed to remove isolated nodes—self contained parts of the road network or dead ends. After, hospitals were snapped on to the nearest network nodes for the network analysis later. The code then created population centroids, derived catchment areas around hospitals, and calculated the influence of each hospital on their respective catchment area(s). Accessibility for each hospital was then measured and weighted by distance, proceeded by an overlap function that took sum of accessibility for each hexagon of the grid in the given grid shape file. The results (given as Geodataframes) were then normalized and visualized, producing a map of hospital accessibility across Chicago.
+Briefly outlining the methods used in the original study's [Jupyter Notebook](https://github.com/GIS4DEV/RP-Kang/blob/main/COVID-19Acc.ipynb) (learn more about this open source initiative [here](https://jupyter.org/about)) as modified by Joseph Holler, libraries and input files were first loaded, then road networks were processed to remove isolated nodes—self contained parts of the road network or dead ends. After, hospitals were snapped on to the nearest network nodes for the network analysis later. The code then created population centroids, derived catchment areas around hospitals, and calculated the influence of each hospital on their respective catchment area(s). Accessibility for each hospital was then measured and weighted by distance, proceeded by an overlap function that took sum of accessibility for each hexagon of the grid in the given grid shape file. The results (given as Geodataframes) were then normalized and visualized, producing a map of hospital accessibility across Chicago.
 
 ### Deviations from & Improvements to the Original Code
 
@@ -77,14 +77,18 @@ Wall time: 1min 31s
 # out_put map function
  ax=output_grid.plot(column=resource, cmap='PuBuGn',figsize=(18,12), legend=True, zorder=1)
 ```
-- **changing the original distance weights utilized**
+- **changing the original distance weights utilized**; Kang et al (2020) applied a set of weights (1.00, 0.68, & 0.22) to respective travel time zones (0-10, 10-20, & 20-30 min) to account for distance decay in their analysis. These weights were derived from Luo & Qi's (2009) paper, which the same E2SFCA method to assess spatial accessibility to primary care physicians in Northern Illinois. In their results, Luo & Qi (2009) reference a second weight set that represents a shaper distance decay: =1.00, 0.42, & 0.09. I applied these weights to further investigate the impact of distance weights on accessibility outcomes.
 ```Python
+# Run the Model Section
+weights=[1.0, 0.42, 0.09] # weights where weights[0] is applied to distances[0]
 ```
 
 ## Results & Discussion
 include images of findings (maps, graphs) and link to your final repository for the reproduction. Discuss what you learned from the reproduction attempt, especially any knowledge, insight, or uncertainty that was encoded in the repository or discovered in the reproduction but not explained in the published paper.
 
-![](assets/map2.png)
+![](assets/original.png)
+![](assets/kang-weight.png)
+![](assets/luo-weight.png)
 
 ## Conclusion
 with emphasis on the significance of the reproduction study you just completed. Was the study reproducible, and has the reproduction study increased, decreased, or otherwise refined your belief in the validity of the original study? Conclude with any insights, priorities, or questions for future research.
