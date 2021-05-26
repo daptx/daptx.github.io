@@ -84,16 +84,21 @@ weights=[1.0, 0.42, 0.09] # weights where weights[0] is applied to distances[0]
 ```
 
 ## Results & Discussion
-include images of findings (maps, graphs) and link to your final repository for the reproduction. Discuss what you learned from the reproduction attempt, especially any knowledge, insight, or uncertainty that was encoded in the repository or discovered in the reproduction but not explained in the published paper.
 
 The final repository used for this reproduction can be found [here](https://github.com/daptx/RP-Kang)
 
 ![](assets/original.png)
 *figure 1. Output map from original unedited code provided.*
 ![](assets/kang-weight.png)
-*figure 2. Output map using the 15-mile road network buffer and changing the color palette; the original weights from Kang et al (2020) were still used—1.00 at 10 minutes, 0.68 at 20 minutes, and 0.22 at 30 minutes.*
+*figure 2. Output map using the expanded road network (15-mile buffer) and changing the color palette; the original weights from Kang et al (2020) were still used—1.00 at 10 minutes, 0.68 at 20 minutes, and 0.22 at 30 minutes.*
 ![](assets/lq-weight.png)
-*figure 3. Output map using the 15-mile road network buffer, an alternate color palette from fig. 1, and different weight set from Luo & Qi (2009)—1.00 at 10 minutes, 0.42 at 20 minutes, and 0.09 at 30 minutes.*
+*figure 3. Output map using the expanded road network (15-mile buffer), an alternate color palette from fig. 1, and a different weight set from Luo & Qi (2009)—1.00 at 10 minutes, 0.42 at 20 minutes, and 0.09 at 30 minutes.*
+
+Discuss what you learned from the reproduction attempt, especially any knowledge, insight, or uncertainty that was encoded in the repository or discovered in the reproduction but not explained in the published paper.
+
+- improved accessibility in NW b/c of network expansision
+-
+- 
 
 ## Conclusion
 with emphasis on the significance of the reproduction study you just completed. Was the study reproducible, and has the reproduction study increased, decreased, or otherwise refined your belief in the validity of the original study? Conclude with any insights, priorities, or questions for future research.
