@@ -47,7 +47,7 @@ Once the buffer was added, errors in the OSM data syntax made it impossible to r
 if (speed_type==str):
 # add in try/except blocks to catch maxspeed formats that don't fit Kang et al's cases
   try:
-    if len(data['maxspeed'].split(','))==2: #removes comma separation, turns into #s
+    if len(data['maxspeed'].split(','))==2: # removes comma separation, turns into #s
       data['maxspeed']=float(data['maxspeed'].split(',')[0])                  
     elif data['maxspeed']=='signals':
       data['maxspeed']=35.0 # drive speed setting as 35 miles
