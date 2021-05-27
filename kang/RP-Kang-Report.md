@@ -35,7 +35,7 @@ Briefly outlining the methods used in the original study's [Jupyter Notebook](ht
 
 ### Deviations from & Improvements to the Original Code
 
-The largest problem identified in the original code was that the road network used was restricted to the bounds of Chicago. Therefore, regardless of their distance from Chicago the hospitals outside the city were not captured/accounted for in the road network. As a result, since the HIFLD hospital points included hospitals outside the city limit, these points were still snapped to their nearest nodes in the road network, creating a boundary effect inaccurately portraying accessibility along Chicago's periphery (i.e. northwest Chicago was false area of low accessibility). To fix this, a 15-mile buffer (~24 km) was applied to create a larger more inclusive road network, properly accounting for hospital points in the latter analysis.
+The largest problem identified in the original code was that the road network used was restricted to the bounds of Chicago. Therefore, regardless of their distance from Chicago the hospitals outside the city were not captured/accounted for in the road network. As a result, since the HIFLD hospital points included hospitals outside the city limit, these points were still snapped to their nearest nodes in the road network, creating a boundary effect inaccurately portraying accessibility along Chicago's periphery (i.e. northwest Chicago has a false area of low accessibility). To fix this, a 15-mile buffer (~24 km) was applied to create a larger more inclusive road network, properly accounting for hospital points in the latter analysis.
 ```python
 # Load and Plot Street Network
 G = ox.graph_from_place('Chicago', network_type='drive', buffer_dist = 24140.2)
@@ -72,7 +72,7 @@ CPU times: user 1min 29s, sys: 2.03 s, total: 1min 31s
 Wall time: 1min 31s
 '''
 ```
-- **altering the color palette of final map**; In cartography, the use of a red color scheme or red symbology often denotes exclusion or danger in a geopolitical context (van Houtum & Lacy, 2020). Since our final deliverable is looking at hospital accessibility, changing the color palette to a Purple, Blue, Green gradients strays away from this misinterpretation and adds aesthetic value.
+- **altering the color palette of final map**; In cartography, the use of a red color scheme or red symbology often denotes exclusion or danger in a geopolitical context [(van Houtum & Lacy, 2020)](https://www.tandfonline.com/doi/full/10.1080/17450101.2019.1676031). Since our final deliverable is looking at hospital accessibility, changing the color palette to a Purple, Blue, Green gradients strays away from this misinterpretation and adds aesthetic value.
 ```python
 # out_put map function
  ax=output_grid.plot(column=resource, cmap='PuBuGn',figsize=(18,12), legend=True, zorder=1)
@@ -96,19 +96,23 @@ The final repository used for this reproduction can be found [here](https://gith
 
 Discuss what you learned from the reproduction attempt, especially any knowledge, insight, or uncertainty that was encoded in the repository or discovered in the reproduction but not explained in the published paper.
 
-- improved accessibility in NW b/c of network expansision
--
+Comparing the results of *figures 1 & 2*, expanding the road network with the 15-mile buffer increased hospital accessibility in northwest Chicago, highlighting how this area was actually well-serviced by hospitals outside of Chicago's boundaries. Thus, the inclusion of a larger road network appears to have improved the contextual accuracy of the original study's map. The different set of distance weights used in *figures 2 & 3* both indicate that central Chicago has the greatest accessibility to COVID-19 healthcare resources—hospitals with good ICUs and ventilator capacity. As well, this figure pair shows the consistently low healthcare access in southeast Chicago. However, deviations in these visualizations spotlight the degree of impact weighting can have on these results. By emphasizing sharper distance decay, *figure 3* upholds a high accessibility value in central Chicago, but is surrounded by a ring of decreasing accessibility—indicative of more distant hospitals becoming less impacting. *Figure 2* emphasizes a slower distance decay, where accessibility appears to be more evenly spread across the city. Thus, this contrast in weighting schemes between output maps has significant implications on how policymakers and public health practitioners allocate and distribute healthcare resources across the city during the COVID-19 pandemic; a more even spread of accessibility may undermine the supply and under-resourced hospital needs, while a more polarized spread may inaccurately portray the demand of well-resourced hospitals.
+
+After reading through the original study and executing this reproduction, an uncertainty I had about the code that wasn't explained in the paper was the justification behind using "over 50"—a category from the census data—as the metric for defining at risk populations. While there is a common associated of increased health problems with age, I question if this "over 50" cateogory is truly inclusive of at risk populations in Chicago, especially given the dynamic socio-economic and demographic patterns (factors that should also be considered) across the city. As well, the overlap_calc function in the Jupyter Notebook included a series of intersects, some of which I wouldn't have been able to connect back to original study without the help of in-class discussion, presenting the benefits of the collaborative investigation of research & sharing in line comments.
 
 ## Conclusion
-with emphasis on the significance of the reproduction study you just completed. Was the study reproducible, and has the reproduction study increased, decreased, or otherwise refined your belief in the validity of the original study? Conclude with any insights, priorities, or questions for future research.
+
+Kang et al's (2020) study is a great example of work contributing to the field of open source research. By providing us the code and data via a Jupyter Notebook alongside their paper, Kang et al (2020) enabled us to confidently carry out a reproduction of their original study. Through this process, my confidence in the validity of their original study increased. However, a critical part of this reproduction as well came from the adding inline comments to clarify the code and/or link it back to the original report with fellow classmates, showcasing the benefits of open source code as means for collaborative learning and valuable teaching. Finally, for future research in this domain, prioritizing the investigation of different weights and improving the road network's inclusivity of hospitals would help further improve Kang et al's (2020) model of spatial accessibility to healthcare resources.
 
 ## Acknowledgments
+
+Once again, special thanks to Maja Cannavo for troubleshooting and writing the code that fixed the road network processing function, as a result of OSM data syntax faults. Also, thanks to all the GEOG 0323 students for their collaborative efforts during lab and crowdsourcing ideas for code modification, to Professor Holler for helping us setting up the reproduction repository for this analysis, and to Kang et al (2020) for making their Python code available to us/the general public.
 
 ## References
 Kang, J. Y., A. Michels, F. Lyu, Shaohua Wang, N. Agbodo, V. L. Freeman, and Shaowen Wang. 2020. Rapidly measuring spatial accessibility of COVID-19 healthcare resources: a case study of Illinois, USA. International Journal of Health Geographics 19 (1):1–17. DOI:10.1186/s12942-020-00229-x.
 
 Luo, W., & Qi, Y. (2009). An enhanced two-step floating catchment area (E2SFCA) method for measuring spatial accessibility to primary care physicians. Health & place, 15(4), 1100-1107.
 
-
-## Notes on Style
- Remember that the primary motivation for reproduction and replication studies is not punitive. Frame your discussions in this report and previous reports in the constructive motivation for improving scientific knowledge through peer review. Project like CyberGISX generally, and the Kang et al 2020 publication specifically, are very new in geography, and our engagement with them should be both encouraging and constructive while emphasizing the value of open science.
+Van Houtum, H., & Lacy, R. (2020) The migration map
+trap. On the invasion arrows in the cartography of migration, Mobilities, 15:2, 196-219, DOI:
+10.1080/17450101.2019.1676031
