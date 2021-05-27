@@ -104,7 +104,7 @@ Kang et al's (2020) study is a great example of work contributing to the field o
 
 ## Acknowledgments
 
-Once again, special thanks to Maja Cannavo for troubleshooting and writing the code that fixed the road network processing function, as a result of OSM data syntax faults. Also, thanks to all the GEOG 0323 students for their collaborative efforts during lab and crowdsourcing ideas for code modification, to Professor Holler for helping us setting up the reproduction repository for this analysis, and to Kang et al (2020) for making their Python code available to us/the general public.
+Once again, special thanks to Maja Cannavo for troubleshooting and writing the code that fixed the road network processing function, as a result of OSM data syntax faults. Also, thanks to all the GEOG 0323 students for their collaborative efforts during lab and crowdsourcing ideas for code modifications, to Professor Holler for helping us set up the reproduction repository for this analysis, and to Kang et al (2020) for making their Python code available to us/the general public.
 
 ## References
 Kang, J. Y., A. Michels, F. Lyu, Shaohua Wang, N. Agbodo, V. L. Freeman, and Shaowen Wang. 2020. Rapidly measuring spatial accessibility of COVID-19 healthcare resources: a case study of Illinois, USA. International Journal of Health Geographics 19 (1):1–17. DOI:10.1186/s12942-020-00229-x.
