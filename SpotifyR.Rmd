@@ -1,0 +1,328 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Analyzing & Visualizing Spotify Data in RStudio
+
+### Authors: Drew An-Pham 
+
+### [Drew's Portfolio](https://daptx.myportfolio.com/)
+
+```{r set directory and install libraries, inlclude = F, warning = F}
+
+# set directory
+knitr::opts_knit$set(root.dir = '~/Desktop/GDS_Code/') 
+getwd()
+
+# install and add packages
+packages = c("spotifyr", "knitr", "dplyr", "tidyverse", "lubridate", "ggplot2", "ggridges", "ggthemes", "ggrepel", "showtext", "plotly", "ggtern")
+setdiff(packages, rownames(installed.packages()))
+install.packages(setdiff(packages, rownames(installed.packages())), quietly=TRUE)
+
+library(spotifyr)
+library(knitr)
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(ggridges)
+library(ggthemes)
+library(ggrepel)
+library(showtext)
+library(plotly)
+library(ggtern)
+```
+
+```{r style guide}
+font_add_google("Open Sans")
+showtext_auto()
+```
+
+```{r setting information to access API}
+
+id <- '84607ecc540e480fb44eb4db772f48ec'
+secret <- '8fad4cf309be4b2bbb546bf9daab6c3f'
+
+Sys.setenv(SPOTIFY_CLIENT_ID = id)
+Sys.setenv(SPOTIFY_CLIENT_SECRET = secret)
+access_token <- get_spotify_access_token()
+```
+
+```{r analyze Spotify Wrapped Playlists using SpotifyR, warning = F}
+
+# how to find spotify playlist ID: https://clients.caster.fm/knowledgebase/110/How-to-find-Spotify-playlist-ID.html
+
+# access 2017 spotify wrapped tracks
+tracks_2017 <- get_playlist_tracks('37i9dQZF1E9TUK1PmO7gjS')
+features_2017 <- get_track_audio_features(tracks_2017$track.id)
+tracks_features_2017 <- tracks_2017 %>%
+  left_join(features_2017, by = c('track.id' = 'id')) %>% # tracks field = features field
+  mutate(song_order = 1:n()) 
+head(tracks_features_2017)
+
+# access 2020 spotify wrapped tracks
+tracks_2020 <- get_playlist_tracks('37i9dQZF1EMcGvfb7im4AM')
+features_2020 <- get_track_audio_features(tracks_2020$track.id)
+tracks_features_2020 <- tracks_2020 %>%
+  left_join(features_2020, by = c('track.id' = 'id')) %>% # tracks field = features field
+  mutate(song_order = 1:n())
+head(tracks_features_2020)
+
+# create 2017 spotify wrapped bubble plot and export
+wrapped_2017_graph <- ggplot(tracks_features_2017, aes(valence, danceability, label = track.name)) +
+  # label makes a 3rd aesthetic that isn't visible in the static layout, but in the interactive
+  geom_point(alpha = .7, aes(size = track.popularity, color = song_order)) + 
+  labs(size = "Track Popularity") + 
+  scale_size(range = c(0,6)) + # change range for graphic export to illustrator, works for md  
+  scale_color_gradientn("My Top Songs", trans = "reverse", colors = c("seashell2", "lightgoldenrod1", "yellowgreen", "forestgreen")) +
+  # alternative color palette: "lightsteelblue4", "lavender", "thistle3", "plum4"
+  # geom_text_repel(aes(label = track.name), size = 1.5) + # label songs for reference on static graph
+  theme_minimal() + 
+  # ggtitle("The Moods & Popularity of \n My Spotify Wrapped 2017") + 
+  # labs(x = "Valence (Musical Positiveness)", y = "Danceability") + 
+  # theme(plot.title = element_text(hjust = 0.5),
+  #       text = element_text(family = "Open Sans", size = 10))
+  theme(panel.grid = element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank())
+
+ggsave("Wrapped_2017.png",
+       width = 17,
+       height = 11,
+       units = c("in"),
+       bg='transparent')
+
+# create 2020 spotify wrapped bubble plot and export
+wrapped_2020_graph <- ggplot(tracks_features_2020, aes(valence, danceability, label = track.name)) +
+  # label makes a 3rd aesthetic that isn't visible in the static layout, but in the interactive
+  geom_point(alpha = .7, aes(size = track.popularity, color = song_order)) + 
+  labs(size = "Track Popularity") + 
+  scale_size(range = c(-2,6)) + # change range for graphic export to illustrator, works for md
+  scale_color_gradientn("My Top Songs", trans = "reverse", colors = c("seashell2", "lightgoldenrod1", "yellowgreen", "forestgreen")) + 
+  # geom_text_repel(aes(label = track.name), size = 1.5) + # label songs for reference on static graph
+  theme_minimal() + 
+  # ggtitle("The Moods & Popularity of \n My Spotify Wrapped 2020") + 
+  # labs(x = "Valence (Musical Positiveness)", y = "Danceability") + 
+  # theme(plot.title = element_text(hjust = 0.5),
+  #       text = element_text(family = "Open Sans", size = 10))
+  theme(panel.grid = element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank())
+  
+ggsave("Wrapped_2020.png",
+       width = 17,
+       height = 11,
+       units = c("in"),
+       bg='transparent')
+
+wrapped_2017_graph
+wrapped_2020_graph
+
+# make static graphs interactive 
+wrapped_2017_interactive <- ggplotly(wrapped_2017_graph)
+wrapped_2020_interactive <- ggplotly(wrapped_2020_graph)
+wrapped_2017_interactive
+wrapped_2020_interactive
+```
+
+``` {r derive Spotify Audio Features Summary Statistics for Analysis, warning = F}
+popularity_2017 <- mean(tracks_features_2017$track.popularity)
+valence_2017 <- mean(tracks_features_2017$valence)
+danceability_2017 <- mean(tracks_features_2017$danceability)
+
+popularity_2020 <- mean(tracks_features_2020$track.popularity)
+valence_2020 <- mean(tracks_features_2020$valence)
+danceability_2020 <- mean(tracks_features_2020$danceability)
+
+popularity_2017
+valence_2017
+danceability_2017
+popularity_2020
+valence_2020
+danceability_2020 
+```
+
+The dot plots compare my Spotify listening habits from 2017 versus 2020. I decided to use my Spotify Wrapped playlists as a metric to quantify 'listening habits,' as these playlists compile the top 100 songs I listened to in a given year/music cycle. 2021 would have been used instead of 2020 for this analysis, allowing the comparison to be my earliest Wrapped vs most recent Wrapped, but the function get_playlist_tracks() didn't work for 2021... probably because the generated playlist ID is fairly recent?
+
+For my analysis, I focused on the mood on the songs I listened to and their relative popularity (objectively, by streams since release and subjectively, by personal listening amount). The dot plots then juggle 4-variables, 2 looking at mood and 2 looking at relative popularity. The intent of utilizing these variables was to 
+
+- see if the mood of the songs I listened to correlated with my general lived experiences in a given year 
+- see how 'unique' my music taste was in high school compared to university
+
+
+Valence and danceability definitions were sourced from [Spotify's Audio Feature Reference page](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features). Track Popularity defined by [Spotify's Web API page](https://developer.spotify.com/documentation/web-api/reference/#/)
+
+**NOTE: The metric track popularity is constantly changing for each individual song, yet the mean can gradually increase of decrease over time. For this analysis, average track popularity was taken from the date June 10th, 2022.**
+
+In 2017, I was experiencing the latter portion of my sophomore and the first half of my junior year. This period of my life was defined by having quit club volleyball at the beginning of year from a toxic team culture, lots of studying for my ACT/SAT, working at the Mueseum of Natural Sciences 3 days a week, and taking way too many AP courses that I never ended up getting credit for at university. My average track popularity in 2017 was 39.28, meaning I listened to a fair portion of understreamed/non-mainstream songs in 2017. Call me a Spotify listening pioneer. This lower track popularity score can be possibly related to the fact I found a lot of my favorite songs that year via Discover Weekly—a tailored playlist that recommends new songs for users weekly—and Fresh Finds—a curated playlist based on your listening habits that recommends newly released music from artists. This metric is interesting because a good portion of my 'rarest' songs in 2017 now have over 100 million streams on Spotify, meaning I began listening to these songs before they blew up. These include "Green Light" by Lorde, "Electric" Alina Baraz ft. Khalid, and "Sorry Not Sorry" by Demi Levato. On the other hand, there are songs with a low track popularity that are still understreamed, such as "In Your Corner" by Ella Vos and "Found You" by Kasbo ft. Chelsea Cutler. Beyond relative popularity, an interesting trend observed is that the mean danceability and valence for my Spotify 2017 Wrapped were lower than the same variables for my Spotify 2020 Wrapped. A 6% lower valence and 2% lower danceability may not seem significant, but these deviations suggest a slightly higher degree of overall happiness in 2020 than in 2017. 
+
+In 2020, whilst this was first lockdown during the pandemic, a bummer summer turned into blissful Fall at Middlebury may explain this deviation. Even though many students like myself were devastated about the impacts COVID would have on our college experience, at Middlebury, I was very fortunate to have majority in-person classes masked and was still able to partake in activities such as rowing. During this period as well, I started exercising a lot more to pass the time, so many of the songs identified with high valence/danceability were songs that got me through an intense run/row, such as "Don't Start Now" by Dua Lipa and "Alone (Calvin Harris Remix) ft. Stefflon Don" by Halsey, Calvin Harris, and Stefflon Don. During 2020, however, my music taste started to take a generic turn, with my track popularity averaging 44.34, an almost 5 unit increase from 2017. By no means does this speak lowly on my music taste, however, as this was the year many of my peers on campus introduced me to great tracks and banger songs I wouldn't have discovered myself. As well, our college's music radio station was another avenue I found new music through, in junction with my Spotify Wrapped. So whilst the data shows a more generic turn in my track popularity, I would argue my music taste become more versatile genre wise, as more variable tracks made it on my Top 100 in 2020: some favorites include "Kiss of Life" by Sade, a 1992 jazz/synthpop song about enduring love, and "Same Space" by Tiana Major9, a 2020 R&B/Soul ballad looking about navigating relationships in the modern era.  
+
+```{r Paramore Then Versus Now, message = FALSE, warning = FALSE}
+
+# access every paramore track and their audio features
+paramore <- get_artist_audio_features("Paramore")
+
+# remove albums that are either deluxe or live recorded
+paramore <- paramore[paramore$album_name != "The Final Riot!" & paramore$album_name != "Paramore (Deluxe Edition)" & paramore$album_name != "Brand New Eyes (Deluxe Edition)",]
+
+# prepare data for ternary plot, create album groups (first, middle, last)
+paramore_ternary <- paramore %>%
+  mutate(group = factor(case_when(album_name == "After Laughter" ~ 1,
+                                  album_name == "All We Know Is Falling" ~ 2,
+                                  album_name == "Paramore" ~ 3,
+                                  album_name == "Brand New Eyes" ~ 3,
+                                  album_name == "Riot!" ~ 3,
+                                  ))) 
+paramore_ternary$group <- as.character(paramore_ternary$group)
+# This next code chunk may cause a 'DataTables warning' to pop up. Just press ok 4 until the message disappears and proceed.
+paramore_ternary$group[paramore_ternary$group == "1"] <- "After Laughter" 
+paramore_ternary$group[paramore_ternary$group == "2"] <- "All We Know Is Falling"
+paramore_ternary$group[paramore_ternary$group == "3"] <- "Other Albums"
+
+# create and stylize ternary plot
+paramore_ternary %>%
+  ggplot(aes(x = valence,  y = energy, z = danceability, color = group, alpha = group)) +
+  coord_tern() +
+  labs(x = "Valence", y = "Energy", z = "Danceabilty") +
+  geom_point(data = filter(paramore_ternary, group == "Other Albums"), size = 0.5) +
+  geom_point(data = filter(paramore_ternary, group == "After Laughter"), size = 2) +
+  geom_point(data = filter(paramore_ternary, group == "All We Know Is Falling"), size = 2) +
+  scale_color_manual(values = c("indianred", "cornflowerblue", "seashell1")) +
+  # alternative color palette: c("lightpink3", "lightskyblue3", "seashell1"))
+  scale_alpha_manual(values = c(.75, .75, .1)) + 
+  theme_noticks() +
+  theme_hidegrid() + 
+  theme(legend.title=element_blank(),
+        legend.background = element_rect(fill = "black"),
+        legend.key = element_rect(fill = "black", color = NA),
+        legend.text = element_text(color = "ivory1")) +
+  theme(plot.background = element_rect(fill = "black", color = "black"),
+        panel.background = element_rect(fill = "black", color = "white"),
+        axis.title = element_text(size = 10,
+                                  color = "white",
+                                  family = "Open Sans",
+                                  hjust = .5))
+ggsave("paramore_ternary.jpg",
+       width = 11.5,
+       height = 8,
+       units = c("in"))
+```
+
+```{r derive Paramore Album Summary Statistics for Analysis}
+al <- filter(paramore_ternary, album_name == "After Laughter")
+awkif <- filter(paramore_ternary, album_name == "All We Know Is Falling")
+
+valence_al <- mean(al$valence)
+danceability_al <- mean(al$danceability)
+energy_al <- mean(al$energy)
+
+valence_awkif <- mean(awkif$valence)
+danceability_awkif <- mean(awkif$danceability)
+energy_awkif <- mean(awkif$energy)
+
+valence_al
+danceability_al
+energy_al
+valence_awkif
+danceability_awkif
+energy_awkif
+```
+
+One of my favorite bands of all time is Paramore. I first discovered their music after hearing Hayley William's—the lead singer's—vocals on B.o.B's most listened to song: "Airplanes." Ever since, I've been an avid listener of the band's music throughout middle school all the way to university. My Spotify Wrapped in 2017 provides evidence of my everlasting fan behavior, with 4 of my top 100 listened songs that year being by them. After the announcement of the band's hiatus in 2019, my music feed has slowly began to see less Paramore. However, in this analysis, I wanted to bring back my fervor for this band that's been hibernating through a data graphic story. Between their first and last album, Paramore's evolution as a group saw a transition from music that was Emo/Punk to the genres of New Wave/Synth Pop. Whilst the genre of Pop Rock has always existed for the band, I became curious if the genre shifts between Paramore's first and last album could observed in the distinctions in mood audio features from each track of the respective albums.
+
+In this analysis, the mood audio features I decided to investigate and plot were...
+
++ Valence: A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
+
++ Danceability: Describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
+
++ Energy: A measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
+
+All definitions were sourced from [Spotify's Audio Feature Reference page](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features).
+
+Paramore's 2005 elementary album, *All We Know Is Falling*, is a dance between Hayley William's assertive vocals and the rock-stylings of drums and electric guitar. With an average energy of 0.8716, this album is filled with intense, loud, and timbre-filled music that became resonate of many punk/rock groups in the early 2000s. However, where energy was high, mean danceability and valence both scored below a 0.5, suggesting Paramore's earliest album aimed to have you feel and resonate with darker subjects, not designed for the early 2000s floor. Ultimately, this album was made for you to listen, process, and feel, rather than blissfully move to. Evidence of this can be seen from an interview with Williams, where she remarks the main theme of *All We Know is Falling* pertained to the departure of one of their bassists and the divorce of her parents. Contrasting the opening album to the band's music legacy, their concluding album *After Laughter* departs from their history of pop punk and emo, veering towards a bright, animated collection of songs. With both mean valence and danceability showing an over .2 unit increase from *All We Know is Falling*, scoring 0.6719 and 0.6672 respectively, *After Laughter* delivers a musically positive and danceable experience via its vibrance and upbeat records used to contrast its lyrical themes of masking misery and the anxiety of aging (hence, probably the reason for a more upper-middle valence). Albeit, while delivering a relatively high average energy of 0.7253, *After Laughter* fall 0.15 units short of their first album, suggesting a fall in perceived loudness and general entropy attributed to the band's genre shift. 
+
+The ternary plot I created not only communicates these broader observations taken from my summary statistics, but also enable a deeper dive into each album at an individual song level. Contrasting the two albums at first glance, nearly all songs from *All We Know is Falling* are more in the direction of the Energy vertex, whereas with *After Laughter*, songs lean more towards the valence and danceability vertex's. While it's hard to difficult individudal points in R, in Illustrator, emphasis was drawn to each individual song from either *After Laughter* or *All We Know is Falling* that had the max/min valence, danceability, and energy. Here are those songs with a respective quote that drive their awarded moods:
+
++ Max Valence = "Rose-Colored Boy" from *After Laughter* 
+  - ***"Hey, man, we all can't be like you. I wish we were all rose-colored too my rose-colored boy"***
++ Min Valence = "Franklin" from *All We Know is Falling*
+  - ***"It's taking up our time again. Go back, we can't go back at all"***
++ Max Danceability = "Caught in the Middle" from *After Laughter*     
+  - ***"I'm just a little bit caught in the middle. I try to keep going but it's not that simple"***
++ Min Danceability = "Whoa" from *All We Know is Falling*
+  - ***"And we got everybody singing Whoa, whoa-oh, whoa, whoa-oh"***
++ Max Energy = "Emergency" from *All We Know is Falling* 
+  - ***"Cause I've seen love die way too many times when it deserved to be alive"***
++ Min Energy = "26" from *After Laughter*
+  - ***"Hold onto hope, if you got it. Don't let it go for nobody"***
+
+```{r Statistical Tests}
+
+# ANOVA - Is there a difference in the means of each mood audio features for each Paramore album?
+
+# Create Box Plots
+paramore_boxplot_valence <- ggplot(paramore, aes(x = album_name , y = valence)) + 
+  geom_boxplot() +
+  labs(title = "Album Name vs Valence",
+       x = "Album Name", y = "Valence") +
+  theme_bw()
+# paramore_boxplot_valence # used to corroborate ANOVA result interpretations
+
+paramore_boxplot_danceabilty <- ggplot(paramore, aes(x = album_name , y = danceability)) + 
+  geom_boxplot() +
+  labs(title = "Album Name vs Danceability",
+       x = "Album Name", y = "Danceability") +
+  theme_bw()
+# paramore_boxplot_danceabilty # used to corroborate ANOVA result interpretations
+
+paramore_boxplot_energy <- ggplot(paramore, aes(x = album_name , y = energy)) + 
+  geom_boxplot() +
+  labs(title = "Album Name vs Energy",
+       x = "Album Name", y = "Energy") +
+  theme_bw()
+# paramore_boxplot_energy # used to corroborate ANOVA result interpretations
+
+# Run ANOVA Tests
+anova_valence <- lm(paramore$valence~paramore$album_name)
+anova(anova_valence)
+
+anova_danceability <- lm(paramore$danceability~paramore$album_name)
+anova(anova_danceability)
+
+anova_energy <- lm(paramore$energy~paramore$album_name)
+anova(anova_energy)
+```
+
+Since the Pr(>F) is 0.01821 < 0.05, we are 95% confident there is a significant difference in valence across different Paramore albums; this is reflected in the box plot created. Since the Pr(>F) is 1.286e-08 < 0.05, we are 95% confident there is a significant difference in danceability across different Paramore albums; this is reflected in the box plot created. Since the Pr(>F) is 0.138 > 0.05, accept the null hypothesis, thus there is not a significant difference in energy across different Paramore albums; this is reflected in the box plot created. 
+
+-----
+
+For a future/upcoming personal project, inspired by Pablo Alvarez's [Red Hot Chili Peppers setlist visualization](https://twitter.com/pablo_alvrez/status/1533525993536774144/photo/1), I want to look at how an artist structures their concert for a newly released album in relation to the orginal order of their album. On June 15th, I'll be attending Ravyn Lenae's Hypnos Tour in London and jotting down her setlist at this concert. After, I'll aim to create a visualization in R comparing the original order of Hypnos to the order of music presented at the concert. My aim will be to understand the temporal and mood differences between a recorded album and a live presentation of that album. The first piece of code below creates a data frame with each track from hypnos and its associated track audio features. I then added a column with each tracks times in seconds, which will aid in latter visualization.
+
+```{r FUTURE PERSONAL PROJECT}
+
+# album link: https://open.spotify.com/album/5Y4hUd0FPvCed5lu7loMXZ?si=j0PilelXRDy97u4qSe23og
+
+# access hypnos tracks and features
+hypnos_tracks <- get_album_tracks("5Y4hUd0FPvCed5lu7loMXZ") 
+hypnos_features <- get_track_audio_features(hypnos_tracks$id)
+hypnos <- hypnos_tracks %>%
+  left_join(hypnos_features, by = c('id' = 'id')) # tracks field = features field 
+head(hypnos)
+
+# create a list of track duration values (in seconds)
+hypnos_track_duration <- c(84, 209, 251, 207, 227, 224, 192, 95, 189, 265, 239, 228, 112, 178, 263, 243)
+
+# add track time duration (in seconds) column 
+hypnos <- hypnos %>%
+  mutate(hypnos_track_duration)
+```
+
+*R-Studio Short Cuts*
+to insert chunk: *Cmd+Option+I*
+to preview markdown: *Cmd+Shift+K*
+to run code: *Cmd+Shift+Enter*
+
