@@ -24,6 +24,9 @@ layout: default
 - [Ethics & Limits of Volunteered Geographic Information](musings/vgi-ethics-limits.md)
 - [Spatial Big Data: Debating Ethics & Reproducibility](/musings/spatial-big-data.md)
 
+## Data Viz
+- [Energy Dependencies by Country](energy_viz/step15-complete/index.html)
+
 ## About Me
 
 I'm a rising senior-feb at Middlebury College studying Environmental Studies & Geography, with a keen interest in GIS, cartography, & editorial graphics. On campus, I row for the [Middlebury Men's Crew Team](https://middcrew.org/), am the Editor in Chief of [Middlebury Geographic](https://issuu.com/middgeog/)—our college's outdoors publication, serve on the [Environmental Studies Student Advisory Committee (ES-SAC)](http://www.middlebury.edu/academics/es/es-student-advisory-council), and give tours for the Admissions Office. Other interests of mine include sustainable fashion, cooking Asian street food, and watching A24 films.
