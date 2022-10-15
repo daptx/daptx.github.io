@@ -7,7 +7,7 @@ output: html_notebook
 
 ### Authors: Drew An-Pham 
 
-### [Drew's Portfolio](https://daptx.myportfolio.com/)
+### [Drew's Portfolio](https://drewanpham.com/)
 
 ```{r set directory and install libraries, inlclude = F, warning = F}
 
