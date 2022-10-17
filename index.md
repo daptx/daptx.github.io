@@ -4,7 +4,7 @@ layout: default
 ---
 
 
-## This Open Source GIS Portfolio is a technical archive of my past work. Find my most up-to-date portfolio [here](drewanpham.com)
+## This Open Source GIS Portfolio is a technical archive of my past work. Find my most up-to-date portfolio [here](https://drewanpham.com/)
 
 ## GIScience Analyses
 
