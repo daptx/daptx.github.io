@@ -26,7 +26,7 @@ layout: default
 
 ## Data Viz
 - [Energy Dependencies by Country](energy_viz/step15-complete/index.html)
-- <a href="resume.pdf" target="_blank">one-page resume here</a>
+- <a href="Resume.pdf" target="_blank">one-page resume here</a>
 
 ## About Me
 
