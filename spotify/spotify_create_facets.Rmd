@@ -1,0 +1,58 @@
+---
+title: "spotify_data_filter"
+author: "Drew An-Pham"
+date: '2022-10-16'
+output: html_document
+---
+
+```{r set directory and install libraries, inlclude = F, warning = F}
+
+# install and add packages
+packages = c("knitr", "dplyr", "tidyverse", "lubridate")
+setdiff(packages, rownames(installed.packages()))
+install.packages(setdiff(packages, rownames(installed.packages())), quietly=TRUE)
+
+library(knitr)
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+```
+
+```{r import and filter csv}
+spotify_charts <- read.csv("spotify_dataset.csv") %>%
+  mutate(spotify_charts, duration_ranges = NA)
+
+one_min <- filter(spotify_charts, Duration..ms. > 0 & Duration..ms. <= 60000)
+one_min$duration_ranges <- "0 to 1 minute"
+
+two_min <- filter(spotify_charts, Duration..ms. > 60000 & Duration..ms. <= 120000)
+two_min$duration_ranges <- "1 to 2 minute"
+
+three_min <- filter(spotify_charts, Duration..ms. > 120000 & Duration..ms. <= 180000)
+three_min$duration_ranges <- "2 to 3 minute"
+
+four_min <- filter(spotify_charts, Duration..ms. > 180000 & Duration..ms. <= 240000)
+four_min$duration_ranges <- "3 to 4 minute"
+
+five_min <- filter(spotify_charts, Duration..ms. > 240000 & Duration..ms. <= 300000)
+five_min$duration_ranges <- "4 to 5 minute"
+
+six_min <- filter(spotify_charts, Duration..ms. > 300000 & Duration..ms. <= 360000)
+six_min$duration_ranges <- "5 to 6 minute"
+
+seven_min <- filter(spotify_charts, Duration..ms. > 360000 & Duration..ms. <= 420000)
+seven_min$duration_ranges <- "6 to 7 minute"
+
+eight_min <- filter(spotify_charts, Duration..ms. > 420000 & Duration..ms. <= 480000)
+eight_min$duration_ranges <- "7 to 8 minute"
+
+nine_min <- filter(spotify_charts, Duration..ms. > 480000 & Duration..ms. <= 540000)
+nine_min$duration_ranges <- "8 to 9 minute"
+
+ten_min <- filter(spotify_charts, Duration..ms. > 540000 & Duration..ms. <= 600000)
+ten_min$duration_ranges <- "9 to 10 minute"
+
+final_data <- bind_rows(one_min, two_min, three_min, four_min, five_min, six_min, seven_min, eight_min, nine_min, ten_min)
+
+write.csv(final_data, "spotify_data_new.csv")
+```
