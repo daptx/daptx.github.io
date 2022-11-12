@@ -26,6 +26,7 @@ layout: default
 
 ## Data Viz
 - [Energy Dependencies by Country](energy_viz/step15-complete/index.html)
+- [Spotify Analysis in RStudio](spotify/SpotifyR.nb.html)
 
 ## About Me
 
