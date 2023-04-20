@@ -26,9 +26,10 @@ layout: default
 
 ## Data Viz
 - [Energy Dependencies by Country](energy_viz/step15-complete/index.html)
+- [Spotify Analysis in RStudio](spotify/SpotifyR.nb.html)
 
 ## About Me
 
-I'm a senior at Middlebury College studying Environmental Studies & Geography, with a keen interest in GIS, cartography, & editorial graphics. On campus, I row for the [Middlebury Men's Crew Team](https://middcrew.org/), am the Editor in Chief of [Middlebury Geographic](https://issuu.com/middgeog/)—our college's outdoors publication, serve on the [Environmental Studies Student Advisory Committee (ES-SAC)](http://www.middlebury.edu/academics/es/es-student-advisory-council), and give tours for the Admissions Office. Other interests of mine include sustainable fashion, cooking Asian street food, and watching A24 films. You can find my <a href="Resume[2022].pdf" target="_blank">one-page resume here</a>.
+I'm a senior at Middlebury College studying Environmental Studies & Geography, with a keen interest in GIS, cartography, & editorial graphics. On campus, I row for the [Middlebury Men's Crew Team](https://middcrew.org/), am the Editor in Chief of [Middlebury Geographic](https://issuu.com/middgeog/)—our college's outdoors publication, serve on the [Environmental Studies Student Advisory Committee (ES-SAC)](http://www.middlebury.edu/academics/es/es-student-advisory-council), and give tours for the Admissions Office. Other interests of mine include sustainable fashion, cooking Asian street food, and watching A24 films. You can find my <a href="Resume [2023].pdf" target="_blank">one-page resume here</a>.
 
 To learn more about my work, education, and future endeavors, check out my [LinkedIn](https://www.linkedin.com/in/drew-an-pham/)!
