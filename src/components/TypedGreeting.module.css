@@ -1,0 +1,29 @@
+.greeting {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 4px;
+  line-height: 1.6;
+  min-height: 1.6em;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.2em;
+  background: #177494;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.cursorFade {
+  animation: fadeOut 1.2s ease forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; }
+}

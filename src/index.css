@@ -1,0 +1,20 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: 'Source Code Pro', system-ui, sans-serif;
+  background: #fffcf4;
+  color: #1a1a1a;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Source Code Pro', system-ui, sans-serif;
+}

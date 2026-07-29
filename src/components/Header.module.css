@@ -1,0 +1,109 @@
+.header {
+  max-width: 750px;
+  padding: 50px 0 20px;
+}
+
+.name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.25em;
+  font-size: 36px;
+  font-weight: 700;
+  font-family: 'Open Sans', system-ui, sans-serif;
+  color: #177494;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.nameSuffix {
+  white-space: nowrap;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.bio {
+  margin-bottom: 16px;
+}
+
+.bio p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 4px;
+}
+
+.bio a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.3s ease;
+}
+
+.bio a:hover {
+  text-decoration-color: #177494;
+}
+
+.rollingLink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.3s ease, opacity 0.3s ease;
+  display: inline-block;
+}
+
+.rollingLink:hover {
+  text-decoration-color: #177494;
+}
+
+.emailWrap {
+  position: relative;
+  display: inline-block;
+}
+
+.copyEmail {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.3s ease;
+  line-height: inherit;
+}
+
+.copyEmail:hover {
+  text-decoration-color: #177494;
+}
+
+.copyTooltip {
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 0;
+  color: #177494;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition: opacity 0.15s ease, clip-path 0.35s ease;
+}
+
+.copyTooltipVisible {
+  opacity: 1;
+  clip-path: inset(0 0% 0 0);
+}
+
