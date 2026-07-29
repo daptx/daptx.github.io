@@ -7,7 +7,7 @@ export default function CopyEmail({ email }) {
   const timerRef = useRef(null)
 
   const handleClick = () => {
-    navigator.clipboard.writeText(email).then(() => {
+    navigator.clipboard.writeText(email.replace('@', ' [at] ')).then(() => {
       setCopied(true)
       setVisible(true)
       clearTimeout(timerRef.current)
