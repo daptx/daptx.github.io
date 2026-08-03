@@ -44,7 +44,7 @@ export default function Grid({ selected = [], other = [] }) {
   return (
     <div>
       <nav className={styles.nav}>
-        {tabs.map((tab) => (
+        {tabs.filter((tab) => tab.key !== 'other').map((tab) => (
           <button
             key={tab.key}
             className={`${styles.navItem} ${active === tab.key ? styles.navItemActive : ''}`}
