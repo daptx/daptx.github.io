@@ -47,7 +47,7 @@ export default function Grid({ selected = [], other = [] }) {
         {tabs.filter((tab) => tab.key !== 'other').map((tab) => (
           <button
             key={tab.key}
-            className={`${styles.navItem} ${active === tab.key ? styles.navItemActive : ''}`}
+            className={styles.navItem}
             onClick={() => setActive(tab.key)}
           >
             {tab.label}
