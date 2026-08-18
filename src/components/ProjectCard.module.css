@@ -28,10 +28,6 @@ a.cardCompact:hover {
   border-radius: 10px;
 }
 
-a.cardCompact:hover .image {
-  transform: scale(1.04);
-}
-
 a.card:hover {
   transform: translateY(-5px);
 }
@@ -52,11 +48,6 @@ a.card:hover {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-a.card:hover .image {
-  transform: scale(1.02);
 }
 
 .placeholder {
