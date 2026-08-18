@@ -27,5 +27,5 @@ export const CONFIG = {
     href: 'https://www.linkedin.com/in/drew-an-pham/',
   },
 
-  email: 'daptx21@gmail.com',
+  email: 'hello@drewanpham.com',
 }
